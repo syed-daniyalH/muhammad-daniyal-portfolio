@@ -1,0 +1,11 @@
+{
+  "project": "Daniyal Executive Portfolio",
+  "framework": "Next.js 15 App Router",
+  "modules": [
+    "Module 1 \u2014 Core UX and backend security",
+    "Module 2 \u2014 Hero, metrics, case study, WaveSurfer"
+  ],
+  "generated_files": 40,
+  "audio_note": "Synthetic non-speech placeholder; replace with approved sanitized audio.",
+  "validation": "TypeScript parser found no TS1xxx syntax errors."
+}

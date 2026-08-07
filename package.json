@@ -1,0 +1,45 @@
+{
+  "name": "daniyal-executive-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Executive AI and full-stack automation engineering portfolio built with Next.js 15, TypeScript, Tailwind CSS 4, Lenis, Framer Motion, WaveSurfer, Radix UI, and Neon Postgres.",
+  "packageManager": "pnpm@10.14.0",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/**/*.test.ts",
+    "validate": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "sign:webhook": "node scripts/sign-webhook.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1",
+    "@radix-ui/react-tabs": "1",
+    "framer-motion": "12",
+    "lenis": "1.3.25",
+    "lucide-react": "0",
+    "next": "15",
+    "prism-react-renderer": "2",
+    "react": "19",
+    "react-dom": "19",
+    "simple-icons": "16",
+    "wavesurfer.js": "7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4",
+    "@types/node": "22",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "eslint": "8",
+    "eslint-config-next": "15",
+    "postcss": "8",
+    "tailwindcss": "4",
+    "tsx": "4",
+    "typescript": "5"
+  }
+}
