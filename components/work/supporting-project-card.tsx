@@ -10,17 +10,17 @@ export function SupportingProjectCard({
   project: PortfolioProject;
 }): React.JSX.Element {
   return (
-    <article className="flex h-full flex-col rounded-2xl border border-[#2D3748] bg-[#101724] p-5 transition-[border-color,transform] hover:-translate-y-1 hover:border-[#06B6D4]/40">
+    <article className="flex h-full flex-col rounded-2xl border border-border bg-surface p-5 transition-[border-color,transform] hover:-translate-y-1 hover:border-accent/40">
       <ProjectStatusPill
         status={project.status}
         label={project.statusLabel}
       />
 
-      <h3 className="mt-5 text-lg font-semibold text-[#F9FAFB]">
+      <h3 className="mt-5 text-lg font-semibold text-foreground">
         {project.title}
       </h3>
 
-      <p className="mt-3 text-sm leading-6 text-[#9CA3AF]">
+      <p className="mt-3 text-sm leading-6 text-muted">
         {project.summary}
       </p>
 
@@ -28,7 +28,7 @@ export function SupportingProjectCard({
         {project.technologies.slice(0, 4).map((technology) => (
           <span
             key={technology.name}
-            className="rounded-full border border-[#2D3748] bg-[#0B0F17] px-2.5 py-1 text-[9px] font-medium text-[#D1D5DB]"
+            className="rounded-full border border-border bg-background px-2.5 py-1 text-[9px] font-medium text-foreground/85"
           >
             {technology.name}
           </span>
@@ -37,7 +37,7 @@ export function SupportingProjectCard({
 
       <Link
         href={project.route}
-        className="mt-auto inline-flex min-h-10 w-fit items-center gap-2 pt-6 text-xs font-semibold text-cyan-200 transition-colors hover:text-[#F9FAFB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+        className="mt-auto inline-flex min-h-10 w-fit items-center gap-2 pt-6 text-xs font-semibold text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         View details
         <ArrowUpRight aria-hidden="true" className="size-4" />

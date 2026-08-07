@@ -14,16 +14,16 @@ function AudioWaveformSkeleton(): React.JSX.Element {
     <div
       role="status"
       aria-label="Loading audio waveform"
-      className="overflow-hidden rounded-2xl border border-[#2D3748] bg-[#0B0F17]/70 p-5"
+      className="overflow-hidden rounded-2xl border border-border bg-background/70 p-5"
     >
       <div className="animate-pulse">
-        <div className="h-4 w-48 rounded-full bg-[#2D3748]/80" />
+        <div className="h-4 w-48 rounded-full bg-border/80" />
 
-        <div className="mt-6 flex h-24 items-center gap-1 rounded-xl bg-[#161E2E]/70 px-4">
+        <div className="mt-6 flex h-24 items-center gap-1 rounded-xl bg-surface/70 px-4">
           {Array.from({ length: 36 }).map((_, index) => (
             <span
               key={index}
-              className="flex-1 rounded-full bg-[#2D3748]"
+              className="flex-1 rounded-full bg-border"
               style={{
                 height: `${24 + ((index * 17) % 62)}%`,
               }}
@@ -31,7 +31,7 @@ function AudioWaveformSkeleton(): React.JSX.Element {
           ))}
         </div>
 
-        <div className="mt-5 h-11 rounded-xl bg-[#161E2E]" />
+        <div className="mt-5 h-11 rounded-xl bg-surface" />
       </div>
     </div>
   );

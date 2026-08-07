@@ -53,8 +53,8 @@ interface SandboxResponse {
 
 const LOG_COLOR: Record<LogLevel, string> = {
   system: "text-slate-400",
-  security: "text-cyan-300",
-  processing: "text-indigo-300",
+  security: "text-accent",
+  processing: "text-info",
   success: "text-emerald-300",
   error: "text-red-300",
 };
@@ -89,11 +89,11 @@ function JsonPrimitive({ value }: { value: string }): React.JSX.Element {
   }
 
   if (value === "true" || value === "false" || value === "null") {
-    return <span className="text-amber-300">{value}</span>;
+    return <span className="text-caution">{value}</span>;
   }
 
   if (/^-?\d+(?:\.\d+)?[,]?$/.test(value)) {
-    return <span className="text-cyan-300">{value}</span>;
+    return <span className="text-accent">{value}</span>;
   }
 
   return <span className="text-slate-300">{value}</span>;
@@ -131,7 +131,7 @@ function JsonSyntaxViewer({
         return (
           <div key={`${key}-${index}`}>
             <span>{indentation}</span>
-            <span className="text-indigo-300">{key}</span>
+            <span className="text-info">{key}</span>
             <span className="text-slate-500">{separator}</span>
             <JsonPrimitive value={primitive} />
           </div>
@@ -288,18 +288,18 @@ export function TerminalWidget(): React.JSX.Element {
     <section
       role="region"
       aria-labelledby="dispatch-terminal-title"
-      className="overflow-hidden rounded-3xl border border-border bg-[#070A10] shadow-[0_32px_90px_rgba(0,0,0,0.42)]"
+      className="overflow-hidden rounded-3xl border border-border bg-console shadow-[0_32px_90px_rgba(0,0,0,0.42)]"
     >
-      <header className="flex flex-col gap-4 border-b border-border bg-[#101724] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <header className="flex flex-col gap-4 border-b border-border bg-surface px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">
           <div aria-hidden="true" className="flex items-center gap-2">
             <span className="size-2.5 rounded-full bg-red-400" />
-            <span className="size-2.5 rounded-full bg-amber-400" />
+            <span className="size-2.5 rounded-full bg-caution" />
             <span className="size-2.5 rounded-full bg-emerald-400" />
           </div>
 
           <div className="flex items-center gap-2">
-            <Terminal aria-hidden="true" className="size-4 text-cyan" />
+            <Terminal aria-hidden="true" className="size-4 text-accent" />
             <h2
               id="dispatch-terminal-title"
               className="font-mono text-[11px] font-semibold uppercase tracking-[0.13em] text-slate-300"
@@ -309,12 +309,12 @@ export function TerminalWidget(): React.JSX.Element {
           </div>
         </div>
 
-        <div className="flex w-fit items-center gap-2 rounded-full border border-cyan/20 bg-cyan/[0.06] px-3 py-1.5">
+        <div className="flex w-fit items-center gap-2 rounded-full border border-accent/20 bg-accent/[0.06] px-3 py-1.5">
           <ShieldCheck
             aria-hidden="true"
-            className="size-3.5 text-cyan"
+            className="size-3.5 text-accent"
           />
-          <span className="font-mono text-[9px] uppercase tracking-wider text-cyan">
+          <span className="font-mono text-[9px] uppercase tracking-wider text-accent">
             Sanitized Simulation
           </span>
         </div>
@@ -330,11 +330,11 @@ export function TerminalWidget(): React.JSX.Element {
             {logs.length === 0 && (
               <div className="space-y-2 text-slate-600">
                 <p>
-                  <span className="mr-2 text-cyan">&gt;</span>
+                  <span className="mr-2 text-accent">&gt;</span>
                   Terminal ready.
                 </p>
                 <p>
-                  <span className="mr-2 text-cyan">&gt;</span>
+                  <span className="mr-2 text-accent">&gt;</span>
                   Trigger a sanitized webhook event to inspect the pipeline.
                 </p>
               </div>
@@ -353,7 +353,7 @@ export function TerminalWidget(): React.JSX.Element {
                   <span className="mr-3 text-slate-700">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="mr-2 text-indigo-400">&gt;</span>
+                  <span className="mr-2 text-info">&gt;</span>
                   {log.message}
                 </motion.div>
               ))}
@@ -363,20 +363,20 @@ export function TerminalWidget(): React.JSX.Element {
               <div className="flex items-center gap-2 text-slate-500">
                 <LoaderCircle
                   aria-hidden="true"
-                  className="size-3.5 animate-spin text-cyan"
+                  className="size-3.5 animate-spin text-accent"
                 />
                 Executing controlled pipeline...
               </div>
             )}
           </div>
 
-          <div className="flex flex-col gap-3 border-t border-border bg-[#101724] p-4 sm:flex-row">
+          <div className="flex flex-col gap-3 border-t border-border bg-surface p-4 sm:flex-row">
             <button
               type="button"
               onClick={triggerWebhook}
               disabled={running}
               aria-label="Trigger a simulated bilingual webhook event"
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-xs font-semibold text-white shadow-[0_12px_30px_rgba(99,102,241,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-xs font-semibold text-accent-foreground shadow-[0_12px_30px_rgba(227,165,72,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               {running ? (
                 <LoaderCircle
@@ -395,7 +395,7 @@ export function TerminalWidget(): React.JSX.Element {
               onClick={resetTerminal}
               disabled={running}
               aria-label="Reset webhook terminal"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-4 py-3 text-xs font-medium text-muted transition-colors hover:border-cyan/40 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-4 py-3 text-xs font-medium text-muted transition-colors hover:border-accent/40 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
             >
               <RotateCcw aria-hidden="true" className="size-4" />
               Reset
@@ -419,7 +419,7 @@ export function TerminalWidget(): React.JSX.Element {
               onClick={copyOutput}
               disabled={!output}
               aria-label="Copy JSON response to clipboard"
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-2 text-[10px] font-medium text-muted transition-colors hover:border-cyan/40 hover:text-cyan disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-2 text-[10px] font-medium text-muted transition-colors hover:border-accent/40 hover:text-accent disabled:cursor-not-allowed disabled:opacity-40"
             >
               {copied ? (
                 <Check
@@ -434,7 +434,7 @@ export function TerminalWidget(): React.JSX.Element {
             </button>
           </div>
 
-          <div className="flex-1 overflow-auto bg-[#090D14]">
+          <div className="flex-1 overflow-auto bg-console">
             {output ? (
               <JsonSyntaxViewer value={output} />
             ) : (
@@ -454,7 +454,7 @@ export function TerminalWidget(): React.JSX.Element {
           </div>
 
           {output && (
-            <div className="flex items-center gap-2 border-t border-border bg-[#101724] px-5 py-3">
+            <div className="flex items-center gap-2 border-t border-border bg-surface px-5 py-3">
               <CheckCircle2
                 aria-hidden="true"
                 className="size-4 text-emerald-300"

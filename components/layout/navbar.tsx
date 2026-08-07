@@ -51,9 +51,9 @@ export function Navbar(): React.JSX.Element {
           type="button"
           onClick={() => scrollToSection("#hero")}
           aria-label="Return to portfolio introduction"
-          className="group flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+          className="group flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
         >
-          <span className="flex size-9 items-center justify-center rounded-xl border border-primary/25 bg-primary/10 text-primary transition-all duration-300 group-hover:scale-105 group-hover:border-cyan/40 group-hover:text-cyan">
+          <span className="flex size-9 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent transition-all duration-300 group-hover:scale-105 group-hover:border-accent/40">
             <Network aria-hidden="true" className="size-4" />
           </span>
 
@@ -73,7 +73,7 @@ export function Navbar(): React.JSX.Element {
               key={item.target}
               type="button"
               onClick={() => scrollToSection(item.target)}
-              className="relative py-2 text-sm font-medium text-muted transition-colors duration-200 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-cyan after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100 focus-visible:outline-none focus-visible:text-cyan"
+              className="relative py-2 text-sm font-medium text-muted transition-colors duration-200 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100 focus-visible:outline-none focus-visible:text-accent"
             >
               {item.label}
             </button>
@@ -93,7 +93,7 @@ export function Navbar(): React.JSX.Element {
 
           <a
             href="mailto:daniyalhaider784@gmail.com"
-            className="inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary px-4 py-2.5 text-xs font-semibold text-white shadow-[0_12px_30px_rgba(99,102,241,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500 hover:shadow-[0_16px_38px_rgba(99,102,241,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+            className="inline-flex items-center gap-2 rounded-xl border border-accent/30 bg-accent px-4 py-2.5 text-xs font-semibold text-accent-foreground shadow-[0_12px_30px_rgba(227,165,72,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-strong hover:shadow-[0_16px_38px_rgba(227,165,72,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Start a conversation
             <ArrowUpRight aria-hidden="true" className="size-4" />
@@ -106,7 +106,7 @@ export function Navbar(): React.JSX.Element {
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMobileMenuOpen((current) => !current)}
-          className="flex size-10 items-center justify-center rounded-xl border border-border bg-surface text-foreground transition-colors hover:border-cyan/40 hover:text-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan md:hidden"
+          className="flex size-10 items-center justify-center rounded-xl border border-border bg-surface text-foreground transition-colors hover:border-accent/40 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:hidden"
         >
           {mobileMenuOpen ? <X aria-hidden="true" className="size-4" /> : <Menu aria-hidden="true" className="size-4" />}
         </button>

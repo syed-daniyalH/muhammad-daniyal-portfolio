@@ -20,26 +20,26 @@ export function EvidenceGallery({
           <div>
             <div className="flex flex-wrap items-center gap-3">
               <EvidenceStatePill state={asset.state} />
-              <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[#6B7280]">
+              <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-subtle">
                 {asset.type}
               </span>
             </div>
             <h3
               id={`${asset.id}-title`}
-              className="mt-3 text-lg font-semibold text-[#F9FAFB]"
+              className="mt-3 text-lg font-semibold text-foreground"
             >
               {asset.title}
             </h3>
-            <p className="mt-2 text-sm leading-6 text-[#9CA3AF]">
+            <p className="mt-2 text-sm leading-6 text-muted">
               {asset.description}
             </p>
             {asset.caption && (
-              <p className="mt-3 text-xs leading-5 text-[#6B7280]">
+              <p className="mt-3 text-xs leading-5 text-muted-subtle">
                 {asset.caption}
               </p>
             )}
             {asset.confidentialityNote && (
-              <p className="mt-3 rounded-xl border border-amber-400/15 bg-amber-400/[0.05] px-4 py-3 text-xs leading-5 text-amber-100/80">
+              <p className="mt-3 rounded-xl border border-caution/15 bg-caution/[0.05] px-4 py-3 text-xs leading-5 text-caution/90">
                 {asset.confidentialityNote}
               </p>
             )}

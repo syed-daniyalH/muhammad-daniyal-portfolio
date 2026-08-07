@@ -33,21 +33,21 @@ export function CodeBlock({
     <section
       role="region"
       aria-label={`${filename} source code`}
-      className="overflow-hidden rounded-2xl border border-[#2D3748] bg-[#070A10]"
+      className="overflow-hidden rounded-2xl border border-border bg-console"
     >
-      <header className="flex flex-col justify-between gap-4 border-b border-[#2D3748] bg-[#101724] px-4 py-3 sm:flex-row sm:items-center">
+      <header className="flex flex-col justify-between gap-4 border-b border-border bg-surface px-4 py-3 sm:flex-row sm:items-center">
         <div className="flex items-center gap-2">
           <TerminalSquare
             aria-hidden="true"
-            className="size-4 text-cyan-300"
+            className="size-4 text-accent"
           />
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9CA3AF]">
+          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
             {filename}
           </span>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="rounded-full border border-indigo-400/20 bg-indigo-400/[0.06] px-3 py-1 text-[9px] text-indigo-200">
+          <span className="rounded-full border border-info/20 bg-info/[0.06] px-3 py-1 text-[9px] text-info">
             {label}
           </span>
 
@@ -55,7 +55,7 @@ export function CodeBlock({
             type="button"
             onClick={copyCode}
             aria-label={`Copy ${filename}`}
-            className="inline-flex items-center gap-2 rounded-lg border border-[#2D3748] bg-[#161E2E] px-3 py-1.5 text-[10px] text-[#9CA3AF] transition-colors hover:border-[#06B6D4]/40 hover:text-cyan-200"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-1.5 text-[10px] text-muted transition-colors hover:border-accent/40 hover:text-accent"
           >
             {copied ? (
               <Check aria-hidden="true" className="size-3 text-emerald-300" />
@@ -84,7 +84,7 @@ export function CodeBlock({
             style={{
               ...style,
               margin: 0,
-              background: "#070A10",
+              background: "#08080A",
             }}
           >
             {tokens.map((line, lineIndex) => (

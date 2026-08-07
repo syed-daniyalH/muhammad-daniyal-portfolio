@@ -38,10 +38,10 @@ export function ProjectPage({
   next: PortfolioProject | null;
 }): React.JSX.Element {
   return (
-    <main className="min-h-screen bg-[#0B0F17] text-[#F9FAFB]">
+    <main className="min-h-screen bg-background text-foreground">
       <ProjectHero project={project} />
 
-      <div className="border-b border-[#2D3748]/60 bg-[#080C13]">
+      <div className="border-b border-border/60 bg-console">
         <nav
           aria-label="Case study sections"
           className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-5 py-4 sm:px-8 lg:px-10"
@@ -50,7 +50,7 @@ export function ProjectPage({
             <a
               key={href}
               href={`#${href}`}
-              className="shrink-0 rounded-full border border-[#2D3748] bg-[#101724] px-3 py-1.5 text-[10px] font-medium text-[#9CA3AF] transition-colors hover:border-[#06B6D4]/45 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+              className="shrink-0 rounded-full border border-border bg-surface px-3 py-1.5 text-[10px] font-medium text-muted transition-colors hover:border-accent/45 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               {label}
             </a>
@@ -64,7 +64,7 @@ export function ProjectPage({
         title="What was built"
       >
         <div className="space-y-7">
-          <p className="text-base leading-8 text-[#D1D5DB]">
+          <p className="text-base leading-8 text-foreground/85">
             {project.summary}
           </p>
           <ProjectFactPanel project={project} />
@@ -73,18 +73,18 @@ export function ProjectPage({
               {project.metrics.map((metric) => (
                 <article
                   key={metric.label}
-                  className="rounded-2xl border border-[#2D3748] bg-[#101724] p-5"
+                  className="rounded-2xl border border-border bg-surface p-5"
                 >
-                  <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#6B7280]">
+                  <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-subtle">
                     Metric source: {metric.state.replaceAll("-", " ")}
                   </p>
-                  <strong className="mt-2 block text-2xl font-semibold text-[#F9FAFB]">
+                  <strong className="mt-2 block text-2xl font-semibold text-foreground">
                     {metric.value}
                   </strong>
-                  <p className="mt-2 text-sm font-medium text-cyan-200">
+                  <p className="mt-2 text-sm font-medium text-accent">
                     {metric.label}
                   </p>
-                  <p className="mt-2 text-xs leading-5 text-[#9CA3AF]">
+                  <p className="mt-2 text-xs leading-5 text-muted">
                     {metric.source}
                   </p>
                 </article>
@@ -108,7 +108,7 @@ export function ProjectPage({
         title="Ownership boundaries"
       >
         <div className="space-y-6">
-          <p className="text-base leading-8 text-[#D1D5DB]">
+          <p className="text-base leading-8 text-foreground/85">
             {project.role}
           </p>
           <BulletList items={project.responsibilities} />
@@ -180,7 +180,7 @@ export function ProjectPage({
           {project.technologies.map((technology) => (
             <span
               key={`${technology.category}-${technology.name}`}
-              className="rounded-full border border-[#2D3748] bg-[#101724] px-3 py-1.5 text-[10px] font-medium text-[#D1D5DB]"
+              className="rounded-full border border-border bg-surface px-3 py-1.5 text-[10px] font-medium text-foreground/85"
             >
               {technology.name}
             </span>
@@ -206,7 +206,7 @@ export function ProjectPage({
             status={project.status}
             label={project.statusLabel}
           />
-          <p className="text-sm leading-7 text-[#D1D5DB]">
+          <p className="text-sm leading-7 text-foreground/85">
             This status is project-specific and should not be upgraded without
             matching public evidence.
           </p>
@@ -230,26 +230,26 @@ export function ProjectPage({
       <section
         id="contact"
         aria-labelledby="project-contact-title"
-        className="scroll-mt-24 border-b border-[#2D3748]/60 bg-[#0E1420] py-16"
+        className="scroll-mt-24 border-b border-border/60 bg-panel py-16"
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="rounded-2xl border border-[#2D3748] bg-[#101724] p-6 sm:p-8">
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-cyan-300">
+          <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
+            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
               Contact CTA
             </p>
             <h2
               id="project-contact-title"
-              className="mt-3 text-2xl font-semibold text-[#F9FAFB]"
+              className="mt-3 text-2xl font-semibold text-foreground"
             >
               Talk through a similar system.
             </h2>
-            <p className="mt-3 max-w-3xl text-sm leading-7 text-[#9CA3AF]">
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
               Bring a workflow, integration, or operational problem that needs
               clearer state, stronger validation, and accountable automation.
             </p>
             <a
               href="mailto:daniyalhaider784@gmail.com"
-              className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#6366F1] px-5 py-3 text-xs font-semibold text-white shadow-[0_12px_30px_rgba(99,102,241,0.22)] transition-all hover:-translate-y-0.5 hover:bg-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+              className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-xl bg-accent px-5 py-3 text-xs font-semibold text-accent-foreground shadow-[0_12px_30px_rgba(227,165,72,0.22)] transition-all hover:-translate-y-0.5 hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Mail aria-hidden="true" className="size-4" />
               Email Daniyal

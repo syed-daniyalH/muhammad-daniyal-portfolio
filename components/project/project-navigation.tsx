@@ -18,13 +18,13 @@ export function ProjectNavigation({
       {previous && (
         <Link
           href={previous.route}
-          className="rounded-2xl border border-[#2D3748] bg-[#101724] p-5 transition-colors hover:border-[#06B6D4]/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+          className="rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-accent/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
-          <span className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-200">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold text-accent">
             <ArrowLeft aria-hidden="true" className="size-4" />
             Previous project
           </span>
-          <span className="mt-3 block text-lg font-semibold text-[#F9FAFB]">
+          <span className="mt-3 block text-lg font-semibold text-foreground">
             {previous.title}
           </span>
         </Link>
@@ -33,13 +33,13 @@ export function ProjectNavigation({
       {next && (
         <Link
           href={next.route}
-          className="rounded-2xl border border-[#2D3748] bg-[#101724] p-5 text-left transition-colors hover:border-[#06B6D4]/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4] md:text-right"
+          className="rounded-2xl border border-border bg-surface p-5 text-left transition-colors hover:border-accent/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:text-right"
         >
-          <span className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-200 md:justify-end">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold text-accent md:justify-end">
             Next project
             <ArrowRight aria-hidden="true" className="size-4" />
           </span>
-          <span className="mt-3 block text-lg font-semibold text-[#F9FAFB]">
+          <span className="mt-3 block text-lg font-semibold text-foreground">
             {next.title}
           </span>
         </Link>

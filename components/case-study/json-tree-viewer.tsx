@@ -24,8 +24,8 @@ function isJsonRecord(
 
 function primitiveColor(value: unknown): string {
   if (typeof value === "string") return "text-emerald-300";
-  if (typeof value === "number") return "text-cyan-300";
-  if (typeof value === "boolean") return "text-amber-300";
+  if (typeof value === "number") return "text-accent";
+  if (typeof value === "boolean") return "text-caution";
   return "text-slate-500";
 }
 
@@ -53,7 +53,7 @@ function JsonTreeNode({
       >
         {name !== undefined && (
           <>
-            <span className="text-indigo-300">&quot;{name}&quot;</span>
+            <span className="text-info">&quot;{name}&quot;</span>
             <span className="mr-2 text-slate-600">:</span>
           </>
         )}
@@ -75,7 +75,7 @@ function JsonTreeNode({
         type="button"
         onClick={() => setExpanded((current) => !current)}
         aria-expanded={expanded}
-        className="flex min-w-max items-center font-mono text-xs leading-6 text-slate-400 hover:text-[#F9FAFB]"
+        className="flex min-w-max items-center font-mono text-xs leading-6 text-slate-400 hover:text-foreground"
         style={{ paddingLeft: `${depth * 16}px` }}
       >
         {expanded ? (
@@ -86,7 +86,7 @@ function JsonTreeNode({
 
         {name !== undefined && (
           <>
-            <span className="text-indigo-300">&quot;{name}&quot;</span>
+            <span className="text-info">&quot;{name}&quot;</span>
             <span className="mr-2 text-slate-600">:</span>
           </>
         )}
@@ -148,10 +148,10 @@ export function JsonTreeViewer({
     <section
       role="region"
       aria-label={label}
-      className="overflow-hidden rounded-2xl border border-[#2D3748] bg-[#070A10]"
+      className="overflow-hidden rounded-2xl border border-border bg-console"
     >
-      <header className="flex items-center justify-between border-b border-[#2D3748] bg-[#101724] px-4 py-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9CA3AF]">
+      <header className="flex items-center justify-between border-b border-border bg-surface px-4 py-3">
+        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
           {label}
         </span>
 
@@ -159,7 +159,7 @@ export function JsonTreeViewer({
           type="button"
           onClick={copyJson}
           aria-label={`Copy ${label}`}
-          className="inline-flex items-center gap-2 rounded-lg border border-[#2D3748] bg-[#161E2E] px-3 py-1.5 text-[10px] text-[#9CA3AF] transition-colors hover:border-[#06B6D4]/40 hover:text-cyan-200"
+          className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-1.5 text-[10px] text-muted transition-colors hover:border-accent/40 hover:text-accent"
         >
           {copied ? (
             <Check aria-hidden="true" className="size-3 text-emerald-300" />

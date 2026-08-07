@@ -68,7 +68,7 @@ const ARCHITECTURE_NODES: readonly ArchitectureNode[] = [
     description: "Inbound bilingual message",
     icon: MessageSquareText,
     iconKind: "lucide",
-    displayColor: "#F9FAFB",
+    displayColor: "#F5F5F3",
   },
   {
     id: "make",
@@ -280,19 +280,19 @@ const TAB_ITEMS: readonly {
 
 function ArchitectureFlow(): React.JSX.Element {
   return (
-    <div className="relative min-h-[520px] overflow-hidden rounded-2xl border border-[#2D3748] bg-[#070A10] p-5 sm:p-8">
+    <div className="relative min-h-[520px] overflow-hidden rounded-2xl border border-border bg-console p-5 sm:p-8">
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.08),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.08),transparent_38%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(227,165,72,0.08),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(124,147,173,0.08),transparent_38%)]"
       />
 
       <div className="relative">
-        <div className="flex flex-col justify-between gap-4 border-b border-[#2D3748]/80 pb-5 sm:flex-row sm:items-center">
+        <div className="flex flex-col justify-between gap-4 border-b border-border/80 pb-5 sm:flex-row sm:items-center">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-cyan-300">
+            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
               Operational event lifecycle
             </p>
-            <h3 className="mt-2 text-lg font-semibold text-[#F9FAFB]">
+            <h3 className="mt-2 text-lg font-semibold text-foreground">
               Message to approved accounting record
             </h3>
           </div>
@@ -306,15 +306,15 @@ function ArchitectureFlow(): React.JSX.Element {
           {ARCHITECTURE_NODES.map((node, index) => {
             const color =
               node.displayColor ??
-              (node.iconKind === "brand" ? `#${node.icon.hex}` : "#06B6D4");
+              (node.iconKind === "brand" ? `#${node.icon.hex}` : "#E3A548");
 
             return (
               <div key={node.id} className="relative flex items-center gap-4 lg:block">
                 <motion.article
                   whileHover={{ y: -5, scale: 1.025 }}
-                  className="group relative z-10 flex-1 rounded-2xl border border-[#2D3748] bg-[#161E2E]/92 p-4 transition-[border-color,box-shadow] hover:border-[#06B6D4]/40 hover:shadow-[0_18px_44px_rgba(6,182,212,0.09)] lg:min-h-44"
+                  className="group relative z-10 flex-1 rounded-2xl border border-border bg-surface/92 p-4 transition-[border-color,box-shadow] hover:border-accent/40 hover:shadow-[0_18px_44px_rgba(227,165,72,0.09)] lg:min-h-44"
                 >
-                  <div className="flex size-11 items-center justify-center rounded-xl border border-[#2D3748] bg-[#0B0F17]">
+                  <div className="flex size-11 items-center justify-center rounded-xl border border-border bg-background">
                     {node.iconKind === "brand" ? (
                       <BrandIcon
                         icon={node.icon}
@@ -337,13 +337,13 @@ function ArchitectureFlow(): React.JSX.Element {
                     )}
                   </div>
 
-                  <span className="mt-5 block font-mono text-[9px] text-[#6B7280]">
+                  <span className="mt-5 block font-mono text-[9px] text-muted-subtle">
                     STAGE 0{index + 1}
                   </span>
-                  <h4 className="mt-1 text-sm font-semibold text-[#F9FAFB]">
+                  <h4 className="mt-1 text-sm font-semibold text-foreground">
                     {node.label}
                   </h4>
-                  <p className="mt-2 text-xs leading-5 text-[#9CA3AF]">
+                  <p className="mt-2 text-xs leading-5 text-muted">
                     {node.description}
                   </p>
                 </motion.article>
@@ -351,7 +351,7 @@ function ArchitectureFlow(): React.JSX.Element {
                 {index < ARCHITECTURE_NODES.length - 1 && (
                   <div
                     aria-hidden="true"
-                    className="flex h-8 w-8 shrink-0 items-center justify-center text-cyan-300 lg:absolute lg:-right-6 lg:top-1/2 lg:z-20 lg:-translate-y-1/2"
+                    className="flex h-8 w-8 shrink-0 items-center justify-center text-accent lg:absolute lg:-right-6 lg:top-1/2 lg:z-20 lg:-translate-y-1/2"
                   >
                     <ChevronRight className="size-4" />
                   </div>
@@ -381,13 +381,13 @@ function ArchitectureFlow(): React.JSX.Element {
           ].map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="rounded-xl border border-[#2D3748]/80 bg-[#161E2E]/55 p-4"
+              className="rounded-xl border border-border/80 bg-surface/55 p-4"
             >
-              <Icon aria-hidden="true" className="size-4 text-cyan-300" />
-              <h4 className="mt-3 text-xs font-semibold text-[#F9FAFB]">
+              <Icon aria-hidden="true" className="size-4 text-accent" />
+              <h4 className="mt-3 text-xs font-semibold text-foreground">
                 {title}
               </h4>
-              <p className="mt-1 text-[10px] leading-4 text-[#9CA3AF]">
+              <p className="mt-1 text-[10px] leading-4 text-muted">
                 {description}
               </p>
             </div>
@@ -400,14 +400,14 @@ function ArchitectureFlow(): React.JSX.Element {
 
 function TranscriptPanel(): React.JSX.Element {
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#2D3748] bg-[#070A10]">
-      <header className="flex items-center justify-between border-b border-[#2D3748] bg-[#101724] px-4 py-3">
+    <div className="overflow-hidden rounded-2xl border border-border bg-console">
+      <header className="flex items-center justify-between border-b border-border bg-surface px-4 py-3">
         <div className="flex items-center gap-2">
           <MessageSquareText
             aria-hidden="true"
-            className="size-4 text-cyan-300"
+            className="size-4 text-accent"
           />
-          <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#9CA3AF]">
+          <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
             Synchronized transcript
           </span>
         </div>
@@ -427,23 +427,23 @@ function TranscriptPanel(): React.JSX.Element {
               key={`${entry.time}-${entry.text}`}
               className={`rounded-xl border p-3 ${
                 isTool
-                  ? "border-[#06B6D4]/15 bg-[#06B6D4]/[0.04]"
-                  : "border-[#2D3748]/80 bg-[#161E2E]/55"
+                  ? "border-accent/15 bg-accent/[0.04]"
+                  : "border-border/80 bg-surface/55"
               }`}
             >
               <div className="flex items-center justify-between gap-3">
                 <span
                   className={`text-[10px] font-semibold ${
                     entry.speaker === "Agent"
-                      ? "text-indigo-300"
+                      ? "text-info"
                       : entry.speaker === "Caller"
-                        ? "text-[#F9FAFB]"
-                        : "text-cyan-300"
+                        ? "text-foreground"
+                        : "text-accent"
                   }`}
                 >
                   {entry.speaker}
                 </span>
-                <span className="font-mono text-[9px] text-[#6B7280]">
+                <span className="font-mono text-[9px] text-muted-subtle">
                   {entry.time}
                 </span>
               </div>
@@ -451,8 +451,8 @@ function TranscriptPanel(): React.JSX.Element {
               <p
                 className={`mt-2 text-xs leading-5 ${
                   isTool
-                    ? "font-mono text-[#9CA3AF]"
-                    : "text-[#D1D5DB]"
+                    ? "font-mono text-muted"
+                    : "text-foreground/85"
                 }`}
               >
                 {entry.text}
@@ -482,26 +482,26 @@ export function FeatureCard(): React.JSX.Element {
     <section
       id="case-study"
       aria-labelledby="case-study-title"
-      className="scroll-mt-24 border-b border-[#2D3748]/60 bg-[#0B0F17] py-24"
+      className="scroll-mt-24 border-b border-border/60 bg-background py-24"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/[0.06] px-3 py-1.5">
-              <Workflow aria-hidden="true" className="size-3 text-cyan-300" />
-              <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.17em] text-cyan-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/[0.06] px-3 py-1.5">
+              <Workflow aria-hidden="true" className="size-3 text-accent" />
+              <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.17em] text-accent">
                 Featured operational platform
               </span>
             </div>
 
             <h2
               id="case-study-title"
-              className="mt-5 text-3xl font-semibold tracking-[-0.035em] text-[#F9FAFB] sm:text-5xl"
+              className="mt-5 text-3xl font-semibold tracking-[-0.035em] text-foreground sm:text-5xl"
             >
               Bilingual AI Dispatch &amp; Operations Platform
             </h2>
 
-            <p className="mt-5 max-w-3xl text-base leading-8 text-[#9CA3AF]">
+            <p className="mt-5 max-w-3xl text-base leading-8 text-muted">
               A full-stack operational system connecting bilingual customer
               messaging, structured AI extraction, typed backend services,
               transactional event storage, human review, and approved
@@ -518,7 +518,7 @@ export function FeatureCard(): React.JSX.Element {
             ].map((badge) => (
               <span
                 key={badge}
-                className="rounded-full border border-[#2D3748] bg-[#161E2E] px-3 py-1.5 text-[10px] font-medium text-[#D1D5DB]"
+                className="rounded-full border border-border bg-surface px-3 py-1.5 text-[10px] font-medium text-foreground/85"
               >
                 {badge}
               </span>
@@ -526,8 +526,8 @@ export function FeatureCard(): React.JSX.Element {
           </div>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-[#2D3748] bg-[#161E2E]/82 shadow-[0_34px_90px_rgba(0,0,0,0.32)]">
-          <div className="flex flex-col justify-between gap-5 border-b border-[#2D3748]/80 p-6 lg:flex-row lg:items-center">
+        <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-surface/82 shadow-[0_34px_90px_rgba(0,0,0,0.32)]">
+          <div className="flex flex-col justify-between gap-5 border-b border-border/80 p-6 lg:flex-row lg:items-center">
             <div>
               <div className="flex items-center gap-2">
                 <Activity aria-hidden="true" className="size-4 text-emerald-300" />
@@ -535,7 +535,7 @@ export function FeatureCard(): React.JSX.Element {
                   Deployment architecture
                 </span>
               </div>
-              <h3 className="mt-2 text-xl font-semibold text-[#F9FAFB]">
+              <h3 className="mt-2 text-xl font-semibold text-foreground">
                 Multi-asset engineering evidence
               </h3>
             </div>
@@ -557,13 +557,13 @@ export function FeatureCard(): React.JSX.Element {
           >
             <Tabs.List
               aria-label="Case study evidence"
-              className="grid border-b border-[#2D3748]/80 bg-[#0B0F17]/55 sm:grid-cols-2 xl:grid-cols-4"
+              className="grid border-b border-border/80 bg-background/55 sm:grid-cols-2 xl:grid-cols-4"
             >
               {TAB_ITEMS.map(({ value, label, icon: Icon }) => (
                 <Tabs.Trigger
                   key={value}
                   value={value}
-                  className="relative flex min-h-14 items-center justify-center gap-2 border-b border-[#2D3748]/60 px-4 text-xs font-medium text-[#9CA3AF] transition-colors hover:bg-[#161E2E]/80 hover:text-[#F9FAFB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#06B6D4] data-[state=active]:bg-[#161E2E] data-[state=active]:text-cyan-200 sm:border-r xl:border-b-0"
+                  className="relative flex min-h-14 items-center justify-center gap-2 border-b border-border/60 px-4 text-xs font-medium text-muted transition-colors hover:bg-surface/80 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent data-[state=active]:bg-surface data-[state=active]:text-accent sm:border-r xl:border-b-0"
                 >
                   <Icon aria-hidden="true" className="size-4" />
                   {label}
@@ -571,7 +571,7 @@ export function FeatureCard(): React.JSX.Element {
                   {activeTab === value && (
                     <motion.span
                       layoutId="case-study-active-tab"
-                      className="absolute inset-x-5 bottom-0 h-0.5 rounded-full bg-gradient-to-r from-[#6366F1] to-[#06B6D4]"
+                      className="absolute inset-x-5 bottom-0 h-0.5 rounded-full bg-gradient-to-r from-accent-soft to-accent-strong"
                       transition={{
                         type: "spring",
                         stiffness: 420,
@@ -594,8 +594,8 @@ export function FeatureCard(): React.JSX.Element {
 
               <Tabs.Content value="trace">
                 <div className="space-y-4">
-                  <div className="rounded-xl border border-amber-400/15 bg-amber-400/[0.05] px-4 py-3">
-                    <p className="text-xs leading-5 text-amber-100/80">
+                  <div className="rounded-xl border border-caution/15 bg-caution/[0.05] px-4 py-3">
+                    <p className="text-xs leading-5 text-caution/85">
                       This is a sanitized trace-format demonstration. The 180ms
                       TTFT value is an instrumentation target until supported
                       by production monitoring.

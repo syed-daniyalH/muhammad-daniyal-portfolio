@@ -19,29 +19,29 @@ export function ProjectFactPanel({
       {facts.map(([label, value]) => (
         <div
           key={label}
-          className="rounded-2xl border border-[#2D3748] bg-[#101724] p-5"
+          className="rounded-2xl border border-border bg-surface p-5"
         >
-          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#6B7280]">
+          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-subtle">
             {label}
           </p>
-          <p className="mt-2 text-sm leading-6 text-[#D1D5DB]">
+          <p className="mt-2 text-sm leading-6 text-foreground/85">
             {value}
           </p>
         </div>
       ))}
 
       {project.confidentiality && (
-        <div className="rounded-2xl border border-amber-400/20 bg-amber-400/[0.05] p-5 md:col-span-2">
+        <div className="rounded-2xl border border-caution/20 bg-caution/[0.05] p-5 md:col-span-2">
           <div className="flex gap-3">
             <ShieldCheck
               aria-hidden="true"
-              className="mt-0.5 size-4 shrink-0 text-amber-300"
+              className="mt-0.5 size-4 shrink-0 text-caution"
             />
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-amber-200">
+              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-caution">
                 Confidentiality note
               </p>
-              <p className="mt-2 text-sm leading-6 text-amber-100/80">
+              <p className="mt-2 text-sm leading-6 text-caution/90">
                 {project.confidentiality}
               </p>
             </div>

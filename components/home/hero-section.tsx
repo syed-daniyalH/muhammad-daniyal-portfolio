@@ -54,7 +54,7 @@ const TECHNOLOGIES: readonly TechnologyItem[] = [
     description: "App Router applications",
     icon: siNextdotjs,
     iconKind: "brand",
-    displayColor: "#F9FAFB",
+    displayColor: "#F5F5F3",
   },
   {
     name: "Neon Postgres",
@@ -85,14 +85,14 @@ const TECHNOLOGIES: readonly TechnologyItem[] = [
     description: "Messaging and voice",
     icon: Radio,
     iconKind: "lucide",
-    displayColor: "#F9FAFB",
+    displayColor: "#F5F5F3",
   },
   {
     name: "OpenAI",
     description: "Structured AI extraction",
     icon: BrainCircuit,
     iconKind: "lucide",
-    displayColor: "#F9FAFB",
+    displayColor: "#F5F5F3",
   },
   {
     name: "QuickBooks",
@@ -141,7 +141,7 @@ export function HeroSection(): React.JSX.Element {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="relative isolate min-h-[820px] scroll-mt-24 overflow-hidden border-b border-[#2D3748]/60 bg-[#0B0F17] pt-28"
+      className="relative isolate min-h-[820px] scroll-mt-24 overflow-hidden border-b border-border/60 bg-background pt-28"
     >
       <div
         aria-hidden="true"
@@ -149,11 +149,11 @@ export function HeroSection(): React.JSX.Element {
       />
       <div
         aria-hidden="true"
-        className="absolute left-[4%] top-[18%] -z-10 size-[420px] rounded-full bg-[#6366F1]/10 blur-[140px]"
+        className="absolute left-[4%] top-[18%] -z-10 size-[420px] rounded-full bg-accent/10 blur-[140px]"
       />
       <div
         aria-hidden="true"
-        className="absolute right-[4%] top-[22%] -z-10 size-[390px] rounded-full bg-[#06B6D4]/10 blur-[140px]"
+        className="absolute right-[4%] top-[22%] -z-10 size-[390px] rounded-full bg-info/10 blur-[140px]"
       />
 
       <div className="mx-auto grid max-w-7xl gap-16 px-5 pb-24 pt-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10">
@@ -174,15 +174,15 @@ export function HeroSection(): React.JSX.Element {
 
           <h1
             id="hero-title"
-            className="mt-8 max-w-4xl text-4xl font-semibold leading-[1.04] tracking-[-0.048em] text-[#F9FAFB] sm:text-6xl lg:text-7xl"
+            className="mt-8 max-w-4xl text-4xl font-semibold leading-[1.04] tracking-[-0.048em] text-foreground sm:text-6xl lg:text-7xl"
           >
             AI &amp; Full-Stack
-            <span className="block bg-gradient-to-r from-indigo-400 via-cyan-300 to-indigo-300 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-accent-soft via-accent to-accent-strong bg-clip-text text-transparent">
               Automation Engineer
             </span>
           </h1>
 
-          <p className="mt-7 max-w-2xl text-base leading-8 text-[#9CA3AF] sm:text-lg">
+          <p className="mt-7 max-w-2xl text-base leading-8 text-muted sm:text-lg">
             Designing production-grade AI intake pipelines, FastAPI backends,
             and serverless Postgres architectures that bridge voice agents,
             messaging, and enterprise systems.
@@ -192,7 +192,7 @@ export function HeroSection(): React.JSX.Element {
             <button
               type="button"
               onClick={() => scrollToSection("#work")}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#6366F1] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_14px_38px_rgba(99,102,241,0.26)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500 hover:shadow-[0_18px_46px_rgba(99,102,241,0.34)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[0_14px_38px_rgba(227,165,72,0.26)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-strong hover:shadow-[0_18px_46px_rgba(227,165,72,0.34)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Explore Case Studies
               <ArrowRight aria-hidden="true" className="size-4" />
@@ -201,20 +201,20 @@ export function HeroSection(): React.JSX.Element {
             <button
               type="button"
               onClick={() => scrollToSection("#sandbox")}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#2D3748] bg-[#161E2E]/65 px-6 py-3.5 text-sm font-semibold text-[#F9FAFB] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[#06B6D4]/45 hover:bg-[#06B6D4]/[0.06] hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-border bg-surface/65 px-6 py-3.5 text-sm font-semibold text-foreground backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/45 hover:bg-accent/[0.06] hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Run Live Webhook Sandbox
               <Network aria-hidden="true" className="size-4" />
             </button>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[#2D3748]/70 pt-6 text-xs text-[#9CA3AF]">
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/70 pt-6 text-xs text-muted">
             <span className="flex items-center gap-2">
-              <ShieldCheck aria-hidden="true" className="size-4 text-cyan-300" />
+              <ShieldCheck aria-hidden="true" className="size-4 text-accent" />
               Secure API boundaries
             </span>
             <span className="flex items-center gap-2">
-              <Boxes aria-hidden="true" className="size-4 text-indigo-300" />
+              <Boxes aria-hidden="true" className="size-4 text-info" />
               Full lifecycle integrations
             </span>
             <span className="flex items-center gap-2">
@@ -232,25 +232,25 @@ export function HeroSection(): React.JSX.Element {
             delay: 0.08,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="relative rounded-3xl border border-[#2D3748] bg-[#161E2E]/85 p-5 shadow-[0_34px_90px_rgba(0,0,0,0.34)] backdrop-blur-xl sm:p-6"
+          className="relative rounded-3xl border border-border bg-surface/85 p-5 shadow-[0_34px_90px_rgba(0,0,0,0.34)] backdrop-blur-xl sm:p-6"
         >
           <div
             aria-hidden="true"
-            className="absolute right-4 top-5 size-36 rounded-full bg-[#06B6D4]/10 blur-[70px]"
+            className="absolute right-4 top-5 size-36 rounded-full bg-accent/10 blur-[70px]"
           />
 
           <div className="relative">
-            <div className="flex items-center justify-between border-b border-[#2D3748]/80 pb-5">
+            <div className="flex items-center justify-between border-b border-border/80 pb-5">
               <div>
-                <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-cyan-300">
+                <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">
                   Core technology matrix
                 </p>
-                <h2 className="mt-2 text-xl font-semibold text-[#F9FAFB]">
+                <h2 className="mt-2 text-xl font-semibold text-foreground">
                   Production stack
                 </h2>
               </div>
 
-              <div className="flex size-11 items-center justify-center rounded-xl border border-indigo-400/20 bg-indigo-400/10 text-indigo-300">
+              <div className="flex size-11 items-center justify-center rounded-xl border border-info/20 bg-info/10 text-info">
                 <Sparkles aria-hidden="true" className="size-5" />
               </div>
             </div>
@@ -261,7 +261,7 @@ export function HeroSection(): React.JSX.Element {
                   technology.displayColor ??
                   (technology.iconKind === "brand"
                     ? `#${technology.icon.hex}`
-                    : "#06B6D4");
+                    : "#E3A548");
                 const style = { "--brand-color": color } as CSSProperties;
 
                 return (
@@ -277,7 +277,7 @@ export function HeroSection(): React.JSX.Element {
                     whileHover={
                       reducedMotion ? undefined : { y: -5, scale: 1.045 }
                     }
-                    className="group relative isolate overflow-hidden rounded-2xl border border-[#2D3748] bg-[#0B0F17]/55 p-4 transition-[border-color,box-shadow] duration-300 hover:border-[#06B6D4]/45 hover:shadow-[0_18px_45px_rgba(6,182,212,0.10)]"
+                    className="group relative isolate overflow-hidden rounded-2xl border border-border bg-background/55 p-4 transition-[border-color,box-shadow] duration-300 hover:border-accent/45 hover:shadow-[0_18px_45px_rgba(227,165,72,0.10)]"
                   >
                     <span
                       aria-hidden="true"
@@ -306,10 +306,10 @@ export function HeroSection(): React.JSX.Element {
                       })()
                     )}
 
-                    <h3 className="mt-4 text-xs font-semibold text-[#F9FAFB]">
+                    <h3 className="mt-4 text-xs font-semibold text-foreground">
                       {technology.name}
                     </h3>
-                    <p className="mt-1 text-[10px] leading-4 text-[#6B7280]">
+                    <p className="mt-1 text-[10px] leading-4 text-muted-subtle">
                       {technology.description}
                     </p>
                   </motion.div>

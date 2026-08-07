@@ -4,11 +4,11 @@ const STATUS_STYLES: Record<ProjectStatus, string> = {
   "live-production":
     "border-emerald-400/25 bg-emerald-400/[0.07] text-emerald-200",
   "production-implementation-qa-baseline":
-    "border-cyan-400/25 bg-cyan-400/[0.07] text-cyan-200",
+    "border-accent/25 bg-accent/[0.07] text-accent",
   "implemented-final-validation-pending":
-    "border-amber-400/25 bg-amber-400/[0.07] text-amber-100",
+    "border-caution/25 bg-caution/[0.07] text-caution",
   "advanced-prototype-production-hardening":
-    "border-indigo-400/25 bg-indigo-400/[0.07] text-indigo-200",
+    "border-info/25 bg-info/[0.07] text-info",
   "delivered-audit-and-automation":
     "border-sky-400/25 bg-sky-400/[0.07] text-sky-200",
   "systems-lab":
@@ -19,9 +19,9 @@ const EVIDENCE_STYLES: Record<EvidenceState, string> = {
   "verified-public":
     "border-emerald-400/25 bg-emerald-400/[0.07] text-emerald-200",
   "sanitized-demonstration":
-    "border-cyan-400/25 bg-cyan-400/[0.07] text-cyan-200",
+    "border-accent/25 bg-accent/[0.07] text-accent",
   "private-not-publishable":
-    "border-amber-400/25 bg-amber-400/[0.07] text-amber-100",
+    "border-caution/25 bg-caution/[0.07] text-caution",
   planned:
     "border-slate-400/25 bg-slate-400/[0.07] text-slate-200",
 };

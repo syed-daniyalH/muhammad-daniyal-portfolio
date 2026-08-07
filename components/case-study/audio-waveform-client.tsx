@@ -58,9 +58,9 @@ export function AudioWaveformClient({
       container,
       url: audioUrl,
       height: 96,
-      waveColor: "#6366F1",
-      progressColor: "#06B6D4",
-      cursorColor: "#F9FAFB",
+      waveColor: "#7C93AD",
+      progressColor: "#E3A548",
+      cursorColor: "#F5F5F3",
       cursorWidth: 1,
       barWidth: 2,
       barGap: 2,
@@ -140,21 +140,21 @@ export function AudioWaveformClient({
     <section
       role="region"
       aria-label={`${title} audio player`}
-      className={`overflow-hidden rounded-2xl border border-[#2D3748] bg-[#0B0F17]/72 shadow-[0_22px_60px_rgba(0,0,0,0.26)] ${className}`}
+      className={`overflow-hidden rounded-2xl border border-border bg-background/72 shadow-[0_22px_60px_rgba(0,0,0,0.26)] ${className}`}
     >
-      <div className="flex flex-col gap-4 border-b border-[#2D3748]/80 p-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 border-b border-border/80 p-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <Radio aria-hidden="true" className="size-4 text-cyan-300" />
-            <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
+            <Radio aria-hidden="true" className="size-4 text-accent" />
+            <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-accent">
               Voice-agent recording
             </span>
           </div>
 
-          <h3 className="mt-2 text-base font-semibold text-[#F9FAFB]">
+          <h3 className="mt-2 text-base font-semibold text-foreground">
             {title}
           </h3>
-          <p className="mt-1 text-xs text-[#9CA3AF]">{metadata}</p>
+          <p className="mt-1 text-xs text-muted">{metadata}</p>
         </div>
 
         <span className="w-fit rounded-full border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-1.5 text-[10px] font-medium text-emerald-300">
@@ -163,14 +163,14 @@ export function AudioWaveformClient({
       </div>
 
       <div className="p-5">
-        <div className="relative overflow-hidden rounded-xl border border-[#2D3748]/80 bg-[#070A10] px-3 py-4">
+        <div className="relative overflow-hidden rounded-xl border border-border/80 bg-console px-3 py-4">
           {!ready && !errorMessage && (
-            <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#070A10]/80 backdrop-blur-sm">
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-console/80 backdrop-blur-sm">
               <LoaderCircle
                 aria-hidden="true"
-                className="size-5 animate-spin text-cyan-300"
+                className="size-5 animate-spin text-accent"
               />
-              <span className="ml-2 text-xs text-[#9CA3AF]">
+              <span className="ml-2 text-xs text-muted">
                 Loading waveform...
               </span>
             </div>
@@ -202,7 +202,7 @@ export function AudioWaveformClient({
                 ? "Pause voice-agent recording"
                 : "Play voice-agent recording"
             }
-            className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#6366F1] text-white shadow-[0_12px_30px_rgba(99,102,241,0.28)] transition-colors hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+            className="flex size-12 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-[0_12px_30px_rgba(227,165,72,0.28)] transition-colors hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             {playing ? (
               <Pause aria-hidden="true" className="size-5" />
@@ -212,17 +212,17 @@ export function AudioWaveformClient({
           </motion.button>
 
           <div className="min-w-0 flex-1">
-            <div className="flex items-center justify-between font-mono text-[10px] text-[#9CA3AF]">
+            <div className="flex items-center justify-between font-mono text-[10px] text-muted">
               <span>{formatTime(currentTime)}</span>
               <span>{formatTime(duration)}</span>
             </div>
 
             <div
               aria-hidden="true"
-              className="mt-2 h-1 overflow-hidden rounded-full bg-[#2D3748]"
+              className="mt-2 h-1 overflow-hidden rounded-full bg-border"
             >
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#6366F1] to-[#06B6D4] transition-[width] duration-150"
+                className="h-full rounded-full bg-gradient-to-r from-accent-soft to-accent transition-[width] duration-150"
                 style={{
                   width:
                     duration > 0
@@ -242,7 +242,7 @@ export function AudioWaveformClient({
                 ? "Unmute voice-agent recording"
                 : "Mute voice-agent recording"
             }
-            className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-[#2D3748] bg-[#161E2E] text-[#9CA3AF] transition-colors hover:border-[#06B6D4]/40 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-45"
+            className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border bg-surface text-muted transition-colors hover:border-accent/40 hover:text-accent disabled:cursor-not-allowed disabled:opacity-45"
           >
             {muted ? (
               <VolumeX aria-hidden="true" className="size-4" />
@@ -252,7 +252,7 @@ export function AudioWaveformClient({
           </button>
         </div>
 
-        <p className="mt-5 text-[10px] leading-5 text-[#6B7280]">
+        <p className="mt-5 text-[10px] leading-5 text-muted-subtle">
           The included file is a synthetic audio placeholder. Replace it only
           with a client-approved recording after removing names, telephone
           numbers, addresses, case identifiers, and confidential details.
