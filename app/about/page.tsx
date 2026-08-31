@@ -20,8 +20,8 @@ export default function AboutPage(): React.JSX.Element {
     <main id="main-content" className="min-h-screen bg-background pt-16 text-foreground">
       <AboutSection />
       <CapabilitiesSection />
-      <ProcessSection showFooterCta={false} />
       <ExperienceSection />
+      <ProcessSection showFooterCta={true} sectionNumber="04" />
     </main>
   );
 }
