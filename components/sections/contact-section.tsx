@@ -1,127 +1,293 @@
-import {
-  ArrowUpRight,
-  FileText,
-  Github,
-  Linkedin,
-  Mail,
-} from "lucide-react";
+"use client";
 
+import { useState } from "react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { BRAND_NAME, RESUME_PATH } from "@/lib/branding";
 
-const GITHUB_HREF = "https://github.com/syed-daniyalH";
-const LINKEDIN_HREF = "https://linkedin.com/in/syeddaniyalhaider3";
-const EMAIL_HREF = "mailto:daniyalhaider784@gmail.com";
-
-const DIRECT_CONTACTS = [
+const DIRECT_LINKS = [
   {
-    label: "Email",
+    label: "EMAIL",
     value: "daniyalhaider784@gmail.com",
-    href: EMAIL_HREF,
-    icon: Mail,
+    href: "mailto:daniyalhaider784@gmail.com",
+    external: false,
   },
   {
-    label: "LinkedIn",
+    label: "LINKEDIN",
     value: "linkedin.com/in/syeddaniyalhaider3",
-    href: LINKEDIN_HREF,
-    icon: Linkedin,
+    href: "https://linkedin.com/in/syeddaniyalhaider3",
+    external: true,
   },
   {
-    label: "GitHub",
+    label: "GITHUB",
     value: "github.com/syed-daniyalH",
-    href: GITHUB_HREF,
-    icon: Github,
+    href: "https://github.com/syed-daniyalH",
+    external: true,
   },
   {
-    label: "Resume / CV",
+    label: "RESUME",
     value: "Download PDF Resume",
     href: RESUME_PATH,
-    icon: FileText,
+    external: true,
   },
 ] as const;
 
 export function ContactSection(): React.JSX.Element {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    service: "Automation audit",
+    message: "",
+    consent: false,
+  });
+
+  const [status, setStatus] = useState<"idle" | "submitting" | "submitted">("idle");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.consent) return;
+
+    setStatus("submitting");
+
+    // Construct mailto link fallback
+    const subject = encodeURIComponent(`Inquiry from ${formData.name} - ${formData.service}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || "N/A"}\nCompany: ${formData.company || "N/A"}\nTopic: ${formData.service}\n\nMessage / Process Context:\n${formData.message}`
+    );
+
+    setTimeout(() => {
+      setStatus("submitted");
+      window.location.href = `mailto:daniyalhaider784@gmail.com?subject=${subject}&body=${body}`;
+    }, 600);
+  };
+
   return (
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="scroll-mt-24 bg-background py-20 sm:py-28"
+      className="scroll-mt-24 bg-background py-16 sm:py-24 lg:py-28"
     >
-      <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
-            Inquiries / Contact
-          </p>
-          <h1
-            id="contact-title"
-            className="mx-auto mt-4 max-w-3xl text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.5rem] lg:text-[4rem]"
-          >
-            Let&apos;s discuss an opportunity.
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            I&apos;m open to engineering roles, automation projects, and technical collaborations involving AI workflows, CRM systems, APIs, and business automation.
-          </p>
-        </ScrollReveal>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:items-start">
+          
+          {/* Left Column: Context, Direct Links, Next Steps */}
+          <ScrollReveal className="space-y-10">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                CONTACT / START WITH THE PROCESS
+              </p>
+              <h1
+                id="contact-title"
+                className="mt-4 text-4xl font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.5rem] lg:text-[4.15rem]"
+              >
+                What feels harder than it should?
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+                Describe the workflow, where it slows down, and what a better outcome would look like. I’ll review the context and suggest a useful next step.
+              </p>
+            </div>
 
-        <ScrollReveal
-          delay={0.1}
-          className="mt-9 flex flex-wrap items-center justify-center gap-3"
-        >
-          <a
-            href={EMAIL_HREF}
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent-foreground transition-all hover:-translate-y-0.5 hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-          >
-            <Mail aria-hidden="true" className="size-4" />
-            Email {BRAND_NAME}
-          </a>
-          <a
-            href={RESUME_PATH}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-border-strong bg-surface/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            <FileText aria-hidden="true" className="size-4" />
-            Download Resume
-          </a>
-          <a
-            href={LINKEDIN_HREF}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-border-strong bg-surface/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            <Linkedin aria-hidden="true" className="size-4" />
-            LinkedIn
-            <ArrowUpRight aria-hidden="true" className="size-4" />
-          </a>
-        </ScrollReveal>
+            {/* Direct Info Rows */}
+            <div className="border-t border-border/50 divide-y divide-border/50">
+              {DIRECT_LINKS.map((link) => (
+                <div key={link.label} className="grid grid-cols-[6.5rem_1fr] items-center py-4 text-sm">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
+                    {link.label}
+                  </span>
+                  <a
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noreferrer" : undefined}
+                    className="inline-flex items-center gap-1.5 font-medium text-foreground transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
+                    <span>{link.value}</span>
+                    {link.external && (
+                      <ArrowUpRight aria-hidden="true" className="size-3.5 text-muted-subtle" />
+                    )}
+                  </a>
+                </div>
+              ))}
+            </div>
 
-        <ScrollReveal
-          delay={0.16}
-          className="mx-auto mt-14 grid w-full max-w-4xl gap-4 border-t border-border/50 pt-10 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {DIRECT_CONTACTS.map(({ label, value, href, icon: Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith("http") || href.endsWith(".pdf") ? "_blank" : undefined}
-              rel={href.startsWith("http") || href.endsWith(".pdf") ? "noreferrer" : undefined}
-              className="group flex h-full flex-col items-start justify-between gap-3 rounded-2xl border border-border-strong/60 bg-surface/50 p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/50 hover:bg-surface-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              <div className="flex w-full items-center justify-between">
-                <Icon aria-hidden="true" className="size-4 text-accent" />
-                <ArrowUpRight aria-hidden="true" className="size-3.5 text-muted-subtle transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
-              </div>
-              <div>
-                <span className="text-sm font-semibold tracking-tight text-foreground block">
-                  {label}
-                </span>
-                <span className="break-all text-xs leading-relaxed text-muted transition-colors group-hover:text-foreground/90 mt-1 block">
-                  {value}
-                </span>
-              </div>
-            </a>
-          ))}
-        </ScrollReveal>
+            {/* What Happens Next Card */}
+            <div className="rounded-2xl border border-border-strong/60 bg-surface/40 p-6 sm:p-7">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent mb-3">
+                WHAT HAPPENS NEXT
+              </p>
+              <ul className="space-y-3 text-sm leading-relaxed text-muted">
+                <li className="flex items-start gap-2.5">
+                  <span className="font-mono text-xs text-accent font-semibold">01</span>
+                  <span>I review the process, system architecture, and desired outcome.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="font-mono text-xs text-accent font-semibold">02</span>
+                  <span>I identify important integration boundaries, constraints, or failure points.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="font-mono text-xs text-accent font-semibold">03</span>
+                  <span>We align on whether an audit, technical consultation, or focused build is the right next step.</span>
+                </li>
+              </ul>
+            </div>
+          </ScrollReveal>
+
+          {/* Right Column: High-Precision Form Card */}
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-2xl border border-border-strong bg-surface/60 p-6 sm:p-8 lg:p-9 shadow-[6px_6px_0px_0px_rgba(227,165,72,0.22)] backdrop-blur-sm">
+              {status === "submitted" ? (
+                <div className="py-12 text-center space-y-4">
+                  <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-accent/10 text-accent">
+                    <CheckCircle2 className="size-6" />
+                  </div>
+                  <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+                    Enquiry Prepared!
+                  </h3>
+                  <p className="text-sm leading-relaxed text-muted max-w-md mx-auto">
+                    Your email client is opening with your formatted details. You can also directly reach out at{" "}
+                    <a href="mailto:daniyalhaider784@gmail.com" className="text-accent underline underline-offset-4">
+                      daniyalhaider784@gmail.com
+                    </a>.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setStatus("idle")}
+                    className="mt-4 inline-flex items-center gap-2 rounded-full border border-border-strong px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-foreground hover:border-accent/60"
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Name and Email */}
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div className="space-y-2">
+                      <label htmlFor="contact-name" className="block text-xs font-semibold tracking-tight text-foreground">
+                        Name <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        id="contact-name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Your name"
+                        className="w-full rounded-xl border border-border-strong bg-background/80 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-subtle focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label htmlFor="contact-email" className="block text-xs font-semibold tracking-tight text-foreground">
+                        Business email <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        id="contact-email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="you@company.com"
+                        className="w-full rounded-xl border border-border-strong bg-background/80 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-subtle focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Phone and Company */}
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div className="space-y-2">
+                      <label htmlFor="contact-phone" className="block text-xs font-semibold tracking-tight text-foreground">
+                        Phone <span className="text-muted-subtle font-normal">(optional)</span>
+                      </label>
+                      <input
+                        id="contact-phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+1 (555) 000-0000"
+                        className="w-full rounded-xl border border-border-strong bg-background/80 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-subtle focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label htmlFor="contact-company" className="block text-xs font-semibold tracking-tight text-foreground">
+                        Company <span className="text-muted-subtle font-normal">(optional)</span>
+                      </label>
+                      <input
+                        id="contact-company"
+                        type="text"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        placeholder="Company or agency"
+                        className="w-full rounded-xl border border-border-strong bg-background/80 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-subtle focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Topic / Service */}
+                  <div className="space-y-2">
+                    <label htmlFor="contact-service" className="block text-xs font-semibold tracking-tight text-foreground">
+                      What would you like to improve?
+                    </label>
+                    <select
+                      id="contact-service"
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full rounded-xl border border-border-strong bg-background/80 px-3.5 py-2.5 text-sm text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    >
+                      <option value="Automation audit">Automation audit</option>
+                      <option value="CRM & Pipeline integration (GoHighLevel, Zoho)">CRM & Pipeline integration (GoHighLevel, Zoho)</option>
+                      <option value="AI & Conversational workflows (n8n, OpenAI, Voice)">AI & Conversational workflows (n8n, OpenAI, Voice)</option>
+                      <option value="Backend & API integration (Python, FastAPI)">Backend & API integration (Python, FastAPI)</option>
+                      <option value="Full-time / Contract engineering role">Full-time / Contract engineering role</option>
+                      <option value="Other technical inquiry">Other technical inquiry</option>
+                    </select>
+                  </div>
+
+                  {/* Message */}
+                  <div className="space-y-2">
+                    <label htmlFor="contact-message" className="block text-xs font-semibold tracking-tight text-foreground">
+                      Tell me about the process
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder="What happens today, where does it slow down, and what would a better outcome look like?"
+                      className="w-full rounded-xl border border-border-strong bg-background/80 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-subtle focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors resize-y"
+                    />
+                  </div>
+
+                  {/* Consent Checkbox */}
+                  <div className="flex items-start gap-3 pt-1">
+                    <input
+                      id="contact-consent"
+                      type="checkbox"
+                      required
+                      checked={formData.consent}
+                      onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
+                      className="mt-1 size-4 rounded border-border-strong bg-background text-accent focus:ring-accent focus:ring-offset-background"
+                    />
+                    <label htmlFor="contact-consent" className="text-xs leading-relaxed text-muted">
+                      I agree that {BRAND_NAME} may use these details to respond to my enquiry.
+                    </label>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="w-full inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground transition-all duration-200 hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.99] disabled:opacity-50"
+                  >
+                    {status === "submitting" ? "Opening email..." : "SEND PROJECT ENQUIRY"}
+                    <ArrowUpRight aria-hidden="true" className="size-4" />
+                  </button>
+                </form>
+              )}
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );
