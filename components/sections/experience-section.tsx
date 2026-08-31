@@ -1,23 +1,35 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-
 import { ScrollReveal, StaggerGroup, staggerItemVariants } from "@/components/motion/scroll-reveal";
 
 const EXPERIENCE_ITEMS = [
   {
     period: "Jun 2026 to Present",
-    title: "Automation Engineer and GHL Specialist",
-    organization: "Hysentra",
-    description:
-      "Designed VenAI Agency client onboarding automation, built multi-channel lead routing for 300 plus active contacts, developed the Venzo Chatbot and booking confirmation system with qualification, CRM planning, booking and handoff flow, and built the Brouss Elevators bilingual chatbot, AI voice agent, and Dynamics 365 case creation flow.",
+    title: "AI Automation Engineer & GHL Specialist",
+    organization: "Techionik (Client Projects)",
+    selectedWork: "VenAI / Venus, Brouss Elevators",
+    points: [
+      "Designed VenAI client onboarding automation using GoHighLevel, n8n, Stripe, and Cal.com, connecting deal submission, dynamic service agreements, dual eSignatures, payment tracking, and kickoff booking.",
+      "Built multi-channel source attribution and lead routing for 300+ active contacts using catch-all logic, Smart Lists, tags, automated queues, and pipeline workflows.",
+      "Architected a production GoHighLevel Conversation AI chatbot with intent routing, achieving a 100% pass rate across 20 internal test scenarios before client handoff.",
+      "Built a bilingual English and Spanish chatbot for Brouss Elevators covering 10+ case types and creating Microsoft Dynamics 365 cases automatically through webhooks.",
+      "Iterated a Synthflow voice agent through 50+ production releases, resolving priority issues across call flow, language handling, confirmation logic, and noise sensitivity.",
+    ],
   },
   {
     period: "Dec 2025 to Jun 2026",
     title: "Junior AI Automation Engineer",
-    organization: "Techionik, Lahore, Pakistan",
-    description:
-      "Delivered n8n and Make.com automations for active clients, extended QuickBooks and FastAPI invoicing systems, reduced response time from more than 4 hours to 15 to 20 minutes with AI calling flows, and built SM2 Racing plus autonomous LinkedIn and Instagram content pipelines.",
+    organization: "Techionik · Lahore, Pakistan",
+    selectedWork: "Dispatch Alex, SM2 Racing, LinkedIn & Instagram Video Automation",
+    points: [
+      "Delivered n8n and Make.com automations for 3+ active clients by integrating OpenAI, Twilio, and CRM platforms, reducing manual processing time by approximately 70%.",
+      "Extended a QuickBooks and FastAPI invoicing pipeline for 5+ clients, removing recurring manual billing entry and improving consistency across each billing cycle.",
+      "Configured AI calling agents for inbound and outbound lead flows, reducing average response time from more than 4 hours to 15 to 20 minutes.",
+      "Audited and rebuilt Zoho CRM workflows, pipeline stages, and forecasting logic, then integrated WooCommerce for automated deal creation and stage-based follow up.",
+      "Developed the SM2 Racing OCR and analytics workflow, reducing race event processing from approximately 2 hours to under 5 minutes using OpenAI and Google Sheets automation.",
+      "Built autonomous LinkedIn and Instagram content pipelines using n8n, GPT-4o, HeyGen, and platform APIs for script generation, video rendering, and scheduled publishing.",
+    ],
   },
 ] as const;
 
@@ -69,11 +81,10 @@ export function ExperienceSection(): React.JSX.Element {
               id="experience-title"
               className="mt-4 text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.25rem]"
             >
-              Experience behind the case studies.
+              Professional Experience
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted">
-              Recent client roles across GoHighLevel, conversational AI,
-              workflow automation, and Python-backed delivery.
+              Production roles across GoHighLevel, conversational AI, workflow orchestration, and Python-backed systems engineering.
             </p>
           </ScrollReveal>
 
@@ -90,7 +101,7 @@ export function ExperienceSection(): React.JSX.Element {
               }}
             />
 
-            <StaggerGroup className="space-y-10" step={0.1}>
+            <StaggerGroup className="space-y-12" step={0.1}>
               {EXPERIENCE_ITEMS.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -100,18 +111,32 @@ export function ExperienceSection(): React.JSX.Element {
                   className="group relative"
                 >
                   <TimelineDot index={index} reducedMotion={reducedMotion} />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-                    {item.period}
-                  </span>
-                  <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent font-semibold">
+                      {item.period}
+                    </span>
+                    <span className="text-border-strong">·</span>
+                    <span className="font-mono text-[10px] text-muted-subtle uppercase tracking-[0.12em]">
+                      {item.organization}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent sm:text-2xl">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-foreground/80">
-                    {item.organization}
+
+                  <p className="mt-1 font-mono text-xs text-accent-soft">
+                    Selected work: {item.selectedWork}
                   </p>
-                  <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-muted">
-                    {item.description}
-                  </p>
+
+                  <ul className="mt-4 space-y-2.5">
+                    {item.points.map((pt, pIdx) => (
+                      <li key={pIdx} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted">
+                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent/80" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               ))}
             </StaggerGroup>
