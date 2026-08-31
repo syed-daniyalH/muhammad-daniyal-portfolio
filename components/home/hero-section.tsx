@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, FileText } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 
 import { flagshipProjects } from "@/content";
 import { RESUME_PATH } from "@/lib/branding";
@@ -52,31 +52,24 @@ export function HeroSection(): React.JSX.Element {
 
             <h1
               id="hero-title"
-              className="mt-5 text-[1.85rem] font-semibold leading-[1.18] tracking-[-0.02em] text-foreground sm:text-[2.5rem] lg:text-[3.15rem]"
+              className="mt-5 text-[2.85rem] font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.75rem] lg:text-[4.65rem]"
             >
-              Technology is useful only when it makes work clearer, more dependable, and easier for people to own.
+              Building automation systems that connect AI, CRMs, APIs, and business operations.
             </h1>
 
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-muted sm:text-[1.08rem]">
+              I design and implement CRM workflows, AI automation, backend integrations, and operational systems using GoHighLevel, n8n, Make, Python, and FastAPI.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
-                href="/contact"
+                href="/case-studies"
                 className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                Book an automation audit
+                View Selected Work
                 <ArrowRight
                   aria-hidden="true"
                   className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
-                />
-              </Link>
-
-              <Link
-                href="/case-studies"
-                className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-border-strong bg-surface/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                Explore selected work
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
               </Link>
 
@@ -84,10 +77,10 @@ export function HeroSection(): React.JSX.Element {
                 href={RESUME_PATH}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-border/50 bg-transparent px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted transition-all duration-300 hover:border-border-strong hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-border-strong bg-surface/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <FileText aria-hidden="true" className="size-4" />
-                Resume
+                Download Resume
               </a>
             </div>
           </div>
