@@ -4,26 +4,24 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, FileText, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
-import { BRAND_NAME, RESUME_PATH } from "@/lib/branding";
+import { BRAND_NAME } from "@/lib/branding";
 
 interface NavigationItem {
   label: string;
   href: string;
-  external?: boolean;
 }
 
 const NAVIGATION_ITEMS: readonly NavigationItem[] = [
+  { label: "Services", href: "/services" },
   { label: "Work", href: "/case-studies" },
   { label: "About", href: "/about" },
-  { label: "Resume", href: RESUME_PATH, external: true },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 function isRouteActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
-  if (href.startsWith("http") || href.endsWith(".pdf")) return false;
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -74,21 +72,6 @@ export function Navbar(): React.JSX.Element {
           <div className="hidden lg:flex lg:items-center lg:gap-8">
             {NAVIGATION_ITEMS.map((item) => {
               const isActive = isRouteActive(pathname, item.href);
-              if (item.external) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-foreground/75 transition-colors hover:text-accent"
-                  >
-                    {item.label}
-                    <ArrowUpRight aria-hidden="true" className="size-3 text-muted-subtle" />
-                  </a>
-                );
-              }
-
               return (
                 <Link
                   key={item.href}
@@ -106,20 +89,11 @@ export function Navbar(): React.JSX.Element {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href={RESUME_PATH}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-surface/50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-foreground transition-all hover:border-accent/60 hover:text-accent"
-            >
-              <FileText aria-hidden="true" className="size-3.5" />
-              Resume
-            </a>
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent-foreground transition-all hover:bg-accent-strong"
+              className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-4.5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent-foreground transition-all hover:bg-accent-strong"
             >
-              Let&apos;s talk
+              Book an audit
               <ArrowUpRight
                 aria-hidden="true"
                 className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -159,21 +133,6 @@ export function Navbar(): React.JSX.Element {
                 <div className="flex flex-col space-y-3">
                   {NAVIGATION_ITEMS.map((item) => {
                     const isActive = isRouteActive(pathname, item.href);
-                    if (item.external) {
-                      return (
-                        <a
-                          key={item.href}
-                          href={item.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex items-center justify-between text-base font-medium text-foreground/80 hover:text-accent"
-                        >
-                          {item.label}
-                          <ArrowUpRight aria-hidden="true" className="size-4" />
-                        </a>
-                      );
-                    }
-
                     return (
                       <Link
                         key={item.href}
@@ -190,20 +149,18 @@ export function Navbar(): React.JSX.Element {
                 </div>
 
                 <div className="pt-4 mt-4 border-t border-border/20 flex flex-col gap-2.5">
-                  <a
-                    href={RESUME_PATH}
-                    target="_blank"
-                    rel="noreferrer"
+                  <Link
+                    href="/case-studies"
                     className="inline-flex items-center justify-center w-full gap-2 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] rounded-full border border-border-strong text-foreground transition-colors hover:border-accent/60"
                   >
-                    <FileText aria-hidden="true" className="size-4" />
-                    Download Resume
-                  </a>
+                    View Case Studies
+                    <ArrowUpRight aria-hidden="true" className="size-4" />
+                  </Link>
                   <Link
                     href="/contact"
                     className="inline-flex items-center justify-center w-full gap-2 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] rounded-full bg-accent text-accent-foreground transition-transform active:scale-95"
                   >
-                    Let&apos;s talk
+                    Book an audit
                     <ArrowUpRight aria-hidden="true" className="size-4" />
                   </Link>
                 </div>

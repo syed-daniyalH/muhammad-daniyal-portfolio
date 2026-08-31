@@ -41,6 +41,11 @@ export function Footer(): React.JSX.Element {
             </p>
             <ul className="mt-4 flex flex-col gap-2.5">
               <li>
+                <Link href="/services" className="text-sm text-foreground/80 transition-colors hover:text-accent">
+                  Services
+                </Link>
+              </li>
+              <li>
                 <Link href="/case-studies" className="text-sm text-foreground/80 transition-colors hover:text-accent">
                   Work
                 </Link>
