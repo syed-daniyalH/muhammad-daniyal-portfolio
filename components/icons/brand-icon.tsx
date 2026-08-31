@@ -1,3 +1,5 @@
+"use client";
+
 import type { CSSProperties, SVGProps } from "react";
 import type { SimpleIcon } from "simple-icons";
 

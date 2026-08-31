@@ -1,46 +1,47 @@
-import { FeatureCard } from "@/components/case-study/feature-card";
+import Link from "next/link";
+import { ArrowRight, UserRound } from "lucide-react";
+
 import { HeroSection } from "@/components/home/hero-section";
-import { MetricsBar } from "@/components/home/metrics-bar";
-import { ProfessionalSections } from "@/components/home/professional-sections";
-import { FeaturedWork } from "@/components/work/featured-work";
-import { TerminalWidget } from "@/components/sandbox/terminal-widget";
+import { TechStackMarquee } from "@/components/home/tech-stack-marquee";
+import { WorkTeaser } from "@/components/home/work-teaser";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { BRAND_NAME } from "@/lib/branding";
 
 export default function HomePage(): React.JSX.Element {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main id="main-content" className="min-h-screen bg-background text-foreground">
       <HeroSection />
-      <MetricsBar />
-      <FeaturedWork />
-      <ProfessionalSections />
-      <FeatureCard />
+      <TechStackMarquee />
+      <WorkTeaser />
 
-      <section
-        id="sandbox"
-        aria-labelledby="sandbox-title"
-        className="scroll-mt-24 border-b border-border/60 bg-background py-24"
-      >
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-10 max-w-3xl">
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
-              Controlled execution environment
-            </p>
-
-            <h2
-              id="sandbox-title"
-              className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-foreground sm:text-5xl"
+      <section aria-labelledby="home-cta-title" className="bg-panel py-20 sm:py-24">
+        <ScrollReveal className="mx-auto max-w-4xl px-5 text-center sm:px-8 lg:px-10">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+            The rest of the story
+          </p>
+          <h2
+            id="home-cta-title"
+            className="mx-auto mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl"
+          >
+            Read how {BRAND_NAME} works, or start a conversation directly.
+          </h2>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/about"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border-strong px-6 py-3.5 text-sm font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              Run the secure event lifecycle
-            </h2>
-
-            <p className="mt-5 text-base leading-8 text-muted">
-              Trigger a sanitized request through the server-connected terminal
-              to inspect HMAC verification, idempotency validation, structured
-              extraction, and controlled routing.
-            </p>
+              <UserRound aria-hidden="true" className="size-4" />
+              About {BRAND_NAME}
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-all hover:-translate-y-0.5 hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+            >
+              Get in touch
+              <ArrowRight aria-hidden="true" className="size-4" />
+            </Link>
           </div>
-
-          <TerminalWidget />
-        </div>
+        </ScrollReveal>
       </section>
     </main>
   );

@@ -3,9 +3,9 @@ import test from "node:test";
 
 import {
   flagshipProjects,
+  getCaseStudyProjects,
   getLabProjects,
   getProjectBySlug,
-  getWorkProjects,
   portfolioProjects,
   supportingProjects,
   systemsLabProjects,
@@ -14,21 +14,22 @@ import {
 import type { PortfolioProject } from "../types/portfolio";
 
 const REQUIRED_ROUTES = [
-  "/work/sm2-race-control",
-  "/work/dispatch-alex",
-  "/work/brouss-elevators",
-  "/work/venai-consultation-automation",
-  "/work/ai-video-operations",
-  "/work/zoho-revenue-operations",
+  "/case-studies/sm2-race-control",
+  "/case-studies/dispatch-alex",
+  "/case-studies/brouss-elevators",
+  "/case-studies/brouss-voice-agent",
+  "/case-studies/venai-consultation-automation",
+  "/case-studies/ai-video-operations",
+  "/case-studies/zoho-revenue-operations",
   "/lab/applypilot",
 ] as const;
 
 const projects: readonly PortfolioProject[] = portfolioProjects;
 
 test("portfolio registry contains the required project inventory", () => {
-  assert.equal(projects.length, 7);
-  assert.equal(flagshipProjects.length, 3);
-  assert.equal(supportingProjects.length, 3);
+  assert.equal(projects.length, 9);
+  assert.equal(flagshipProjects.length, 4);
+  assert.equal(supportingProjects.length, 4);
   assert.equal(systemsLabProjects.length, 1);
 
   const routes = projects.map((project) => project.route);
@@ -48,9 +49,9 @@ test("project lookup resolves every slug", () => {
   });
 });
 
-test("work and lab route groups stay separated", () => {
+test("case study and lab route groups stay separated", () => {
   assert.ok(
-    getWorkProjects().every((project) => project.route.startsWith("/work/")),
+    getCaseStudyProjects().every((project) => project.route.startsWith("/case-studies/")),
   );
   assert.ok(
     getLabProjects().every((project) => project.route.startsWith("/lab/")),

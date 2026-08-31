@@ -51,7 +51,7 @@ const AudioWaveformClient = dynamic(
 export function AudioWaveform({
   audioUrl = "/media/brouss-synthflow-test-sanitized.wav",
   title = "Bilingual Service Cancellation Test",
-  metadata = "Synthetic placeholder waveform - 00:24s",
+  metadata = "Synthetic placeholder waveform, 00:24s",
   className,
 }: AudioWaveformProps): React.JSX.Element {
   return (

@@ -2,225 +2,219 @@ import type { PortfolioProject } from "@/types/portfolio";
 
 export const dispatchAlex = {
   slug: "dispatch-alex",
-  route: "/work/dispatch-alex",
+  route: "/case-studies/dispatch-alex",
   tier: "flagship",
-  title: "Dispatch Alex",
-  shortTitle: "Dispatch Alex",
+  title: "SM2 Dispatch System",
+  shortTitle: "SM2 Dispatch",
   status: "live-production",
   statusLabel: "Live Production Client Platform",
   summary:
-    "A bilingual field-service dispatch platform that turns inbound SMS into reviewed jobs, technician assignments, technician execution, invoice approval, and QuickBooks synchronization.",
+    "A live production bilingual dispatch platform for SM2 Electronics that turns inbound SMS into reviewed jobs, technician execution, invoice approval, invoice history, and production QuickBooks synchronization.",
   metaDescription:
-    "Dispatch Alex case study covering bilingual SMS dispatch, FastAPI, React, PostgreSQL, Twilio, Make.com, QuickBooks, idempotency, and human review.",
+    "SM2 Dispatch System case study covering React, FastAPI, PostgreSQL, Twilio, Make.com, OpenAI-assisted bilingual parsing, role-separated portals, and production QuickBooks synchronization.",
+  websiteUrl: "https://dispatch.sm2racing.app/admin",
+  websiteLabel: "Open live admin portal",
+  repoUrl: "https://github.com/nexoltechinc/clientcrew-dispatch",
+  repoLabel: "GitHub repository",
   businessValue:
-    "The platform gives field-service teams a shared lifecycle from unstructured request intake to controlled accounting handoff.",
-  role: "Full-stack and automation engineer responsible for frontend workflows, backend API boundaries, event modeling, idempotency, orchestration, and security hardening.",
+    "The system gives SM2 one operational path from inbound service text to reviewed dispatch job, technician work, approved invoice, and accounting sync, with role-separated portals and production integrations.",
+  role: "Full-stack and automation engineer responsible for the React and TypeScript portals, FastAPI workflow services, PostgreSQL-backed operational state, Make.com intake architecture, and production QuickBooks synchronization design.",
   challenge: [
-    "Unstructured SMS messages needed to become structured jobs without losing operational nuance.",
-    "Dispatchers and technicians needed a shared job lifecycle across review, assignment, execution, and invoicing.",
-    "Accounting synchronization required explicit approval before QuickBooks writes.",
-    "AI extraction, polling limits, duplicate events, and low-confidence parsing created reliability risk.",
+    "Inbound dealership and customer SMS had to become structured dispatch jobs without losing the real service context.",
+    "Administrators and field technicians needed separate interfaces while still working from the same operational job state.",
+    "Invoice generation could not write directly into accounting without a controlled approval step.",
+    "The production handover had to leave behind a maintainable VPS deployment, a monitorable Make.com intake flow, and clear operational controls.",
   ],
   responsibilities: [
-    "Built React and TypeScript operator surfaces for dispatch and technician workflows.",
-    "Designed FastAPI service boundaries and PostgreSQL-backed job state.",
-    "Integrated Twilio intake, Make.com orchestration, and QuickBooks handoff patterns.",
-    "Implemented idempotency and validation controls for webhook-style event handling.",
+    "Built the role-separated admin and technician portal experience in React, TypeScript, and Vite.",
+    "Designed the Make.com intake flow around Twilio polling, trusted service and dealership lookups, bilingual AI parsing, and backend submission.",
+    "Implemented the backend workflow boundaries for jobs, technicians, invoice approvals, invoice history, and QuickBooks synchronization.",
+    "Documented the production deployment, route map, service structure, and operational handover for SM2's live environment.",
   ],
   solution: [
-    "Route inbound SMS through AI-assisted parsing with human review for uncertain cases.",
-    "Represent jobs as stateful records with technician assignment, execution, and invoice approval stages.",
-    "Use explicit approval before accounting sync to prevent premature financial writes.",
-    "Validate inbound payloads and suppress duplicate source events before downstream processing.",
+    "Receive inbound SMS through Twilio, enrich the request with live service and dealership data, and parse it into structured dispatch metadata before backend submission.",
+    "Keep admins and technicians in role-specific portal surfaces while the FastAPI backend owns workflow rules and shared job state.",
+    "Separate technician completion from invoice release so customer mapping, line items, tax data, and pricing can be checked before QuickBooks sync.",
+    "Use one dedicated Make.com integration route and a PostgreSQL-backed lifecycle so intake, execution, approval, and accounting stay traceable.",
   ],
   architecture: [
     {
       id: "sms",
-      title: "Inbound SMS",
+      title: "Inbound SMS Intake",
       description:
-        "Customer and dealership messages enter through a messaging provider boundary.",
+        "Customer and dealership messages enter through the production Twilio intake trigger.",
       technology: "Twilio",
     },
     {
-      id: "orchestration",
-      title: "AI-Assisted Parsing",
+      id: "make",
+      title: "Make.com Intake Orchestration",
       description:
-        "Orchestration turns message content into structured dispatch metadata.",
+        "The automation layer fetches trusted services and dealerships, performs bilingual AI parsing, and normalizes the request before posting it to the backend.",
       technology: "Make.com",
     },
     {
       id: "api",
-      title: "Typed Service Boundary",
+      title: "FastAPI Business Services",
       description:
-        "Backend endpoints validate payloads, state transitions, and idempotency metadata.",
+        "Backend endpoints and service modules validate, route, and manage dispatch, technician, invoice, and QuickBooks workflows.",
       technology: "FastAPI",
     },
     {
-      id: "operations",
-      title: "Dispatch and Technician UI",
+      id: "data",
+      title: "Operational Job State",
       description:
-        "React views coordinate review, assignment, field execution, and invoice approval.",
+        "PostgreSQL stores jobs, service lines, technician data, customer records, invoice drafts, sync state, and audit information.",
+      technology: "PostgreSQL",
+    },
+    {
+      id: "portal",
+      title: "Admin and Technician Portals",
+      description:
+        "Role-separated React experiences give admins control over review and approvals while technicians work through the field job lifecycle.",
       technology: "React + TypeScript",
     },
     {
       id: "accounting",
-      title: "Approved Accounting Sync",
+      title: "Production QuickBooks Sync",
       description:
-        "QuickBooks receives approved invoice records rather than raw AI output.",
-      technology: "QuickBooks",
+        "Approved invoices synchronize into the live QuickBooks company through the production OAuth and invoice workflow.",
+      technology: "QuickBooks Online",
     },
   ],
   workflow: [
     {
       id: "receive",
-      title: "Receive bilingual request",
+      title: "Receive inbound SMS",
       description:
-        "Inbound SMS is captured with source metadata and routed to parsing.",
+        "Twilio intake captures the bilingual request and hands it to the production Make.com scenario.",
+    },
+    {
+      id: "enrich",
+      title: "Enrich with trusted service data",
+      description:
+        "Make.com retrieves the live service catalog and dealership records before asking AI to interpret the message.",
+    },
+    {
+      id: "parse",
+      title: "Parse the bilingual dispatch request",
+      description:
+        "OpenAI-assisted steps identify the service, dealership, vehicle details, timing, urgency, confidence, and raw fallback text where needed.",
     },
     {
       id: "review",
-      title: "Review extracted job",
+      title: "Create and review the dispatch job",
       description:
-        "Low-confidence or incomplete extraction remains visible for administrative review.",
+        "The normalized payload is posted into the backend integration route, where admins can review and manage the new job record.",
     },
     {
-      id: "assign",
-      title: "Assign technician",
+      id: "execute",
+      title: "Assign and execute the field work",
       description:
-        "Dispatch creates a shared job record with technician-facing execution context.",
+        "Technicians accept, start, complete, delay, refuse, and update service-line work from the technician portal.",
     },
     {
       id: "approve",
-      title: "Approve invoice",
+      title: "Approve the invoice",
       description:
-        "Completed work moves to invoice review before QuickBooks synchronization.",
+        "Completed work moves into the invoice approval queue so customer mapping, line items, taxes, and totals can be checked.",
+    },
+    {
+      id: "sync",
+      title: "Synchronize to QuickBooks",
+      description:
+        "Only approved invoices are posted to the production QuickBooks company and tracked in invoice history with sync status.",
     },
   ],
   decisions: [
     {
-      decision: "Keep AI extraction behind human review.",
+      decision: "Load trusted services and dealerships before AI parsing.",
       rationale:
-        "Operational SMS can be ambiguous, bilingual, incomplete, or urgent.",
+        "The parser is more reliable when it works from the live catalog and customer context instead of guessing unsupported values.",
       impact:
-        "The system improves intake speed while preserving accountable dispatch decisions.",
+        "The intake flow stays grounded in real service options and reduces invented or mismatched dispatch records.",
     },
     {
-      decision: "Use idempotency before durable job writes.",
+      decision: "Keep admin and technician workflows in separate portals.",
       rationale:
-        "Webhook retries and polling behavior can replay the same business event.",
+        "Dispatch review, assignment, reporting, and invoice control have very different needs from field execution screens.",
       impact:
-        "Duplicate job creation risk is reduced at the source boundary.",
+        "Each role gets a clearer interface without sacrificing shared job state or workflow continuity.",
     },
     {
       decision: "Require invoice approval before QuickBooks sync.",
       rationale:
-        "Accounting systems should not trust raw automation output.",
+        "Accounting records should not trust raw field completion or automation output without a final business check.",
       impact:
-        "Financial records remain controlled by an explicit review step.",
+        "Customer mappings, tax data, pricing, and invoice exceptions remain visible before financial records are released.",
     },
   ],
   reliability: [
-    "Idempotency metadata protects duplicate source events.",
-    "Low-confidence extraction routes to review instead of silent automation.",
-    "Stateful job records make technician and admin views consistent.",
-    "Polling throughput and retry behavior are treated as known operational constraints.",
+    "The supplied Make.com scenario shows a visible end-to-end production intake flow rather than a hidden black-box automation.",
+    "The intake path normalizes AI output through a JSON parsing step before creating or updating dispatch jobs.",
+    "Invoice approval and invoice history keep accounting exceptions visible instead of pushing failures straight into QuickBooks.",
+    "The handover notes that the current polling schedule runs every 15 minutes, so timing expectations stay explicit for operators.",
   ],
   security: [
-    "Webhook examples use raw-body HMAC verification before JSON parsing.",
-    "Secrets remain server-side and are not exposed to browser code.",
-    "Authentication hardening is called out as an implementation concern.",
-    "Safe JSON handling and schema validation protect backend route boundaries.",
+    "Temporary admin and technician credentials should be rotated immediately after confirmed access.",
+    "The handover flags embedded Make.com credentials as a remediation item and recommends secure connection or variable storage instead.",
+    "The `/integrations/make/jobs` endpoint should stay protected by a dedicated secret, token, signature, or equivalent server-side control.",
+    "QuickBooks OAuth secrets, database credentials, JWT keys, SMTP credentials, and VPS access all remain outside public artifacts and source control.",
   ],
   testing: [
-    "Webhook signature verification is covered by utility and route-level tests.",
-    "Idempotency metadata validation covers UUIDs, timestamps, and source system format.",
-    "Sandbox route exercises the dispatch event lifecycle without production writes.",
+    "The handover checklist covers admin login, technician login, Make.com ownership, QuickBooks production connection, and invoice-sync smoke testing.",
+    "Backend coverage is documented for authentication, invoices, Make.com, QuickBooks, technicians, and workflow behavior.",
+    "Operational release checks should confirm login, intake, assignment, technician execution, invoice approval, and QuickBooks synchronization after every production change.",
+    "Database changes should follow the documented backup, rollback, and migration discipline before deployment to the live VPS.",
   ],
   technologies: [
     { name: "React", category: "frontend" },
     { name: "TypeScript", category: "frontend" },
     { name: "FastAPI", category: "backend" },
     { name: "PostgreSQL", category: "database" },
-    { name: "Twilio", category: "voice" },
     { name: "Make.com", category: "automation" },
-    { name: "QuickBooks", category: "crm" },
+    { name: "Twilio", category: "voice" },
+    { name: "OpenAI", category: "ai" },
+    { name: "QuickBooks Online", category: "crm" },
+    { name: "REST API", category: "backend" },
+    { name: "Role-Based Access", category: "security" },
   ],
   evidence: [
     {
-      id: "dispatch-sandbox",
+      id: "dispatch-make-scenario",
       projectSlug: "dispatch-alex",
-      type: "trace",
-      title: "Sanitized dispatch execution trace",
+      type: "image",
+      title: "Production Make.com intake scenario",
       description:
-        "The portfolio sandbox demonstrates HMAC verification, idempotency validation, structured extraction, and controlled routing.",
-      state: "sanitized-demonstration",
-      source: "Local portfolio sandbox",
+        "The supplied Alex DISPATCH scenario shows the live Twilio intake, backend token request, service and dealership lookups, bilingual AI parsing, backend submission, and acknowledgment SMS flow.",
+      state: "verified-public",
+      src: "/media/dispatch-alex/make-scenario.png",
+      alt: "A Make.com scenario showing the Alex DISPATCH intake flow from Twilio through parsing and backend submission.",
+      width: 1280,
+      height: 896,
       caption:
-        "Demonstration only; it does not write production customer data.",
-      confidentialityNote:
-        "Payloads are synthetic and must not include real customer names, phone numbers, or addresses.",
-      trace: {
-        mode: "sanitized_simulation",
-        source_system: "portfolio_sandbox",
-        security: {
-          hmac_sha256: "verified",
-          idempotency_metadata: "valid",
-          persistent_execution: false,
-        },
-        dispatch: {
-          language: "mixed",
-          intent: "service_request",
-          customer_type: "dealership",
-          human_review_required: true,
-        },
-      },
+        "The public screenshot shows the production module order and the 15-minute polling schedule for inbound dispatch intake.",
     },
     {
-      id: "dispatch-code",
+      id: "dispatch-handover-report",
       projectSlug: "dispatch-alex",
-      type: "code",
-      title: "Secure webhook reference code",
+      type: "document",
+      title: "Production handover report",
       description:
-        "Reference implementation shows raw-body signature validation before parsing.",
-      state: "sanitized-demonstration",
-      source: "Portfolio source code",
+        "The handover report documents the live Hostinger VPS deployment, portal routes, backend service map, Make.com integration summary, and QuickBooks production workflow.",
+      state: "private-not-publishable",
+      source: "Final client-ready technical and operational handover report",
       caption:
-        "Suitable for Make.com and custom raw-body HMAC integrations, not standard Twilio callback validation.",
+        "Used as the source for the published system summary and production architecture notes.",
       confidentialityNote:
-        "No webhook secrets or private URLs are embedded.",
-      code: {
-        filename: "dispatch-webhook-route.ts",
-        language: "typescript",
-        label: "Sanitized route boundary",
-        body: `const rawPayload = await request.text();
-const signature = request.headers.get("x-webhook-signature");
-
-if (!signature) {
-  return errorResponse(requestId, 401, "missing_signature");
-}
-
-if (!verifyWebhookSignature(rawPayload, signature, webhookSecret)) {
-  return errorResponse(requestId, 401, "invalid_signature");
-}
-
-const parsedPayload = JSON.parse(rawPayload);
-const idempotency = validateIdempotencyPayload(parsedPayload);
-
-if (!idempotency.success) {
-  return errorResponse(
-    requestId,
-    422,
-    "invalid_idempotency_metadata",
-  );
-}`,
-      },
+        "Keep passwords, integration secrets, database details, and internal operational records out of public excerpts.",
     },
   ],
   remainingWork: [
-    "Attach sanitized screenshots from the production client platform.",
-    "Connect live persistence evidence when a Neon connection string is available.",
-    "Document current authentication posture after the deployment environment is confirmed.",
+    "Move any embedded Make.com credential handling into dedicated secure connection or variable storage if that remediation is not already complete.",
+    "Confirm whether the 15-minute polling schedule still meets dispatch response expectations or should be replaced by a faster intake trigger.",
+    "Keep the VPS, database ownership, backups, and production change-control register current as the system evolves.",
   ],
   confidentiality:
-    "Public examples must remain synthetic or anonymized because the live system handles operational client data.",
+    "Public examples must not expose passwords, tokens, dealership contact data, phone numbers, invoice details, or private operational records.",
 } satisfies PortfolioProject;
+

@@ -2,180 +2,228 @@ import type { PortfolioProject } from "@/types/portfolio";
 
 export const sm2RaceControl = {
   slug: "sm2-race-control",
-  route: "/work/sm2-race-control",
+  route: "/case-studies/sm2-race-control",
   tier: "flagship",
-  title: "SM-2 Race Control",
-  shortTitle: "SM-2",
-  status: "production-implementation-qa-baseline",
-  statusLabel: "Production Implementation + QA Baseline",
+  title: "SM2 Racing",
+  shortTitle: "SM2 Racing",
+  status: "live-production",
+  statusLabel: "Live Production Client Platform",
   summary:
-    "An event-first motorsport operations and session-intelligence platform for drivers, vehicles, run groups, schedules, generated sessions, setup records, voice capture, OCR capture, media, historical comparisons, and reporting.",
+    "A live production motorsport operations platform that organizes events, generated sessions, driver notes, voice transcription, OCR intake, historical setup comparison, and admin review inside one event-first system.",
   metaDescription:
-    "SM-2 Race Control case study covering motorsport operations, canonical session records, historical setup context, voice/OCR capture, tenant isolation, and QA controls.",
+    "SM2 Racing case study covering Next.js, FastAPI, PostgreSQL, OpenAI transcription, Make.com OCR intake, role-based access, session history, and production QA release coverage.",
+  websiteUrl: "https://sm2racing.app/login",
+  websiteLabel: "Open live platform",
+  repoUrl: "https://github.com/syed-daniyalH/SM-Racing",
+  repoLabel: "GitHub repository",
   businessValue:
-    "SM-2 gives teams a dependable operating record across a race weekend, reducing scattered notes and preserving setup context for later analysis.",
-  role: "Principal full-stack builder across product modeling, application architecture, data design, workflow design, and QA planning.",
+    "SM2 Racing gives race teams one reliable event-to-session record across a race weekend, so setup changes, voice notes, OCR sheets, review history, and exports stay attached to the right driver, vehicle, and session.",
+  role: "Full-stack engineer responsible for the event-first product architecture, Next.js and FastAPI implementation, session data workflows, OpenAI voice and Make.com OCR integration design, and production QA release planning.",
   challenge: [
-    "Race-weekend information lived across notes, media, schedules, and memory instead of one operational record.",
-    "Historical setup context could be overwritten or reconstructed incorrectly after a session.",
-    "Driver, vehicle, and run-group context needed guardrails to prevent cross-assignment mistakes.",
-    "Voice, OCR, and media inputs were disconnected from reporting and later comparison.",
+    "Race-weekend information needed to move out of scattered notes and spreadsheets into one operational event and session record.",
+    "Quick notes, detailed setup data, voice transcripts, OCR sheets, photos, and admin review all had to converge on the same session context.",
+    "Historical carry-forward and comparison needed to preserve prior session values instead of silently overwriting them.",
+    "The live release needed strong role isolation, retry safety, and a concrete QA baseline across deployment, integrations, and race-weekend workflows.",
   ],
   responsibilities: [
-    "Modeled the canonical event, session, driver, vehicle, setup, media, and historical snapshot entities.",
-    "Designed the setup carry-forward and historical comparison flows.",
-    "Specified context mismatch protection for driver, vehicle, run group, and event state.",
-    "Built the QA baseline structure covering 75 validation cases without claiming universal pass status.",
+    "Modeled the event, participant, session, submission, and historical comparison structure that anchors the product.",
+    "Built the driver and admin workflows for session entry, review, exports, and context-aware history.",
+    "Designed the OpenAI transcription and Make.com OCR intake paths so structured submissions land in the correct session.",
+    "Produced the production QA baseline, smoke tests, and regression checks used to validate release readiness.",
   ],
   solution: [
-    "Centralize each race weekend around immutable session records and durable setup snapshots.",
-    "Attach voice, OCR, and media capture to the same session context used for reporting.",
-    "Preserve historical setup records before edits so comparisons remain explainable.",
-    "Expose role-aware operational views for event staff and technical users.",
+    "Use an event-first data model where every generated session becomes the anchor for notes, setup data, voice/OCR intake, files, and later review.",
+    "Keep Owner/Admin and Driver experiences separate while the backend owns permissions, context validation, and persistence.",
+    "Stage OCR submissions for review and merge instead of letting external automation write directly into live session records without a checkpoint.",
+    "Preserve carry-forward and historical snapshots so teams can compare sessions and explain setup changes across a weekend.",
   ],
   architecture: [
     {
       id: "event",
       title: "Event Workspace",
       description:
-        "The event owns schedules, run groups, drivers, vehicles, and generated sessions.",
+        "The event is the operational parent for drivers, vehicles, run groups, schedules, and generated sessions.",
       technology: "Next.js App Router",
     },
     {
       id: "session",
-      title: "Canonical Session Record",
+      title: "Session Data Core",
       description:
-        "Session state binds setup notes, telemetry-adjacent context, media, voice, OCR, and review status.",
-      technology: "PostgreSQL",
+        "Session records hold setup data, notes, files, and the context used by every capture and review flow.",
+      technology: "FastAPI + PostgreSQL",
     },
     {
-      id: "capture",
-      title: "Voice, OCR, and Media Capture",
+      id: "voice",
+      title: "Voice Transcription Path",
       description:
-        "Input channels append evidence to the session without replacing historical setup data.",
-      technology: "AI-assisted capture",
+        "Recorded session notes are transcribed, edited, saved, and finalized against the same selected session.",
+      technology: "OpenAI Transcriptions",
+    },
+    {
+      id: "ocr",
+      title: "OCR Intake and Review",
+      description:
+        "Image submissions move through Make.com, create staged OCR records, and are reviewed before merge into session data.",
+      technology: "Make.com",
     },
     {
       id: "history",
-      title: "Historical Snapshot Layer",
+      title: "Carry-Forward and History",
       description:
-        "Setup changes create compare-ready records so weekend decisions can be reviewed later.",
-      technology: "Immutable snapshots",
+        "Setup values can be compared across sessions without losing the prior state that teams need for later review.",
+      technology: "Historical snapshots",
     },
     {
-      id: "reporting",
-      title: "Reporting Surface",
+      id: "review",
+      title: "Admin Review and Export",
       description:
-        "Operational reports summarize session history, setup changes, and comparison context.",
-      technology: "Server-rendered dashboard",
+        "Owners can inspect submissions, compare sessions, filter by context, and export weekend data from one review surface.",
+      technology: "Admin dashboards",
     },
   ],
   workflow: [
     {
-      id: "schedule",
-      title: "Create event schedule",
+      id: "event",
+      title: "Create or open the event",
       description:
-        "Define run groups, vehicles, drivers, and generated sessions for the weekend.",
+        "Owner or admin users open the weekend event and organize drivers, vehicles, run groups, and baseline data.",
+    },
+    {
+      id: "session",
+      title: "Generate and select sessions",
+      description:
+        "The system creates or uses the correct session so every later note and submission lands in the right context.",
     },
     {
       id: "capture",
-      title: "Capture session evidence",
+      title: "Capture session data",
       description:
-        "Attach voice notes, OCR extracts, media, and setup records to the active session.",
+        "Drivers add quick notes, detailed setup values, tires, pressures, temperatures, comments, and files during the session workflow.",
     },
     {
-      id: "validate",
-      title: "Validate context",
+      id: "inputs",
+      title: "Process voice and OCR inputs",
       description:
-        "Check driver, vehicle, run group, and event context before accepting setup changes.",
+        "Voice recordings are transcribed and OCR images are parsed into structured drafts tied to the same event and session.",
+    },
+    {
+      id: "review",
+      title: "Review and apply staged records",
+      description:
+        "Admins review transcripts or OCR drafts, correct mismatches, and merge approved values into the intended session once.",
     },
     {
       id: "compare",
-      title: "Compare against history",
+      title: "Compare, report, and export",
       description:
-        "Review current setup choices against prior snapshots and session outcomes.",
+        "Weekend data stays available for historical comparison, review filters, reporting, and export after the session closes.",
     },
   ],
   decisions: [
     {
-      decision: "Use session records as the system boundary.",
+      decision: "Make the event the operational parent.",
       rationale:
-        "Race operations are time-bound, context-heavy, and prone to accidental mixing.",
+        "Drivers, vehicles, sessions, submissions, and review all depend on the same weekend context.",
       impact:
-        "Every capture and report can be traced back to a specific driver, vehicle, run group, and event.",
+        "The system can keep race data grouped correctly instead of forcing staff to reconstruct context from isolated records.",
     },
     {
-      decision: "Preserve setup history instead of mutating the only record.",
+      decision: "Unify quick, detailed, voice, OCR, and media inputs under the same session record.",
       rationale:
-        "Teams need to understand what changed, when it changed, and why.",
+        "Teams should not have to chase separate notes and attachments to understand one session.",
       impact:
-        "Historical comparisons stay reliable even when current setup notes evolve.",
+        "Every input path contributes to the same reviewable history rather than becoming a detached side channel.",
     },
     {
-      decision: "Keep QA as a baseline, not a blanket production claim.",
+      decision: "Stage OCR before apply.",
       rationale:
-        "A 75-case plan shows coverage without overstating pass evidence.",
+        "Handwritten or image-derived data can be ambiguous and sometimes conflicts with the selected driver or session.",
       impact:
-        "The public case study remains credible and reviewable.",
+        "Mismatch handling stays explicit, and approved values update the live session only after review.",
+    },
+    {
+      decision: "Gate release with a 75-case QA baseline plus production smoke checks.",
+      rationale:
+        "A live race-weekend platform needs stronger proof than visual UI review or isolated happy-path tests.",
+      impact:
+        "Deployment health, permissions, integrations, persistence, and regression risks are validated against a repeatable test surface.",
     },
   ],
   reliability: [
-    "Context mismatch checks protect driver, vehicle, run group, and event associations.",
-    "Historical snapshots preserve setup carry-forward and comparison context.",
-    "Validation cases cover core scheduling, session generation, capture, and reporting paths.",
-    "Evidence remains tied to session identifiers rather than free-floating notes.",
+    "Every create and update path is validated for persistence after refresh or relogin, not just a success toast.",
+    "Voice and OCR retries are treated as idempotent so repeated callbacks do not duplicate session updates.",
+    "OCR intake creates staged reviewable records instead of silently mutating session data.",
+    "Carry-forward and historical comparison preserve prior session values for later review.",
   ],
   security: [
-    "Tenant isolation is treated as a first-class data boundary.",
-    "Role isolation limits operational views and edit privileges by user type.",
-    "Public artifacts must use sanitized screenshots and examples only.",
-    "No customer identifiers, event credentials, or private media should be published.",
+    "Owner/Admin and Driver roles are validated server-side, with direct-access checks against other tenant, driver, and session records.",
+    "OpenAI keys, webhook secrets, JWT configuration, and database credentials stay server-side and out of public evidence.",
+    "The OCR intake route is protected by a shared webhook secret and an expected backend contract.",
+    "Admin AI assistant access is constrained to authorized admin surfaces and real backend data.",
   ],
   testing: [
-    "75-case QA baseline defined for event creation, session generation, setup carry-forward, media capture, and reporting.",
-    "Manual review planned for context mismatch protection and historical snapshot behavior.",
-    "Public status avoids saying every QA case passed until the evidence is attached.",
+    "A 75-case release baseline covers event setup, schedule generation, driver workflows, session entry, history, review, authorization, and known regressions.",
+    "Production smoke checks include https://sm2racing.app, /api/v1/health, login durability, VPS service checks, and Nginx/TLS validation.",
+    "Voice QA verifies recording, OpenAI transcription, edit/save/finalize, and controlled retry without duplicate jobs.",
+    "OCR QA verifies Make.com delivery to /api/v1/submissions/ocr-intake, staged review visibility, mismatch handling, and successful merge into the selected session.",
   ],
   technologies: [
     { name: "Next.js", category: "frontend" },
-    { name: "TypeScript", category: "frontend" },
+    { name: "React", category: "frontend" },
+    { name: "FastAPI", category: "backend" },
     { name: "PostgreSQL", category: "database" },
-    { name: "Voice capture", category: "ai" },
-    { name: "OCR capture", category: "ai" },
-    { name: "Role-based access", category: "security" },
+    { name: "Make.com", category: "automation" },
+    { name: "OpenAI Transcriptions", category: "ai" },
+    { name: "OCR Intake", category: "ai" },
+    { name: "JWT", category: "security" },
+    { name: "Nginx", category: "infrastructure" },
+    { name: "Role-Based Access", category: "security" },
   ],
   evidence: [
     {
-      id: "sm2-architecture",
+      id: "sm2-main-scenario",
       projectSlug: "sm2-race-control",
-      type: "diagram",
-      title: "Event-to-session architecture",
+      type: "image",
+      title: "SM2 Racing multi-route automation flow",
       description:
-        "Public diagram planned for the event, session, capture, snapshot, and reporting flow.",
-      state: "planned",
-      caption: "Diagram target: event workspace to immutable session history.",
-      confidentialityNote:
-        "Use anonymized drivers, vehicles, run groups, and event names.",
+        "The supplied SM2 Racing scenario shows three input routes for raw text, structured intake, and OCR enrichment before data is written into session, pressures, alignment, suspension, tire, and track records.",
+      state: "verified-public",
+      src: "/media/sm2-race-control/sm2-racing-make-scenario.png",
+      alt: "A Make.com scenario for SM2 Racing showing multiple routes for text and OCR processing into motorsport session records.",
+      width: 1280,
+      height: 904,
+      caption:
+        "Public screenshot of the implementation flow with routing, driver lookup, ID and date generation, and downstream racing data writes.",
     },
     {
-      id: "sm2-qa-plan",
+      id: "sm2-ocr-intake",
+      projectSlug: "sm2-race-control",
+      type: "image",
+      title: "Dedicated OCR intake scenario",
+      description:
+        "A separate OCR scenario parses the webhook payload, sets submission context, calls the OCR HTTP step, parses the result, and posts the structured payload into the backend intake route.",
+      state: "verified-public",
+      src: "/media/sm2-race-control/sm2-racing-ocr-intake.png",
+      alt: "A short Make.com OCR flow for SM2 Racing that parses a webhook payload, calls an OCR HTTP step, and posts the result to the backend.",
+      width: 1280,
+      height: 898,
+      caption:
+        "This public view isolates the OCR path that prepares structured intake data before backend submission.",
+    },
+    {
+      id: "sm2-production-qa-plan",
       projectSlug: "sm2-race-control",
       type: "document",
-      title: "75-case QA baseline",
+      title: "Production implementation and QA test plan",
       description:
-        "QA-plan excerpts can be published after removing private event and vehicle details.",
+        "The attached July 24, 2026 QA baseline documents the live production URL, key routes, OCR intake contract, OpenAI voice verification, release gates, and the 75-case acceptance matrix.",
       state: "private-not-publishable",
-      source: "Owner-provided QA planning notes",
-      caption: "Private QA artifact; public excerpts require sanitization.",
-      confidentialityNote:
-        "Do not publish raw event data, vehicle identifiers, or team notes.",
+      source: "Production Implementation and Complete QA Test Plan",
+      caption:
+        "Used as the source for the published live-platform, workflow, and validation notes.",
     },
   ],
-  remainingWork: [
-    "Attach sanitized platform screenshots.",
-    "Publish a redacted QA excerpt only after review.",
-    "Add approved setup-history example data.",
-  ],
   confidentiality:
-    "Public evidence must use synthetic or anonymized event, driver, vehicle, and setup data.",
+    "Public examples should avoid exposing live credentials, webhook secrets, private race data, and any tenant-specific operational records.",
 } satisfies PortfolioProject;
+

@@ -2,16 +2,16 @@ import type { PortfolioProject } from "@/types/portfolio";
 
 export const zohoRevenueOperations = {
   slug: "zoho-revenue-operations",
-  route: "/work/zoho-revenue-operations",
+  route: "/case-studies/zoho-revenue-operations",
   tier: "supporting",
-  title: "Zoho CRM Revenue Operations",
-  shortTitle: "Zoho RevOps",
+  title: "Zoho CRM Pipeline & Workflow",
+  shortTitle: "Zoho CRM",
   status: "delivered-audit-and-automation",
   statusLabel: "Delivered CRM Audit and Automation",
   summary:
     "A CRM and revenue operations engagement covering pipeline audit, workflow repair, field mapping, forecasting, stage emails, WooCommerce-to-Zoho handoff, closed-won-to-QuickBooks flow, and Instagram Lead Ads to Monday.com via Make.com.",
   metaDescription:
-    "Zoho CRM Revenue Operations case study covering CRM audit, workflow repair, field mapping, forecasting, WooCommerce, QuickBooks, Monday.com, and Make.com.",
+    "Zoho CRM Pipeline & Workflow case study covering CRM audit, workflow repair, field mapping, forecasting, WooCommerce, QuickBooks, and REST API integrations.",
   businessValue:
     "The engagement improved CRM governance and revenue handoff clarity without claiming that every manual process disappeared.",
   role: "CRM and automation engineer responsible for audit, workflow mapping, field consistency, integration repair, and revenue handoff documentation.",
@@ -116,9 +116,8 @@ export const zohoRevenueOperations = {
     { name: "Zoho CRM", category: "crm" },
     { name: "WooCommerce", category: "automation" },
     { name: "QuickBooks", category: "crm" },
-    { name: "Make.com", category: "automation" },
-    { name: "Monday.com", category: "crm" },
-    { name: "Instagram Lead Ads", category: "automation" },
+    { name: "REST APIs", category: "backend" },
+    { name: "CRM Automation", category: "crm" },
   ],
   evidence: [
     {
@@ -143,3 +142,4 @@ export const zohoRevenueOperations = {
   confidentiality:
     "Public evidence must not expose CRM records, customer lists, revenue values, or accounting details.",
 } satisfies PortfolioProject;
+

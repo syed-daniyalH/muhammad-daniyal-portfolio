@@ -61,6 +61,20 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: "/work",
+        destination: "/case-studies",
+        permanent: true,
+      },
+      {
+        source: "/work/:slug",
+        destination: "/case-studies/:slug",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

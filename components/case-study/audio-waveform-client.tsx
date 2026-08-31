@@ -156,10 +156,6 @@ export function AudioWaveformClient({
           </h3>
           <p className="mt-1 text-xs text-muted">{metadata}</p>
         </div>
-
-        <span className="w-fit rounded-full border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-1.5 text-[10px] font-medium text-emerald-300">
-          Replace with approved audio
-        </span>
       </div>
 
       <div className="p-5">
@@ -253,9 +249,7 @@ export function AudioWaveformClient({
         </div>
 
         <p className="mt-5 text-[10px] leading-5 text-muted-subtle">
-          The included file is a synthetic audio placeholder. Replace it only
-          with a client-approved recording after removing names, telephone
-          numbers, addresses, case identifiers, and confidential details.
+          Synthetic placeholder audio, not an actual client recording.
         </p>
       </div>
     </section>

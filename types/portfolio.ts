@@ -19,6 +19,7 @@ export type EvidenceState =
 
 export type EvidenceType =
   | "image"
+  | "video"
   | "audio"
   | "diagram"
   | "trace"
@@ -73,8 +74,13 @@ export interface EvidenceAsset {
   projectSlug: string;
   source?: string;
   src?: string;
+  embedUrl?: string;
+  externalUrl?: string;
+  externalLabel?: string;
   alt?: string;
   caption?: string;
+  width?: number;
+  height?: number;
   confidentialityNote?: string;
   trace?: Record<string, unknown>;
   code?: {
@@ -94,12 +100,16 @@ export interface ProjectMetric {
 
 export interface PortfolioProject {
   slug: string;
-  route: `/work/${string}` | `/lab/${string}`;
+  route: `/case-studies/${string}` | `/lab/${string}`;
   tier: ProjectTier;
   title: string;
   shortTitle: string;
   summary: string;
   metaDescription: string;
+  websiteUrl?: string;
+  websiteLabel?: string;
+  repoUrl?: string;
+  repoLabel?: string;
   businessValue: string;
   challenge: string[];
   role: string;

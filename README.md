@@ -1,4 +1,4 @@
-# Daniyal Haider - Executive AI & Full-Stack Automation Portfolio
+# Muhammad Daniyal - Automation Engineer & GoHighLevel Specialist Portfolio
 
 A complete two-module Next.js 15 portfolio build combining executive UX, interactive case-study evidence, a WaveSurfer audio player, a server-connected webhook sandbox, and a production-oriented webhook verification layer.
 
@@ -27,7 +27,6 @@ A complete two-module Next.js 15 portfolio build combining executive UX, interac
 - Neon-backed atomic duplicate suppression
 - Secured production webhook Route Handler
 - Same-origin sanitized sandbox Route Handler
-- Interactive webhook execution terminal
 - SQL migration and security tests
 
 ### Module 2

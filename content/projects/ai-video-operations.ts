@@ -2,165 +2,236 @@ import type { PortfolioProject } from "@/types/portfolio";
 
 export const aiVideoOperations = {
   slug: "ai-video-operations",
-  route: "/work/ai-video-operations",
+  route: "/case-studies/ai-video-operations",
   tier: "supporting",
-  title: "AI Video Content Operations System",
+  title: "AI Video Operations",
   shortTitle: "AI Video Ops",
-  status: "advanced-prototype-production-hardening",
-  statusLabel: "Advanced Prototype / Production Hardening",
+  status: "production-implementation-qa-baseline",
+  statusLabel: "Production Implementation + QA Baseline",
   summary:
-    "A multi-stage content operations system for AI-assisted titles, script generation, compliance checks, word-count validation, duration validation, HeyGen generation, credit checking, polling, media download, LinkedIn upload, and Instagram publishing.",
+    "Built paired n8n systems that generate, validate, log, and publish short-form AI video posts to LinkedIn and Instagram using OpenAI, HeyGen, platform APIs, and Google Sheets.",
   metaDescription:
-    "AI Video Operations case study covering OpenAI, HeyGen, n8n, LinkedIn, Instagram, compliance checks, polling, credit validation, and human approval.",
+    "AI Video Operations case study covering n8n workflows, OpenAI, HeyGen, LinkedIn API, Instagram Graph API, Google Sheets, and automated social video publishing.",
   businessValue:
-    "The system explores how content teams can coordinate AI generation, approval, and publishing without pretending automation removes editorial accountability.",
-  role: "Workflow architect and automation engineer responsible for generation orchestration, platform-specific publishing flow design, reliability controls, and hardening checklist.",
+    "The system turns social video production into a repeatable operating flow with scheduled content slots, platform-specific publishing, and guardrails that catch bad scripts, missing credits, invalid files, and failed uploads before they reach the account.",
+  role: "Automation engineer responsible for the end-to-end n8n architecture, AI prompt flow, platform-specific publishing logic, guardrail design, and QA hardening for both LinkedIn and Instagram.",
   challenge: [
-    "Video content workflows required many dependent steps before publishing.",
-    "Credits, generation status, platform upload requirements, and approval state could fail independently.",
-    "Automated publishing needed duplicate-post prevention, news grounding, and human approval.",
+    "Daily short-form video output depended on many linked steps across ideation, scripting, generation, validation, upload, and publishing.",
+    "LinkedIn and Instagram had different publishing mechanics, media requirements, and failure modes.",
+    "AI copy had to stay inside brand, length, and compliance rules before spending HeyGen credits or posting publicly.",
+    "The workflow needed logs, retries, and alerts so failures stayed visible instead of breaking silently.",
   ],
   responsibilities: [
-    "Designed a 45-node LinkedIn workflow and a 27-node Instagram workflow.",
-    "Mapped generation, compliance, polling, download, and publishing stages.",
-    "Specified retry logic, credit validation, idempotency, alerts, and duplicate-post prevention.",
-    "Kept the system framed as an advanced prototype until production hardening is complete.",
+    "Designed a 45-node LinkedIn workflow and a 27-node Instagram workflow around the same generation core.",
+    "Built scheduled slot logic for rotating content pillars, posting windows, and avatar selection.",
+    "Mapped JSON validation, compliance review, word-count enforcement, duration caps, and low-credit gates into the flow.",
+    "Implemented provider polling, video validation, platform upload steps, Google Sheets logging, and failure-alert branches.",
   ],
   solution: [
-    "Break the pipeline into generation, validation, human approval, and platform publishing stages.",
-    "Gate publishing behind compliance checks, word-count/duration validation, and approval.",
-    "Track provider status and credits before requesting expensive generation work.",
+    "Split the automation into shared generation stages and separate publishing paths for LinkedIn and Instagram.",
+    "Use OpenAI for idea and script generation, then re-check the output with JSON, compliance, and length validators before video creation.",
+    "Gate expensive or irreversible steps behind HeyGen credit checks, duration rules, file validation, and publish-readiness checks.",
+    "Write operational logs to Google Sheets and surface failed runs through dedicated alert branches so the workflow stays reviewable.",
   ],
   architecture: [
     {
-      id: "brief",
-      title: "Content Brief",
+      id: "scheduler",
+      title: "Scheduler and Slot Control",
       description:
-        "Input topic, audience, and grounding requirements become the workflow starting point.",
+        "Timed triggers choose the posting window, content pillar, and avatar rotation before any generation starts.",
       technology: "n8n",
     },
     {
-      id: "generation",
+      id: "ideation",
       title: "Title and Script Generation",
       description:
-        "AI-assisted copy is generated with length, tone, and compliance constraints.",
-      technology: "OpenAI",
+        "OpenAI produces the angle, title, and draft script for a 30-second vertical video format.",
+      technology: "OpenAI GPT-4o",
+    },
+    {
+      id: "qa",
+      title: "Script QA Gate",
+      description:
+        "JSON validation, compliance review, word-count rules, and duration checks prevent weak scripts from reaching video generation.",
+      technology: "Validation layer",
     },
     {
       id: "video",
-      title: "Video Generation",
+      title: "HeyGen Video Pipeline",
       description:
-        "HeyGen requests are checked against credits and polled until media is available.",
-      technology: "HeyGen",
+        "Video jobs are submitted, polled, and checked for readiness before the workflow moves to a platform upload step.",
+      technology: "HeyGen API",
     },
     {
-      id: "approval",
-      title: "Human Approval",
+      id: "linkedin",
+      title: "LinkedIn Publish Branch",
       description:
-        "Publishing waits for review instead of posting raw generated material.",
-      technology: "Approval gate",
+        "The longer branch handles credit gating, file validation, upload initialization, chunk handling, finalize checks, and public post creation.",
+      technology: "LinkedIn API",
     },
     {
-      id: "distribution",
-      title: "Platform Publishing",
+      id: "instagram",
+      title: "Instagram Publish Branch",
       description:
-        "Approved media moves through LinkedIn native upload or Instagram publishing paths.",
-      technology: "LinkedIn + Instagram",
+        "The lighter branch packages the completed video into an Instagram Reel container, waits for readiness, and publishes the post.",
+      technology: "Instagram Graph API",
+    },
+    {
+      id: "ops",
+      title: "Logging and Alerts",
+      description:
+        "Execution summaries and publishing outcomes are written to Google Sheets, with dedicated failure branches for broken runs.",
+      technology: "Google Sheets",
     },
   ],
   workflow: [
     {
-      id: "draft",
-      title: "Draft content package",
+      id: "schedule",
+      title: "Select the daily content slot",
       description:
-        "Generate title and script candidates from a grounded content brief.",
+        "Timed triggers pick the publish window, content pillar, and avatar so the system can rotate output without manual setup.",
     },
     {
-      id: "validate",
-      title: "Validate compliance and duration",
+      id: "angle",
+      title: "Generate the topic and title",
       description:
-        "Check word count, expected duration, policy notes, and readiness for generation.",
+        "OpenAI creates the post angle and headline, then the flow validates the JSON response before moving forward.",
     },
     {
-      id: "generate",
-      title: "Generate and poll video",
+      id: "script",
+      title: "Write and review the 30-second script",
       description:
-        "Check provider credits, submit HeyGen job, and poll for output media.",
+        "A second model pass rewrites or fixes the script until it matches format, compliance, and spoken-language requirements.",
     },
     {
-      id: "publish",
-      title: "Approve and publish",
+      id: "guardrails",
+      title: "Apply guardrails before generation",
       description:
-        "Prevent duplicate posts and route approved media to platform-specific publishing.",
+        "Word-count limits, duration caps, and low-credit checks stop weak or expensive runs before HeyGen is called.",
+    },
+    {
+      id: "video",
+      title: "Create and poll the HeyGen video",
+      description:
+        "The workflow submits the request, waits between retries, and checks provider status until the final media is ready.",
+    },
+    {
+      id: "linkedin",
+      title: "Validate and publish to LinkedIn",
+      description:
+        "The LinkedIn path downloads the video, validates the file, completes upload finalization, and then creates the public post.",
+    },
+    {
+      id: "instagram",
+      title: "Package and publish the Instagram Reel",
+      description:
+        "The Instagram path creates the media container, waits for upload readiness, and publishes the reel once the container is valid.",
+    },
+    {
+      id: "ops",
+      title: "Log the run and surface failures",
+      description:
+        "Execution summaries, video URLs, and publish outcomes are logged while failed branches emit dedicated error alerts for review.",
     },
   ],
   decisions: [
     {
-      decision: "Keep human approval in the publishing path.",
+      decision: "Keep LinkedIn and Instagram as separate terminal branches.",
       rationale:
-        "AI-generated content can be factually wrong, stale, off-brand, or noncompliant.",
+        "The two platforms require different upload mechanics, readiness checks, and publish calls.",
       impact:
-        "The system accelerates operations while preserving editorial accountability.",
+        "Each path can be hardened independently without burying platform-specific edge cases inside one giant publish step.",
     },
     {
-      decision: "Check credits before generation.",
+      decision: "Validate structure before generating the video.",
       rationale:
-        "External generation services can fail due to account state before any media job starts.",
+        "A weak title or malformed script becomes more expensive once it reaches video generation and upload.",
       impact:
-        "Failures are caught earlier and can produce clearer alerts.",
+        "Broken runs are caught early, and the final media is more likely to pass downstream publish checks.",
     },
     {
-      decision: "Separate LinkedIn and Instagram workflows.",
+      decision: "Validate the produced video before upload.",
       rationale:
-        "Each platform has different media and publishing constraints.",
+        "Provider success does not automatically guarantee a usable file for platform delivery.",
       impact:
-        "Hardening can happen per platform without confusing operational states.",
+        "The LinkedIn path can fail fast on invalid media instead of wasting upload attempts and debugging time later.",
+    },
+    {
+      decision: "Log runs and failures as first-class workflow outputs.",
+      rationale:
+        "Scheduled automation is hard to trust when the only signal is whether a post appears at the end.",
+      impact:
+        "The operator can review successful runs, investigate broken ones, and tune the system without guessing where a failure occurred.",
     },
   ],
   reliability: [
-    "Retry logic is required around generation and media retrieval.",
-    "Polling status controls prevent assuming media is ready before provider confirmation.",
-    "Idempotency and duplicate-post prevention are required before production use.",
-    "Alerts are part of the hardening checklist for failed provider or platform steps.",
+    "The LinkedIn flow checks HeyGen credits before generation and aborts early when the balance is below threshold.",
+    "Script generation is validated twice: first for JSON structure, then for compliance, word count, and spoken duration.",
+    "HeyGen jobs are polled through retry and wait nodes instead of assuming the video is ready immediately.",
+    "The LinkedIn path validates the downloaded file, upload parts, and finalize payload before creating the public post.",
+    "The Instagram path waits for media-container readiness before issuing the reel publish call.",
+    "Both flows log execution context so failed runs can be reviewed instead of disappearing into a black box.",
   ],
   security: [
-    "Platform tokens and provider credentials must remain outside the browser and public repository.",
-    "News-grounded content requires source review before publication.",
-    "Human approval protects against unsafe or inaccurate automated posts.",
+    "API keys, account tokens, and platform identifiers stay server-side inside the automation environment.",
+    "Prompt rules block political content, off-brand language, and unsupported audience framing before scripts move to video generation.",
+    "Public portfolio evidence uses canvas screenshots only and excludes live tokens, webhook URLs, and unpublished assets.",
   ],
   testing: [
-    "LinkedIn and Instagram workflow canvases require redacted review before publication.",
-    "Generation, polling, credit validation, approval, and duplicate-post prevention need production hardening tests.",
-    "Compliance and duration checks are part of the pre-publish validation plan.",
+    "Exported canvases confirm a 45-node LinkedIn flow and 27-node Instagram flow with distinct publish branches.",
+    "QA checks cover title JSON validity, script JSON validity, word-count windows, duration caps, credit gates, and provider polling.",
+    "LinkedIn testing includes video file validation, upload finalization guards, duplicate-resistant post preparation, and publish success handling.",
+    "Instagram testing includes media container creation, upload wait, container validation, and reel publish completion.",
   ],
   technologies: [
-    { name: "OpenAI", category: "ai" },
-    { name: "HeyGen", category: "ai" },
     { name: "n8n", category: "automation" },
+    { name: "OpenAI", category: "ai" },
+    { name: "GPT-4o", category: "ai" },
+    { name: "HeyGen API", category: "ai" },
     { name: "LinkedIn API", category: "automation" },
-    { name: "Instagram publishing", category: "automation" },
-    { name: "Human approval", category: "testing" },
+    { name: "Instagram Graph API", category: "automation" },
+    { name: "Google Sheets", category: "automation" },
+    { name: "Workflow Guardrails", category: "testing" },
+    { name: "Content QA", category: "testing" },
   ],
   evidence: [
     {
-      id: "video-workflow-canvas",
+      id: "instagram-workflow-canvas",
       projectSlug: "ai-video-operations",
       type: "image",
-      title: "Workflow canvas screenshots",
+      title: "Instagram Reel workflow canvas",
       description:
-        "Sanitized node screenshots are planned for the LinkedIn and Instagram workflow canvases.",
-      state: "planned",
+        "The Instagram branch shows the timed trigger, AI title and script generation, HeyGen polling loop, Google Sheets logging, and final Reel publishing sequence.",
+      state: "verified-public",
+      src: "/media/ai-video-operations/instagram-workflow.png",
+      alt: "A wide n8n canvas for the Instagram Reel automation flow.",
+      width: 872,
+      height: 126,
       caption:
-        "Evidence target: generation-to-publish architecture with private tokens removed.",
-      confidentialityNote:
-        "Remove API keys, platform account IDs, webhook URLs, and unpublished content.",
+        "27-node Instagram flow covering schedule, generation, validation, HeyGen polling, Sheets logging, media-container creation, and Reel publish.",
+    },
+    {
+      id: "linkedin-workflow-canvas",
+      projectSlug: "ai-video-operations",
+      type: "image",
+      title: "LinkedIn video workflow canvas",
+      description:
+        "The LinkedIn branch captures the heavier publish path: credit checks, script-length control, duration guardrails, video validation, upload finalization, post creation, and failure handling.",
+      state: "verified-public",
+      src: "/media/ai-video-operations/linkedin-workflow.png",
+      alt: "A wide n8n canvas for the LinkedIn video publishing automation flow.",
+      width: 1208,
+      height: 158,
+      caption:
+        "45-node LinkedIn flow covering slot control, OpenAI generation, credit gating, HeyGen output validation, upload finalization, Google Sheets logging, and publish alerts.",
     },
   ],
   remainingWork: [
-    "Complete production hardening around retries, idempotency, and duplicate-post prevention.",
-    "Attach sanitized workflow screenshots.",
-    "Document approval and alerting behavior with synthetic examples.",
+    "Add a zoomed public crop set for the most important validation and publishing nodes.",
+    "Attach approved examples of live post outputs once the client signs off on them.",
+    "Document the reporting layer that summarizes publish success across longer time windows.",
   ],
   confidentiality:
-    "Public evidence must not expose social account tokens, unpublished media, client campaigns, or private provider identifiers.",
+    "Public evidence excludes live tokens, account identifiers, unpublished media, and provider credentials.",
 } satisfies PortfolioProject;
+

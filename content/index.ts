@@ -1,9 +1,11 @@
 import { aiVideoOperations } from "@/content/projects/ai-video-operations";
 import { applyPilot } from "@/content/projects/applypilot";
 import { broussElevators } from "@/content/projects/brouss-elevators";
+import { broussVoiceAgent } from "@/content/projects/brouss-voice-agent";
 import { dispatchAlex } from "@/content/projects/dispatch-alex";
 import { sm2RaceControl } from "@/content/projects/sm2-race-control";
 import { venaiConsultationAutomation } from "@/content/projects/venai-consultation-automation";
+import { venzoAiChatbot } from "@/content/projects/venzo-ai-chatbot";
 import { zohoRevenueOperations } from "@/content/projects/zoho-revenue-operations";
 import type {
   PortfolioProject,
@@ -15,9 +17,11 @@ export const flagshipProjects = [
   sm2RaceControl,
   dispatchAlex,
   broussElevators,
+  broussVoiceAgent,
 ] as const satisfies readonly PortfolioProject[];
 
 export const supportingProjects = [
+  venzoAiChatbot,
   venaiConsultationAutomation,
   aiVideoOperations,
   zohoRevenueOperations,
@@ -40,7 +44,7 @@ export const approvedStatusLabels: Record<ProjectStatus, string[]> = {
   ],
   "implemented-final-validation-pending": [
     "Live-tested chatbot and voice system; synchronization final validation pending",
-    "Implemented and Configured - Final Live Validation Pending",
+    "Implemented and Configured, Final Live Validation Pending",
   ],
   "advanced-prototype-production-hardening": [
     "Advanced Prototype / Production Hardening",
@@ -57,7 +61,7 @@ export function getProjectBySlug(
   return portfolioProjects.find((project) => project.slug === slug);
 }
 
-export function getWorkProjects(): PortfolioProject[] {
+export function getCaseStudyProjects(): PortfolioProject[] {
   return portfolioProjects.filter(
     (project) => project.tier !== "systems-lab",
   );
@@ -145,7 +149,7 @@ export function validatePortfolioProjects(
     seenRoutes.add(project.route);
 
     const expectedRoutePrefix =
-      project.tier === "systems-lab" ? "/lab/" : "/work/";
+      project.tier === "systems-lab" ? "/lab/" : "/case-studies/";
 
     if (!project.route.startsWith(expectedRoutePrefix)) {
       issues.push({

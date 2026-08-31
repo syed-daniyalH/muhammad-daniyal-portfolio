@@ -1,5 +1,3 @@
-import { ShieldCheck } from "lucide-react";
-
 import type { PortfolioProject } from "@/types/portfolio";
 
 export function ProjectFactPanel({
@@ -9,9 +7,15 @@ export function ProjectFactPanel({
 }): React.JSX.Element {
   const facts = [
     ["Project type", project.tier.replace("-", " ")],
-    ["Public status", project.statusLabel],
+    [
+      "Core stack",
+      project.technologies
+        .slice(0, 4)
+        .map((technology) => technology.name)
+        .join(", "),
+    ],
     ["Role", project.role],
-    ["Evidence items", String(project.evidence.length)],
+    ["Workflow stages", String(project.workflow.length)],
   ] as const;
 
   return (
@@ -29,25 +33,6 @@ export function ProjectFactPanel({
           </p>
         </div>
       ))}
-
-      {project.confidentiality && (
-        <div className="rounded-2xl border border-caution/20 bg-caution/[0.05] p-5 md:col-span-2">
-          <div className="flex gap-3">
-            <ShieldCheck
-              aria-hidden="true"
-              className="mt-0.5 size-4 shrink-0 text-caution"
-            />
-            <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-caution">
-                Confidentiality note
-              </p>
-              <p className="mt-2 text-sm leading-6 text-caution/90">
-                {project.confidentiality}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

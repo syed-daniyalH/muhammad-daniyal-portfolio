@@ -4,25 +4,26 @@ import { notFound } from "next/navigation";
 import { ProjectPage } from "@/components/project/project-page";
 import {
   getAdjacentProjects,
+  getCaseStudyProjects,
   getProjectBySlug,
-  getWorkProjects,
 } from "@/content";
+import { BRAND_NAME } from "@/lib/branding";
 
-interface WorkProjectPageProps {
+interface CaseStudyProjectPageProps {
   params: Promise<{
     slug: string;
   }>;
 }
 
 export function generateStaticParams(): Array<{ slug: string }> {
-  return getWorkProjects().map((project) => ({
+  return getCaseStudyProjects().map((project) => ({
     slug: project.slug,
   }));
 }
 
 export async function generateMetadata({
   params,
-}: WorkProjectPageProps): Promise<Metadata> {
+}: CaseStudyProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
@@ -37,22 +38,22 @@ export async function generateMetadata({
       canonical: project.route,
     },
     openGraph: {
-      title: `${project.title} | Daniyal Haider`,
+      title: `${project.title} | ${BRAND_NAME}`,
       description: project.metaDescription,
       url: project.route,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | Daniyal Haider`,
+      title: `${project.title} | ${BRAND_NAME}`,
       description: project.metaDescription,
     },
   };
 }
 
-export default async function WorkProjectPage({
+export default async function CaseStudyProjectPage({
   params,
-}: WorkProjectPageProps): Promise<React.JSX.Element> {
+}: CaseStudyProjectPageProps): Promise<React.JSX.Element> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 

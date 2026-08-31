@@ -7,6 +7,7 @@ import {
   getLabProjects,
   getProjectBySlug,
 } from "@/content";
+import { BRAND_NAME } from "@/lib/branding";
 
 interface LabProjectPageProps {
   params: Promise<{
@@ -37,14 +38,14 @@ export async function generateMetadata({
       canonical: project.route,
     },
     openGraph: {
-      title: `${project.title} | Daniyal Haider`,
+      title: `${project.title} | ${BRAND_NAME}`,
       description: project.metaDescription,
       url: project.route,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | Daniyal Haider`,
+      title: `${project.title} | ${BRAND_NAME}`,
       description: project.metaDescription,
     },
   };

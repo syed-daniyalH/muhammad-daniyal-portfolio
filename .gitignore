@@ -6,10 +6,14 @@
 # Next.js
 /.next/
 /out/
+/.next_route_rename_stale/
+/.next_stale_use_cases_removed/
 
 # production
 /build
 /dist
+/tmp/
+/.tmp/
 
 # testing
 /coverage
