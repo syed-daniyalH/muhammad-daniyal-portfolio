@@ -42,12 +42,10 @@ export function FeaturedWork(): React.JSX.Element {
               id="case-studies-title"
               className="mt-4 max-w-5xl text-4xl font-semibold leading-[1.02] tracking-normal text-foreground sm:text-[3.8rem]"
             >
-              Proof lives in the workflow.
+              Real solutions, measurable impact.
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-muted sm:text-[1.05rem]">
-              These case studies show live CRM, AI, and API-connected systems
-              with the architecture, responsibilities, and engineering
-              decisions that made the delivery usable in real operations.
+              Explore detailed case studies of production-grade CRM, AI, and API integrations. Discover the architectural decisions, engineering rigor, and measurable outcomes behind each system.
             </p>
           </div>
 
@@ -70,12 +68,10 @@ export function FeaturedWork(): React.JSX.Element {
               Flagship case studies
             </p>
             <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-normal text-foreground sm:text-[2.65rem]">
-              {portfolioProjects.length} delivery systems with real implementation depth.
+              {portfolioProjects.length} production systems with real implementation depth.
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
-              Each case study stays inspectable: architecture, role, workflow
-              decisions, engineering rigor, and sanitized public evidence where
-              it is safe to show.
+              Each case study provides transparent insights into the architecture, workflow logic, engineering challenges, and sanitized evidence of live deployment.
             </p>
           </ScrollReveal>
 

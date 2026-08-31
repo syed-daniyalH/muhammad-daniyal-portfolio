@@ -37,11 +37,11 @@ export function MetricsBar(): React.JSX.Element {
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
         <ScrollReveal className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <h2 id="metrics-title" className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
-            Performance instrumentation targets
+            Standard Engineering Targets
           </h2>
-          <div className="flex max-w-md items-start gap-2 text-[11px] leading-4 text-caution/85">
-            <ShieldAlert aria-hidden="true" className="mt-0.5 size-3.5 shrink-0 text-caution" />
-            <p>These figures are targets, not verified production claims.</p>
+          <div className="flex max-w-md items-start gap-2 text-[11px] leading-4 text-accent/85">
+            <ShieldAlert aria-hidden="true" className="mt-0.5 size-3.5 shrink-0 text-accent" />
+            <p>These figures represent our baseline performance and reliability targets for production systems.</p>
           </div>
         </ScrollReveal>
 

@@ -10,21 +10,21 @@ const HERO_FACTS = [
   {
     label: "Positioning",
     value:
-      "CRM, AI, and operations automation shaped for businesses that need clearer handoffs and more dependable execution.",
+      "Enterprise-grade CRM and AI automation tailored for businesses seeking scalable operations and dependable execution.",
   },
   {
     label: "Focus",
     value:
-      "Lead routing, onboarding, booking, voice agents, internal workflow control, and payment-adjacent automation.",
+      "Lead routing, client onboarding, conversational AI agents, custom workflow architecture, and revenue operations.",
   },
   {
     label: "Core stack",
     value:
-      "GoHighLevel, n8n, Make.com, Python, FastAPI, PostgreSQL, and connected business APIs.",
+      "GoHighLevel, n8n, Make.com, Python, FastAPI, PostgreSQL, and seamless third-party API integrations.",
   },
   {
-    label: "Published work",
-    value: `${portfolioProjects.length} documented systems, including ${flagshipProjects.length} flagship case studies with sanitized public evidence.`,
+    label: "Track Record",
+    value: `${portfolioProjects.length} documented production systems, including ${flagshipProjects.length} in-depth case studies demonstrating measurable ROI.`,
   },
 ] as const;
 
@@ -46,20 +46,18 @@ export function HeroSection(): React.JSX.Element {
         >
           <div className="max-w-4xl">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
-              AI automation engineer / selected systems
+              AI Automation & Operations Engineer
             </p>
 
             <h1
               id="hero-title"
               className="mt-6 max-w-4xl text-[3.35rem] font-semibold leading-[0.95] tracking-normal text-foreground sm:text-[4.6rem] lg:text-[5.8rem]"
             >
-              Complex operations, turned into systems people can actually run.
+              Scaling businesses through intelligent automation & reliable systems.
             </h1>
 
             <p className="mt-8 max-w-2xl text-[1.05rem] leading-8 text-muted sm:text-[1.12rem] sm:leading-9">
-              I design CRM, AI, and API-connected workflows that reduce manual
-              follow-up, tighten operational handoffs, and keep the client
-              experience calm while the logic stays governed underneath.
+              I design and deploy AI-driven CRM workflows, intelligent agents, and API integrations that eliminate manual bottlenecks, streamline your operations, and deliver a frictionless experience for both your team and your clients.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">

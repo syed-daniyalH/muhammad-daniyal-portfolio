@@ -4,27 +4,27 @@ import { ScrollReveal } from "@/components/motion/scroll-reveal";
 const CAPABILITY_AREAS = [
   {
     id: "01",
-    title: "Lead and sales systems",
+    title: "Lead Generation & Sales Systems",
     description:
-      "Capture enquiries, qualify them, assign ownership, and keep follow-up moving at customer speed.",
+      "Automate lead capture, qualification routing, and intelligent follow-ups to accelerate your sales cycle without sacrificing personalization.",
   },
   {
     id: "02",
-    title: "Service and onboarding operations",
+    title: "Client Onboarding & Service Operations",
     description:
-      "Move contracts, intake, approvals, payment-adjacent workflows, and kickoff steps through a clearer operational sequence.",
+      "Streamline contract management, client intake, and payment workflows, ensuring a seamless and professional onboarding experience.",
   },
   {
     id: "03",
-    title: "AI voice and conversational flows",
+    title: "Conversational AI & Voice Agents",
     description:
-      "Design chat and voice paths that collect the right context, branch safely, and escalate when humans should take over.",
+      "Deploy intelligent voice and chat agents that handle inquiries, collect context, branch logically, and escalate to human agents when required.",
   },
   {
     id: "04",
-    title: "APIs, data, and internal controls",
+    title: "API Integrations & Data Governance",
     description:
-      "Connect platforms with validation, retry logic, auditability, and durable handoffs between systems.",
+      "Connect disparate platforms with robust APIs, ensuring reliable data synchronization, automated error handling, and strict internal controls.",
   },
 ] as const;
 
@@ -62,18 +62,16 @@ export function TechStackMarquee(): React.JSX.Element {
         <div className="grid gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-18">
           <ScrollReveal className="max-w-2xl">
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-              Capabilities / 01
+              Core Capabilities / 01
             </p>
             <h2
               id="stack-title"
               className="mt-4 max-w-2xl text-4xl font-semibold leading-[1.02] tracking-normal text-foreground sm:text-[3.6rem]"
             >
-              Automation built around the way the operation actually works.
+              Architecting automation that aligns with your operational goals.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-8 text-muted sm:text-[1.05rem]">
-              The goal is not to add more software. It is to make the revenue,
-              service, and internal workflow easier to understand, easier to
-              hand off, and easier to improve.
+              My goal isn't just to implement software—it's to simplify your revenue, service, and internal workflows. I build solutions that are intuitive to use, seamless to hand off, and designed to scale as your business grows.
             </p>
           </ScrollReveal>
 

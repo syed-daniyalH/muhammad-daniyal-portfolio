@@ -11,37 +11,37 @@ const DELIVERY_STEPS = [
   {
     id: "1",
     label: "Discover",
-    title: "Find the real constraint",
+    title: "Identify Operational Bottlenecks",
     description:
-      "Clarify the handoff, owner, data source, and point where the process currently slows down.",
+      "We begin by mapping your current processes to pinpoint inefficiencies, data silos, and manual tasks that slow down your growth.",
   },
   {
     id: "2",
     label: "Design",
-    title: "Make the future visible",
+    title: "Architect the Ideal Workflow",
     description:
-      "Turn the messy workflow into a clear operating map with states, triggers, exceptions, and human checkpoints.",
+      "Transforming complex requirements into a clear, visual blueprint with defined triggers, automated actions, and essential human checkpoints.",
   },
   {
     id: "3",
     label: "Build",
-    title: "Connect the right systems",
+    title: "Engineer & Integrate Systems",
     description:
-      "Configure GoHighLevel, n8n, Make.com, APIs, forms, agents, and databases around the approved workflow.",
+      "Seamlessly connecting platforms like GoHighLevel, n8n, AI agents, and custom APIs to bring the approved architecture to life.",
   },
   {
     id: "4",
     label: "Validate",
-    title: "Test reality, not the happy path",
+    title: "Rigorous Quality Assurance",
     description:
-      "Check edge cases, duplicate events, missing fields, retry paths, handoffs, and live-user behavior before trust is assumed.",
+      "Comprehensive testing across all edge cases, ensuring robust error handling, data integrity, and flawless execution before going live.",
   },
   {
     id: "5",
-    label: "Improve",
-    title: "Measure and refine",
+    label: "Optimize",
+    title: "Monitor, Measure, & Refine",
     description:
-      "Review what happens after launch and tune the workflow as the business finds new cases and constraints.",
+      "Post-launch support to continuously optimize system performance, adapt to new business requirements, and maximize your ROI.",
   },
 ] as const;
 
@@ -62,18 +62,16 @@ export function ProcessSection({
       <div className="mx-auto max-w-[1480px] px-5 sm:px-8 lg:px-10">
         <ScrollReveal className="max-w-5xl">
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
-            Delivery method / 03
+            Delivery methodology / 03
           </p>
           <h2
             id="process-title"
             className="mt-5 max-w-4xl text-[3rem] font-semibold leading-[0.98] tracking-normal text-foreground sm:text-[4.25rem] lg:text-[5.15rem]"
           >
-            A repeatable process, with room for judgment.
+            A proven methodology for scalable success.
           </h2>
           <p className="mt-7 max-w-2xl text-base leading-8 text-muted sm:text-[1.05rem]">
-            Every engagement has a clear method, but the decisions stay tied to
-            the operation in front of us: the people, the tools, the edge cases,
-            and the parts of the workflow that need human ownership.
+            Every engagement follows a structured framework designed to minimize risk and maximize impact. We align our technical expertise with your strategic goals to build systems that are robust, secure, and ready to scale.
           </p>
         </ScrollReveal>
 
@@ -160,11 +158,10 @@ export function ProcessSection({
           <ScrollReveal className="mt-12 flex flex-col gap-4 border-t border-border/70 pt-8 sm:flex-row sm:items-center sm:justify-between lg:mt-6">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
-                Your next move
+                Ready to scale?
               </p>
               <p className="mt-3 max-w-2xl text-lg leading-8 text-foreground/84">
-                Read how {BRAND_NAME} works in detail, or start a conversation
-                about the workflow that still depends on too much manual effort.
+                Discover more about my approach, or schedule a consultation to discuss how custom automation can drive your business forward.
               </p>
             </div>
 

@@ -65,7 +65,7 @@ export function CapabilitiesSection(): React.JSX.Element {
             id="capabilities-title"
             className="mt-4 text-3xl font-semibold tracking-normal text-foreground sm:text-5xl"
           >
-            Practical engineering, mapped to evidence.
+            Technical expertise, backed by proven results.
           </h2>
         </ScrollReveal>
 

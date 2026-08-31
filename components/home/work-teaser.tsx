@@ -15,18 +15,17 @@ export function WorkTeaser(): React.JSX.Element {
         <ScrollReveal className="flex flex-col justify-between gap-6 border-b border-border/70 pb-8 sm:flex-row sm:items-end">
           <div className="max-w-3xl">
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-              Selected systems / 02
+              Proven results / 02
             </p>
             <h2
               id="work-teaser-title"
               className="mt-4 text-4xl font-semibold leading-[1.02] tracking-normal text-foreground sm:text-[3.6rem]"
             >
-              Proof lives in the workflow.
+              Real solutions, measurable impact.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-8 text-muted">
-              {flagshipProjects.length} flagship systems from {portfolioProjects.length}{" "}
-              published case studies, each written to show the operational
-              problem, the system shape, and the delivery decisions behind it.
+              Explore {flagshipProjects.length} featured deployments from our {portfolioProjects.length}{" "}
+              documented case studies. Each project highlights the business challenge, the engineered solution, and the tangible results delivered.
             </p>
           </div>
           <Link

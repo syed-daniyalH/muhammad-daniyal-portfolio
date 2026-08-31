@@ -17,7 +17,7 @@ export function AboutSection(): React.JSX.Element {
             id="about-title"
             className="mt-4 text-3xl font-semibold tracking-normal text-foreground sm:text-5xl"
           >
-            I build automations that make operations easier to run.
+            Engineering automation that scales operations seamlessly.
           </h2>
         </ScrollReveal>
 

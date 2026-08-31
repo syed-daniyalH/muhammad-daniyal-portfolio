@@ -3,53 +3,67 @@ import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 
 import { BRAND_NAME, PROFESSIONAL_TITLE } from "@/lib/branding";
 
-const FOOTER_LINKS = [
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-] as const;
-
 export function Footer(): React.JSX.Element {
   return (
     <footer className="border-t border-border/60 bg-console">
       <div className="mx-auto max-w-[1480px] px-5 py-18 sm:px-8 sm:py-20 lg:px-10">
-        <div className="grid gap-14 lg:grid-cols-[1.2fr_0.6fr_0.7fr] lg:gap-16">
-          <div className="max-w-xl">
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {/* Column 1: Brand & Description */}
+          <div className="max-w-sm">
+            <Link
+              href="/"
+              className="font-display text-[1.35rem] font-semibold tracking-normal text-foreground transition-colors hover:text-accent-soft"
+            >
               {BRAND_NAME}
-            </p>
-            <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-normal text-foreground sm:text-[3.3rem]">
-              Automation systems for clearer operations.
-            </h2>
-            <p className="mt-5 max-w-lg text-base leading-8 text-muted">
-              {PROFESSIONAL_TITLE}. Production delivery across GoHighLevel,
-              n8n, Make.com, Python, and API-connected business systems.
+            </Link>
+            <p className="mt-4 text-[0.95rem] leading-7 text-muted">
+              {PROFESSIONAL_TITLE}. Delivering production-grade intelligent automation across GoHighLevel, n8n, Python, and custom API-connected ecosystems.
             </p>
           </div>
 
+          {/* Column 2: Expertise */}
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
-              Navigate
+              Expertise
             </p>
-            <ul className="mt-5 space-y-3.5">
-              {FOOTER_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[0.98rem] text-foreground/80 transition-colors hover:text-accent"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <div className="mt-5 flex flex-col gap-3.5">
+              <span className="text-[0.98rem] text-foreground/80">CRM Automation</span>
+              <span className="text-[0.98rem] text-foreground/80">AI Voice Agents</span>
+              <span className="text-[0.98rem] text-foreground/80">API Integrations</span>
+              <span className="text-[0.98rem] text-foreground/80">Revenue Operations</span>
+            </div>
+          </div>
+
+          {/* Column 3: Explore */}
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
+              Explore
+            </p>
+            <ul className="mt-5 flex flex-col gap-3.5">
+              <li>
+                <Link href="/case-studies" className="text-[0.98rem] text-foreground/80 transition-colors hover:text-accent">
+                  Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-[0.98rem] text-foreground/80 transition-colors hover:text-accent">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-[0.98rem] text-foreground/80 transition-colors hover:text-accent">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
+          {/* Column 4: Connect */}
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
               Connect
             </p>
-            <ul className="mt-5 space-y-3.5">
+            <ul className="mt-5 flex flex-col gap-3.5">
               <li>
                 <a
                   href="mailto:daniyalhaider784@gmail.com"
@@ -87,9 +101,16 @@ export function Footer(): React.JSX.Element {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col justify-between gap-3 border-t border-border/60 pt-6 font-mono text-[10px] text-muted-subtle sm:flex-row">
-          <p>Copyright {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.</p>
-          <p>Public case studies are sanitized for safe review.</p>
+        {/* Legal / Bottom */}
+        <div className="mt-20 flex flex-col justify-between gap-4 border-t border-border/60 pt-8 sm:flex-row sm:items-center">
+          <p className="text-[0.85rem] text-muted-subtle">
+            © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-[0.85rem] text-muted-subtle">
+            <Link href="#" className="transition-colors hover:text-foreground">Privacy</Link>
+            <Link href="#" className="transition-colors hover:text-foreground">Cookies</Link>
+            <Link href="#" className="transition-colors hover:text-foreground">Terms</Link>
+          </div>
         </div>
       </div>
     </footer>
