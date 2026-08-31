@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, FileText, Github, Linkedin, Mail } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { BRAND_NAME, RESUME_PATH } from "@/lib/branding";
 
@@ -10,24 +10,28 @@ const DIRECT_LINKS = [
     label: "EMAIL",
     value: "daniyalhaider784@gmail.com",
     href: "mailto:daniyalhaider784@gmail.com",
+    icon: Mail,
     external: false,
   },
   {
     label: "LINKEDIN",
     value: "linkedin.com/in/syeddaniyalhaider3",
     href: "https://linkedin.com/in/syeddaniyalhaider3",
+    icon: Linkedin,
     external: true,
   },
   {
     label: "GITHUB",
     value: "github.com/syed-daniyalH",
     href: "https://github.com/syed-daniyalH",
+    icon: Github,
     external: true,
   },
   {
     label: "RESUME",
     value: "Download PDF Resume",
     href: RESUME_PATH,
+    icon: FileText,
     external: true,
   },
 ] as const;
@@ -89,26 +93,32 @@ export function ContactSection(): React.JSX.Element {
               </p>
             </div>
 
-            {/* Direct Info Rows */}
+            {/* Direct Info Rows with Professional Icon Badges */}
             <div className="border-t border-border/50 divide-y divide-border/50">
-              {DIRECT_LINKS.map((link) => (
-                <div key={link.label} className="grid grid-cols-[6.5rem_1fr] items-center py-4 text-sm">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
-                    {link.label}
-                  </span>
-                  <a
-                    href={link.href}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noreferrer" : undefined}
-                    className="inline-flex items-center gap-1.5 font-medium text-foreground transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  >
-                    <span>{link.value}</span>
-                    {link.external && (
-                      <ArrowUpRight aria-hidden="true" className="size-3.5 text-muted-subtle" />
-                    )}
-                  </a>
-                </div>
-              ))}
+              {DIRECT_LINKS.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <div key={link.label} className="grid grid-cols-[6rem_1fr] items-center py-4 text-sm">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
+                      {link.label}
+                    </span>
+                    <a
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noreferrer" : undefined}
+                      className="group inline-flex items-center gap-2.5 font-medium text-foreground transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      <div className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-border-strong/70 bg-surface text-muted-subtle transition-colors group-hover:border-accent/50 group-hover:bg-surface-elevated group-hover:text-accent">
+                        <Icon className="size-3.5" />
+                      </div>
+                      <span className="break-all sm:break-normal">{link.value}</span>
+                      {link.external && (
+                        <ArrowUpRight aria-hidden="true" className="size-3.5 text-muted-subtle transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+                      )}
+                    </a>
+                  </div>
+                );
+              })}
             </div>
 
             {/* What Happens Next Card */}
