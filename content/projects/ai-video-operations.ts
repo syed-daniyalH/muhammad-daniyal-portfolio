@@ -4,7 +4,7 @@ export const aiVideoOperations = {
   slug: "ai-video-operations",
   route: "/case-studies/ai-video-operations",
   tier: "flagship",
-  title: "AI Video: Automated Content Production System",
+  title: "AI Video Automated Content Production System",
   shortTitle: "AI Video",
   categoryLabel: "CONTENT OPS · AUTOMATION PIPELINE",
   status: "production-implementation-qa-baseline",

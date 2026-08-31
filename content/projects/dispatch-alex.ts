@@ -4,7 +4,7 @@ export const dispatchAlex = {
   slug: "dispatch-alex",
   route: "/case-studies/dispatch-alex",
   tier: "flagship",
-  title: "SM Dispatch: Operations & Dispatch Automation",
+  title: "SM Dispatch Operations & Dispatch Automation",
   shortTitle: "SM Dispatch",
   categoryLabel: "SM DISPATCH · DISPATCH AUTOMATION",
   status: "live-production",

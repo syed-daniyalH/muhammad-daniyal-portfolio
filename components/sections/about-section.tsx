@@ -83,7 +83,7 @@ export function AboutSection(): React.JSX.Element {
 
             <div className="mt-5 space-y-2">
               <p className="text-sm font-medium text-foreground/90">
-                Government College University (GCU), Lahore · 2021 – 2025
+                Government College University (GCU), Lahore · 2021 to 2025
               </p>
               <p className="text-xs leading-relaxed text-muted">
                 <strong className="text-foreground/80">Relevant coursework:</strong> Data Structures & Algorithms, Database Systems, Software Engineering, Artificial Intelligence, Web Technologies, Computer Networks.
