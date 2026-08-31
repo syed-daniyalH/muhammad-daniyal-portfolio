@@ -56,6 +56,11 @@ export function Footer(): React.JSX.Element {
                 </Link>
               </li>
               <li>
+                <Link href="/insights" className="text-sm text-foreground/80 transition-colors hover:text-accent">
+                  Insights
+                </Link>
+              </li>
+              <li>
                 <a
                   href="/resume.pdf"
                   target="_blank"

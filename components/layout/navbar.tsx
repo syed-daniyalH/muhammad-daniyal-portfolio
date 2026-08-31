@@ -17,6 +17,7 @@ const NAVIGATION_ITEMS: readonly NavigationItem[] = [
   { label: "Services", href: "/services" },
   { label: "Work", href: "/case-studies" },
   { label: "About", href: "/about" },
+  { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
