@@ -52,9 +52,9 @@ export function HeroSection(): React.JSX.Element {
 
             <h1
               id="hero-title"
-              className="mt-5 text-[2.85rem] font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.75rem] lg:text-[4.65rem]"
+              className="mt-5 text-[2.25rem] font-semibold leading-[1.12] tracking-[-0.025em] text-foreground sm:text-[3.15rem] lg:text-[3.85rem]"
             >
-              Building automation systems that connect AI, CRMs, APIs, and business operations.
+              Technology is useful only when it makes work clearer, more dependable, and easier for people to own.
             </h1>
 
             <p className="mt-7 max-w-2xl text-base leading-relaxed text-muted sm:text-[1.08rem]">
