@@ -5,6 +5,7 @@ import {
   validateIdempotencyPayload,
   verifyWebhookSignature,
 } from "@/lib/security";
+import { getSiteOrigin } from "@/lib/site-url";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -65,18 +66,13 @@ function isTrustedBrowserOrigin(
   request: NextRequest,
 ): boolean {
   const requestOrigin = request.headers.get("origin");
-  const configuredSiteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL;
 
-  if (!requestOrigin || !configuredSiteUrl) {
+  if (!requestOrigin) {
     return process.env.NODE_ENV !== "production";
   }
 
   try {
-    return (
-      new URL(requestOrigin).origin ===
-      new URL(configuredSiteUrl).origin
-    );
+    return new URL(requestOrigin).origin === getSiteOrigin();
   } catch {
     return false;
   }
