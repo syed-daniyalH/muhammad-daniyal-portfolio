@@ -28,30 +28,35 @@ const CAPABILITY_AREAS = [
   },
 ] as const;
 
-const SKILL_CATEGORIES = [
-  {
-    category: "Automation & CRM",
-    skills: ["GoHighLevel", "n8n", "Make", "Zoho CRM"],
-  },
-  {
-    category: "AI Systems",
-    skills: ["LLM Workflows", "Conversational AI", "Voice AI", "Prompt / Agent Workflows"],
-  },
-  {
-    category: "Backend & APIs",
-    skills: ["Python", "FastAPI", "REST APIs", "Webhooks"],
-  },
-  {
-    category: "Frontend & Data",
-    skills: ["Next.js", "React", "TypeScript", "PostgreSQL"],
-  },
+const MARQUEE_TECH_STACK = [
+  "GoHighLevel",
+  "n8n",
+  "Make",
+  "Zoho CRM",
+  "LLM Workflows",
+  "Conversational AI",
+  "Voice AI",
+  "Prompt / Agent Workflows",
+  "Python",
+  "FastAPI",
+  "REST APIs",
+  "Webhooks",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "PostgreSQL",
+  "Microsoft Dynamics 365",
+  "QuickBooks",
+  "Twilio",
+  "Cal.com",
+  "Stripe",
 ] as const;
 
 export function TechStackMarquee(): React.JSX.Element {
   return (
     <section
       aria-labelledby="stack-title"
-      className="border-b border-border/50 bg-panel py-20 sm:py-24"
+      className="border-b border-border/50 bg-panel py-20 sm:py-24 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
@@ -91,30 +96,54 @@ export function TechStackMarquee(): React.JSX.Element {
             ))}
           </div>
         </div>
+      </div>
 
-        {/* 4 Categorized Technical Stacks */}
-        <ScrollReveal delay={0.08} className="mt-16 border-t border-border/50 pt-10">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-6">
+      {/* Horizontal 1-Line Animated Marquee Ribbon */}
+      <div className="mt-16 border-t border-border/50 pt-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-6">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
             Core Technology Stack
           </p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {SKILL_CATEGORIES.map((group) => (
-              <div
-                key={group.category}
-                className="rounded-2xl border border-border-strong/50 bg-surface/40 p-5"
-              >
-                <h4 className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-subtle mb-3">
-                  {group.category}
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <TechBadge key={skill} name={skill} size="sm" />
-                  ))}
-                </div>
-              </div>
-            ))}
+        </div>
+
+        <div className="relative w-full overflow-hidden py-3">
+          {/* Gradient edge masks for smooth fade */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-panel via-panel/80 to-transparent sm:w-28"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-panel via-panel/80 to-transparent sm:w-28"
+          />
+
+          {/* Infinite Marquee Track */}
+          <div className="marquee-track flex items-center gap-3">
+            {/* Set 1 */}
+            <div className="flex shrink-0 items-center gap-3">
+              {MARQUEE_TECH_STACK.map((tech, idx) => (
+                <TechBadge
+                  key={`t1-${tech}-${idx}`}
+                  name={tech}
+                  size="md"
+                  className="bg-surface/80 border-border-strong/70 hover:border-accent/60 shadow-sm"
+                />
+              ))}
+            </div>
+
+            {/* Set 2 (Duplicated for seamless looping) */}
+            <div className="flex shrink-0 items-center gap-3" aria-hidden="true">
+              {MARQUEE_TECH_STACK.map((tech, idx) => (
+                <TechBadge
+                  key={`t2-${tech}-${idx}`}
+                  name={tech}
+                  size="md"
+                  className="bg-surface/80 border-border-strong/70 hover:border-accent/60 shadow-sm"
+                />
+              ))}
+            </div>
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );
