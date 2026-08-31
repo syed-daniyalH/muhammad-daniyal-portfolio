@@ -4,7 +4,7 @@ export const sm2RaceControl = {
   slug: "sm2-race-control",
   route: "/case-studies/sm2-race-control",
   tier: "flagship",
-  title: "SM2 Racing — Motorsport Operations Platform",
+  title: "SM2 Racing: Motorsport Operations Platform",
   shortTitle: "SM2 Racing",
   categoryLabel: "SM2 RACING · OPERATIONS PLATFORM",
   status: "live-production",

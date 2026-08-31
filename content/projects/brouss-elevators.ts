@@ -4,7 +4,7 @@ export const broussElevators = {
   slug: "brouss-elevators",
   route: "/case-studies/brouss-elevators",
   tier: "flagship",
-  title: "Brouss Elevators — GHL Chatbot & Dynamics 365 Integration",
+  title: "Brouss Elevators: GHL Chatbot & Dynamics 365 Integration",
   shortTitle: "Brouss Chatbot",
   categoryLabel: "BROUSS ELEVATORS · CRM & AI INTAKE",
   status: "implemented-final-validation-pending",

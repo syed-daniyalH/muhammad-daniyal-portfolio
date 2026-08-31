@@ -71,7 +71,7 @@ export function TechStackMarquee(): React.JSX.Element {
               Focused engineering across CRM, AI, and backend systems.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted sm:text-[1.05rem]">
-              I build reliable workflows designed around real operational requirements—ensuring data flows accurately between platforms, edge cases are handled, and systems remain maintainable.
+              I build reliable workflows designed around real operational requirements, ensuring data flows accurately between platforms, edge cases are handled, and systems remain maintainable.
             </p>
           </ScrollReveal>
 

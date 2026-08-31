@@ -27,7 +27,7 @@ export const INSIGHTS_ARTICLES: readonly InsightArticle[] = [
     ],
     content: [
       "When connecting marketing funnels to financial systems, the most dangerous assumption is believing a webhook will only arrive once. In reality, payment gateways, calendar systems, and telephony webhooks operate under an 'at-least-once' delivery contract.",
-      "If your endpoint takes 3.1 seconds to respond because GoHighLevel or Make.com is executing downstream steps synchronously, the sender will time out and retry. Without idempotency guards, this results in duplicate customer contacts, multiple calendar slots booked for the same lead, or worse—duplicate invoice creation in QuickBooks.",
+      "If your endpoint takes 3.1 seconds to respond because GoHighLevel or Make.com is executing downstream steps synchronously, the sender will time out and retry. Without idempotency guards, this results in duplicate customer contacts, multiple calendar slots booked for the same lead, or worse: duplicate invoice creation in QuickBooks.",
       "To solve this, we implement a lightweight validation gate at the API gateway level: hashing the incoming payload header alongside an event timestamp into an atomic key store. If the key exists within a 10-minute window, the endpoint returns an immediate HTTP 200 OK while discarding the duplicate processing thread.",
     ],
   },
@@ -66,7 +66,7 @@ export const INSIGHTS_ARTICLES: readonly InsightArticle[] = [
       "Bi-directional synchronization requires storing external calendar UID references inside custom GHL contact fields.",
     ],
     content: [
-      "One of the most frequent friction points in agency and sales operations is the 'ghost booking'—an appointment that exists on a salesperson's Google Calendar but remains in an unconfirmed or active state inside GoHighLevel after the prospect cancelled on Cal.com.",
+      "One of the most frequent friction points in agency and sales operations is the 'ghost booking' (an appointment that exists on a salesperson's Google Calendar but remains in an unconfirmed or active state inside GoHighLevel after the prospect cancelled on Cal.com).",
       "This happens when integration flows rely solely on customer email matching rather than immutable booking UIDs. When a lead reschedules with a different email or through a team link, standard triggers fail to update the existing CRM deal.",
       "By storing the raw Cal.com booking ID as a custom field and listening for structured cancellation events in n8n, we trigger automated stage updates and release follow-up sequences in real time.",
     ],
