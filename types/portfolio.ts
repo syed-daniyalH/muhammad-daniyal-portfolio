@@ -104,6 +104,7 @@ export interface PortfolioProject {
   tier: ProjectTier;
   title: string;
   shortTitle: string;
+  categoryLabel?: string;
   summary: string;
   metaDescription: string;
   websiteUrl?: string;

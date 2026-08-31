@@ -3,13 +3,14 @@ import type { PortfolioProject } from "@/types/portfolio";
 export const aiVideoOperations = {
   slug: "ai-video-operations",
   route: "/case-studies/ai-video-operations",
-  tier: "supporting",
-  title: "AI Video Operations",
-  shortTitle: "AI Video Ops",
+  tier: "flagship",
+  title: "AI Video — Automated Content Production System",
+  shortTitle: "AI Video",
+  categoryLabel: "CONTENT OPS · AUTOMATION PIPELINE",
   status: "production-implementation-qa-baseline",
-  statusLabel: "Production Implementation + QA Baseline",
+  statusLabel: "Validated Implementation",
   summary:
-    "Built paired n8n systems that generate, validate, log, and publish short-form AI video posts to LinkedIn and Instagram using OpenAI, HeyGen, platform APIs, and Google Sheets.",
+    "An automated social production pipeline in n8n that handles script generation, compliance checks, HeyGen video rendering, and scheduled publishing to LinkedIn and Instagram with error alerting.",
   metaDescription:
     "AI Video Operations case study covering n8n workflows, OpenAI, HeyGen, LinkedIn API, Instagram Graph API, Google Sheets, and automated social video publishing.",
   businessValue:

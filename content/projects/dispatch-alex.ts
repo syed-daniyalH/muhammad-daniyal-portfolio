@@ -4,12 +4,13 @@ export const dispatchAlex = {
   slug: "dispatch-alex",
   route: "/case-studies/dispatch-alex",
   tier: "flagship",
-  title: "SM2 Dispatch System",
-  shortTitle: "SM2 Dispatch",
+  title: "SM Dispatch — Operations & Dispatch Automation",
+  shortTitle: "SM Dispatch",
+  categoryLabel: "SM DISPATCH · DISPATCH AUTOMATION",
   status: "live-production",
-  statusLabel: "Live Production Client Platform",
+  statusLabel: "Production System",
   summary:
-    "A live production bilingual dispatch platform for SM2 Electronics that turns inbound SMS into reviewed jobs, technician execution, invoice approval, invoice history, and production QuickBooks synchronization.",
+    "A bilingual dispatch platform that turns inbound Twilio SMS into structured jobs, assigns field technicians, manages approval queues, and synchronizes invoice records directly into QuickBooks Online.",
   metaDescription:
     "SM2 Dispatch System case study covering React, FastAPI, PostgreSQL, Twilio, Make.com, OpenAI-assisted bilingual parsing, role-separated portals, and production QuickBooks synchronization.",
   websiteUrl: "https://dispatch.sm2racing.app/admin",

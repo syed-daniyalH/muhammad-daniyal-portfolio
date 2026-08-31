@@ -31,7 +31,7 @@ function TimelineDot({
   return (
     <span
       aria-hidden="true"
-      className="absolute -left-[calc(2rem+5px)] top-1 flex size-2.5 items-center justify-center rounded-full bg-accent ring-4 ring-background"
+      className="absolute -left-[calc(1.75rem+5px)] top-1.5 flex size-2.5 items-center justify-center rounded-full bg-accent ring-4 ring-background"
     >
       {!reducedMotion && (
         <motion.span
@@ -57,45 +57,34 @@ export function ExperienceSection(): React.JSX.Element {
     <section
       id="experience"
       aria-labelledby="experience-title"
-      className="scroll-mt-24 border-b border-border/60 bg-background py-24 sm:py-28"
+      className="scroll-mt-24 border-b border-border/50 bg-background py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <ScrollReveal>
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-              Experience
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+              Career Track / Experience
             </p>
             <h2
               id="experience-title"
-              className="mt-4 text-3xl font-semibold tracking-normal text-foreground sm:text-5xl"
+              className="mt-4 text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.25rem]"
             >
               Experience behind the case studies.
             </h2>
-            <p className="mt-5 text-sm leading-7 text-muted">
+            <p className="mt-4 text-base leading-relaxed text-muted">
               Recent client roles across GoHighLevel, conversational AI,
               workflow automation, and Python-backed delivery.
             </p>
           </ScrollReveal>
 
-          <div className="relative pl-8">
+          <div className="relative pl-7">
             <motion.div
               aria-hidden="true"
-              className="absolute bottom-0 left-0 top-0 w-px bg-gradient-to-b from-transparent via-border/80 to-transparent"
+              className="absolute bottom-0 left-0 top-0 w-px bg-gradient-to-b from-transparent via-border-strong/70 to-transparent"
               initial={reducedMotion ? false : { opacity: 0.4, scaleY: 0.7 }}
               animate={reducedMotion ? undefined : { opacity: [0.4, 0.9, 0.4], scaleY: [0.78, 1, 0.78] }}
               transition={{
                 duration: 5.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            <motion.div
-              aria-hidden="true"
-              className="absolute bottom-0 left-0 top-0 w-px bg-gradient-to-b from-accent/0 via-accent/50 to-accent/0"
-              initial={reducedMotion ? false : { opacity: 0.35 }}
-              animate={reducedMotion ? undefined : { opacity: [0.25, 0.7, 0.25] }}
-              transition={{
-                duration: 4.5,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
@@ -111,16 +100,16 @@ export function ExperienceSection(): React.JSX.Element {
                   className="group relative"
                 >
                   <TimelineDot index={index} reducedMotion={reducedMotion} />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-subtle">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
                     {item.period}
                   </span>
-                  <h3 className="mt-2 text-xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent">
+                  <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm font-medium text-foreground/85">
+                  <p className="mt-1 text-sm font-medium text-foreground/80">
                     {item.organization}
                   </p>
-                  <p className="mt-2 max-w-xl text-sm leading-6 text-muted">
+                  <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-muted">
                     {item.description}
                   </p>
                 </motion.div>

@@ -19,15 +19,15 @@ export function Spread({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="scroll-mt-28 border-b border-border/60 py-14 last:border-b-0 sm:py-16"
+      className="scroll-mt-28 border-b border-border/50 py-12 last:border-b-0 sm:py-16"
     >
       <ScrollReveal>
-        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
           {eyebrow}
         </p>
         <h2
           id={`${id}-title`}
-          className="mt-3 text-2xl font-semibold tracking-normal text-foreground sm:text-3xl"
+          className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
         >
           {title}
         </h2>

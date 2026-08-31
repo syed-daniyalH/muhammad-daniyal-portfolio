@@ -14,17 +14,17 @@ import type {
 } from "@/types/portfolio";
 
 export const flagshipProjects = [
+  venzoAiChatbot,
+  venaiConsultationAutomation,
+  broussElevators,
   sm2RaceControl,
   dispatchAlex,
-  broussElevators,
-  broussVoiceAgent,
+  aiVideoOperations,
+  zohoRevenueOperations,
 ] as const satisfies readonly PortfolioProject[];
 
 export const supportingProjects = [
-  venzoAiChatbot,
-  venaiConsultationAutomation,
-  aiVideoOperations,
-  zohoRevenueOperations,
+  broussVoiceAgent,
 ] as const satisfies readonly PortfolioProject[];
 
 export const systemsLabProjects = [
@@ -38,21 +38,25 @@ export const portfolioProjects = [
 ] as const satisfies readonly PortfolioProject[];
 
 export const approvedStatusLabels: Record<ProjectStatus, string[]> = {
-  "live-production": ["Live Production Client Platform"],
+  "live-production": ["Production System", "Live Production Client Platform"],
   "production-implementation-qa-baseline": [
+    "Validated Implementation",
     "Production Implementation + QA Baseline",
   ],
   "implemented-final-validation-pending": [
+    "Client Implementation",
     "Live-tested chatbot and voice system; synchronization final validation pending",
     "Implemented and Configured, Final Live Validation Pending",
   ],
   "advanced-prototype-production-hardening": [
+    "Technical Prototype",
     "Advanced Prototype / Production Hardening",
   ],
   "delivered-audit-and-automation": [
+    "Delivered System",
     "Delivered CRM Audit and Automation",
   ],
-  "systems-lab": ["Systems Lab / Personal R&D"],
+  "systems-lab": ["Technical Prototype", "Systems Lab / Personal R&D"],
 };
 
 export function getProjectBySlug(

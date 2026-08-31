@@ -7,7 +7,7 @@ export const broussVoiceAgent = {
   title: "Brouss AI Voice Agent",
   shortTitle: "Brouss Voice",
   status: "implemented-final-validation-pending",
-  statusLabel: "Implemented and Configured, Final Live Validation Pending",
+  statusLabel: "Client Implementation",
   summary:
     "A bilingual after-hours AI voice agent for Brouss Elevators that classifies inbound calls, routes entrapment and emergency requests safely, handles informational and follow-up requests without ghost tickets, and hands validated outcomes into GoHighLevel post-call automation.",
   metaDescription:

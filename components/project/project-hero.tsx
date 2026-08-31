@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
+import { TechBadge } from "@/components/icons/tech-badge";
 import type { PortfolioProject } from "@/types/portfolio";
 
 export function ProjectHero({
@@ -14,62 +15,61 @@ export function ProjectHero({
     <section
       id="hero"
       aria-labelledby="project-title"
-      className="border-b border-border/60 bg-background pt-28"
+      className="border-b border-border/50 bg-background pt-28"
     >
-      <div className="mx-auto max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl px-4 pb-14 pt-8 sm:px-6 lg:px-8">
         <Link
           href={backHref}
-          className="inline-flex items-center gap-2 text-xs font-semibold text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
-          <ArrowLeft aria-hidden="true" className="size-4" />
+          <ArrowLeft aria-hidden="true" className="size-3.5" />
           Back to case studies
         </Link>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-14">
           <div>
-            <div className="flex flex-wrap gap-3">
-              <span className="inline-flex w-fit items-center rounded-full border border-border bg-surface px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-flex items-center rounded-full border border-border-strong/60 bg-surface/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
                 {project.tier.replace("-", " ")}
               </span>
               {project.technologies.slice(0, 3).map((technology) => (
-                <span
+                <TechBadge
                   key={technology.name}
-                  className="inline-flex w-fit items-center rounded-full border border-border bg-surface px-3 py-1.5 text-[10px] font-semibold text-foreground/85"
-                >
-                  {technology.name}
-                </span>
+                  name={technology.name}
+                  size="sm"
+                />
               ))}
             </div>
 
             <h1
               id="project-title"
-              className="mt-7 max-w-5xl text-4xl font-semibold leading-[1.04] tracking-normal text-foreground sm:text-6xl"
+              className="mt-6 max-w-4xl text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.25rem]"
             >
               {project.title}
             </h1>
 
-            <p className="mt-6 max-w-3xl text-base leading-8 text-muted sm:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
               {project.summary}
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border bg-surface p-5">
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-accent">
-              Business value
+          <div className="rounded-2xl border border-border-strong/60 bg-surface/60 p-6">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+              Business Value Delivered
             </p>
-            <p className="mt-3 text-sm leading-7 text-foreground/85">
+            <p className="mt-3 text-sm leading-relaxed text-foreground/85">
               {project.businessValue}
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-4 border-t border-border/50 pt-5">
               {project.websiteUrl && (
                 <a
                   href={project.websiteUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   {project.websiteLabel ?? "Visit website"}
-                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
                 </a>
               )}
               {project.repoUrl && (
@@ -77,18 +77,18 @@ export function ProjectHero({
                   href={project.repoUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   {project.repoLabel ?? "View repository"}
-                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
                 </a>
               )}
               <a
                 href="mailto:daniyalhaider784@gmail.com"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-accent transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Discuss a similar system
-                <ArrowUpRight aria-hidden="true" className="size-4" />
+                <ArrowUpRight aria-hidden="true" className="size-3.5" />
               </a>
             </div>
           </div>

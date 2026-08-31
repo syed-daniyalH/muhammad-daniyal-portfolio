@@ -54,16 +54,16 @@ export function CapabilitiesSection(): React.JSX.Element {
     <section
       id="capabilities"
       aria-labelledby="capabilities-title"
-      className="scroll-mt-24 border-b border-border/60 bg-panel py-24 sm:py-28"
+      className="scroll-mt-24 border-b border-border/50 bg-panel py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="max-w-2xl">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-            Capabilities
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+            Core Capabilities
           </p>
           <h2
             id="capabilities-title"
-            className="mt-4 text-3xl font-semibold tracking-normal text-foreground sm:text-5xl"
+            className="mt-4 text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.25rem]"
           >
             Technical expertise, backed by proven results.
           </h2>
@@ -76,13 +76,13 @@ export function CapabilitiesSection(): React.JSX.Element {
               <ScrollReveal
                 key={group.slug}
                 delay={index * 0.06}
-                className={`group rounded-3xl border border-border bg-surface p-7 transition-colors duration-300 hover:border-accent/40 sm:p-8 ${group.span}`}
+                className={`group rounded-2xl border border-border-strong/60 bg-surface/70 p-6 transition-all duration-300 hover:border-accent/50 sm:p-8 ${group.span}`}
               >
                 <Icon aria-hidden="true" className="size-5 text-accent" />
-                <h3 className="mt-5 text-xl font-semibold text-foreground">{group.title}</h3>
-                <p className="mt-3 max-w-lg text-sm leading-6 text-muted">{group.description}</p>
-                <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-info">
-                  Evidence: {group.evidence}
+                <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">{group.title}</h3>
+                <p className="mt-2.5 max-w-lg text-sm leading-relaxed text-muted">{group.description}</p>
+                <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                  Evidence: <span className="text-foreground/80">{group.evidence}</span>
                 </p>
               </ScrollReveal>
             );

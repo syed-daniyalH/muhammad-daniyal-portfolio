@@ -44,7 +44,7 @@ export function ProjectPage({
     <main id="main-content" className="min-h-screen bg-background text-foreground">
       <ProjectHero project={project} />
 
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:flex lg:items-start lg:gap-16">
           <ProjectTableOfContents items={tocItems} />
 
@@ -180,7 +180,7 @@ export function ProjectPage({
         aria-labelledby="project-contact-title"
         className="scroll-mt-24 border-t border-border/60 bg-panel py-16"
       >
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="rounded-3xl border border-border bg-surface p-6 sm:p-8">
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
               Contact

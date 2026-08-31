@@ -96,18 +96,19 @@ body {
 }
 
 /* Editorial headline rhythm: every heading routes through the display
-   serif by default so hierarchy reads instantly against the sans body
-   copy and mono labels. Opt out per-element with font-sans if needed. */
+   serif by default with tight optical tracking and balanced wrapping. */
 h1,
 h2,
 h3 {
   font-family: var(--font-display);
   font-feature-settings: "ss01" 1;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
 p {
   text-wrap: pretty;
+  line-height: 1.68;
 }
 
 button,

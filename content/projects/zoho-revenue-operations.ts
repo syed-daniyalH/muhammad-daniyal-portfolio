@@ -3,13 +3,14 @@ import type { PortfolioProject } from "@/types/portfolio";
 export const zohoRevenueOperations = {
   slug: "zoho-revenue-operations",
   route: "/case-studies/zoho-revenue-operations",
-  tier: "supporting",
-  title: "Zoho CRM Pipeline & Workflow",
-  shortTitle: "Zoho CRM",
+  tier: "flagship",
+  title: "Zoho & QuickBooks Revenue Operations Automation",
+  shortTitle: "Zoho & QuickBooks",
+  categoryLabel: "REVENUE OPS · CRM INTEGRATION",
   status: "delivered-audit-and-automation",
-  statusLabel: "Delivered CRM Audit and Automation",
+  statusLabel: "Delivered System",
   summary:
-    "A CRM and revenue operations engagement covering pipeline audit, workflow repair, field mapping, forecasting, stage emails, WooCommerce-to-Zoho handoff, closed-won-to-QuickBooks flow, and Instagram Lead Ads to Monday.com via Make.com.",
+    "A revenue operations workflow connecting lead intake, deal stages, and closed-won opportunities in Zoho CRM to automated invoicing and accounting synchronization in QuickBooks.",
   metaDescription:
     "Zoho CRM Pipeline & Workflow case study covering CRM audit, workflow repair, field mapping, forecasting, WooCommerce, QuickBooks, and REST API integrations.",
   businessValue:
@@ -114,10 +115,11 @@ export const zohoRevenueOperations = {
   ],
   technologies: [
     { name: "Zoho CRM", category: "crm" },
-    { name: "WooCommerce", category: "automation" },
     { name: "QuickBooks", category: "crm" },
+    { name: "Make.com", category: "automation" },
+    { name: "Webhooks", category: "automation" },
+    { name: "WooCommerce", category: "automation" },
     { name: "REST APIs", category: "backend" },
-    { name: "CRM Automation", category: "crm" },
   ],
   evidence: [
     {

@@ -4,12 +4,13 @@ export const broussElevators = {
   slug: "brouss-elevators",
   route: "/case-studies/brouss-elevators",
   tier: "flagship",
-  title: "Brouss GHL Chatbot",
+  title: "Brouss Elevators — GHL Chatbot & Dynamics 365 Integration",
   shortTitle: "Brouss Chatbot",
+  categoryLabel: "BROUSS ELEVATORS · CRM & AI INTAKE",
   status: "implemented-final-validation-pending",
-  statusLabel: "Implemented and Configured, Final Live Validation Pending",
+  statusLabel: "Client Implementation",
   summary:
-    "A bilingual GoHighLevel support chatbot for Brouss Elevators that classifies service requests, routes emergency cases, resets returning-user context safely, creates Dynamics 365 cases through webhook flows, and closes conversations with category-aware replies.",
+    "A bilingual GoHighLevel intake and support system that classifies service requests, routes emergency entrapment cases, and synchronizes customer data with Microsoft Dynamics 365 via validated webhooks.",
   metaDescription:
     "Brouss GHL Chatbot case study covering GoHighLevel Conversation AI, GPT-4.1 prompt design, webhook-based Dynamics 365 case creation, returning-user handling, bilingual QA remediation, and privacy-aware routing.",
   businessValue:
@@ -158,9 +159,9 @@ export const broussElevators = {
   ],
   technologies: [
     { name: "GoHighLevel", category: "crm" },
-    { name: "OpenAI", category: "ai" },
-    { name: "Webhooks", category: "automation" },
+    { name: "Conversational AI", category: "ai" },
     { name: "Microsoft Dynamics 365", category: "crm" },
+    { name: "Webhooks", category: "automation" },
     { name: "Power Automate", category: "automation" },
     { name: "CRM Integration", category: "crm" },
   ],

@@ -7,7 +7,7 @@ export const applyPilot = {
   title: "ApplyPilot LinkedIn Workflow Lab",
   shortTitle: "ApplyPilot",
   status: "systems-lab",
-  statusLabel: "Systems Lab / Personal R&D",
+  statusLabel: "Technical Prototype",
   websiteUrl:
     "https://drive.google.com/file/d/1I_oenMfSCJVKnmbgI5SuBEitoKrELe8I/view?usp=drivesdk",
   websiteLabel: "Watch demo clip",

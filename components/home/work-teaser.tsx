@@ -1,80 +1,79 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-import { flagshipProjects, portfolioProjects } from "@/content";
+import { flagshipProjects } from "@/content";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { TechBadge } from "@/components/icons/tech-badge";
 
 export function WorkTeaser(): React.JSX.Element {
   return (
     <section
       id="work-teaser"
       aria-labelledby="work-teaser-title"
-      className="border-b border-border/60 bg-background py-24 sm:py-30"
+      className="border-b border-border/50 bg-background py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-[1480px] px-5 sm:px-8 lg:px-10">
-        <ScrollReveal className="flex flex-col justify-between gap-6 border-b border-border/70 pb-8 sm:flex-row sm:items-end">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <ScrollReveal className="flex flex-col justify-between gap-6 border-b border-border/50 pb-8 sm:flex-row sm:items-end">
           <div className="max-w-3xl">
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-              Proven results / 02
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+              Selected Work / 02
             </p>
             <h2
               id="work-teaser-title"
-              className="mt-4 text-4xl font-semibold leading-[1.02] tracking-normal text-foreground sm:text-[3.6rem]"
+              className="mt-4 text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.25rem]"
             >
-              Real solutions, measurable impact.
+              Featured Systems & Case Studies
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-muted">
-              Explore {flagshipProjects.length} featured deployments from our {portfolioProjects.length}{" "}
-              documented case studies. Each project highlights the business challenge, the engineered solution, and the tangible results delivered.
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
+              Explore {flagshipProjects.length} featured deployments across CRM, AI, and workflow automation. Each project highlights the operational challenge, the technical implementation, and the delivered deliverables.
             </p>
           </div>
           <Link
             href="/case-studies"
-            className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-border-strong px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-border-strong bg-surface/40 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             View all case studies
             <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
         </ScrollReveal>
 
-        <div className="divide-y divide-border/70">
+        <div className="divide-y divide-border/50">
           {flagshipProjects.map((project, index) => (
             <ScrollReveal key={project.slug} delay={index * 0.06} y={12}>
               <Link
                 href={project.route}
                 className="group block py-8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:py-10"
               >
-                <div className="grid gap-5 lg:grid-cols-[3.5rem_minmax(0,0.95fr)_minmax(0,1fr)_auto] lg:items-start lg:gap-8">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-subtle">
+                <div className="grid gap-5 lg:grid-cols-[3.5rem_minmax(0,0.95fr)_minmax(0,1.1fr)_auto] lg:items-start lg:gap-8">
+                  <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-                      {project.technologies[0]?.name ?? "Case study"}
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-subtle">
+                      {project.categoryLabel ?? project.technologies[0]?.name ?? "Case study"}
                     </p>
-                    <h3 className="mt-3 text-[1.9rem] font-semibold leading-tight tracking-normal text-foreground transition-colors group-hover:text-accent sm:text-[2.45rem]">
+                    <h3 className="mt-2 text-2xl font-semibold leading-tight tracking-[-0.015em] text-foreground transition-colors group-hover:text-accent sm:text-[1.85rem]">
                       {project.title}
                     </h3>
                   </div>
 
                   <div>
-                    <p className="max-w-2xl text-sm leading-7 text-muted sm:text-[0.98rem]">
+                    <p className="max-w-2xl text-sm leading-relaxed text-muted">
                       {project.summary}
                     </p>
-                    <div className="mt-5 flex flex-wrap gap-2">
+                    <div className="mt-4 flex flex-wrap gap-2">
                       {project.technologies.slice(0, 4).map((technology) => (
-                        <span
+                        <TechBadge
                           key={technology.name}
-                          className="rounded-full border border-border/70 bg-surface/60 px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.08em] text-foreground/82"
-                        >
-                          {technology.name}
-                        </span>
+                          name={technology.name}
+                          size="sm"
+                        />
                       ))}
                     </div>
                   </div>
 
-                  <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-accent lg:justify-self-end">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-accent lg:justify-self-end">
                     View case study
                     <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>

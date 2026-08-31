@@ -3,11 +3,12 @@ import type { PortfolioProject } from "@/types/portfolio";
 export const venzoAiChatbot = {
   slug: "venzo-ai-chatbot",
   route: "/case-studies/venzo-ai-chatbot",
-  tier: "supporting",
+  tier: "flagship",
   title: "Venzo Chatbot & Booking Confirmation System",
   shortTitle: "Venzo Booking",
+  categoryLabel: "VENAI · AI AUTOMATION",
   summary:
-    "A conversational sales assistant and booking-confirmation system for VenAI Agency that answers service questions, qualifies prospects, routes high-intent leads into Cal.com scheduling, and keeps GoHighLevel synced through booking, reschedule, and cancellation events.",
+    "A conversational AI and booking automation system for VenAI Agency that qualifies prospects, routes high-intent leads into Cal.com scheduling, and synchronizes booking, reschedule, and cancellation events with GoHighLevel.",
   metaDescription:
     "Venzo chatbot and booking-confirmation case study covering GoHighLevel Conversation AI, qualification logic, Cal.com scheduling, GHL CRM planning, booking confirmation, reschedule and cancellation automations, and QA validation.",
   websiteUrl: "https://www.venaiagency.com/",
@@ -187,7 +188,7 @@ export const venzoAiChatbot = {
   ],
   technologies: [
     { name: "GoHighLevel", category: "crm" },
-    { name: "Conversation AI", category: "ai" },
+    { name: "Conversational AI", category: "ai" },
     { name: "Cal.com", category: "automation" },
     { name: "n8n", category: "automation" },
     { name: "CRM Automation", category: "crm" },
@@ -257,7 +258,7 @@ export const venzoAiChatbot = {
     },
   ],
   status: "production-implementation-qa-baseline",
-  statusLabel: "Production Implementation + QA Baseline",
+  statusLabel: "Validated Implementation",
   remainingWork: [
     "Publish approved public screenshots of the GoHighLevel bot configuration.",
     "Confirm final production contact-write and booking-action behavior in the live environment.",

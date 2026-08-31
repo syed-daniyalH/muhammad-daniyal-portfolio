@@ -3,15 +3,16 @@ import type { PortfolioProject } from "@/types/portfolio";
 export const venaiConsultationAutomation = {
   slug: "venai-consultation-automation",
   route: "/case-studies/venai-consultation-automation",
-  tier: "supporting",
+  tier: "flagship",
   title: "VenAI Stage 0 Onboarding Automation",
   shortTitle: "VenAI Stage 0",
+  categoryLabel: "VENAI · CRM AUTOMATION",
   status: "implemented-final-validation-pending",
-  statusLabel: "Implemented and Configured, Final Live Validation Pending",
+  statusLabel: "Client Implementation",
   websiteUrl: "https://www.loom.com/share/0600fdf58bb74369a45aea63c2c05d96",
   websiteLabel: "View implementation walkthrough",
   summary:
-    "A Stage 0 onboarding and payment automation system for VenAI Agency that turns a won deal into agreement drafting, Stripe invoice routing, client onboarding intake, completion-gated kickoff, and synchronized GoHighLevel and n8n status updates.",
+    "An onboarding and payment automation system that connects deal submission, client agreements, payment routing, onboarding intake, kickoff readiness, and synchronized GoHighLevel and n8n workflow states.",
   metaDescription:
     "VenAI Stage 0 case study covering GoHighLevel workflows, client onboarding form architecture, n8n Stripe invoice handling, completion-gated kickoff, CRM field protection, and Stage 0 data orchestration.",
   businessValue:

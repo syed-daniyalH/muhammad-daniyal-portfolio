@@ -1,97 +1,89 @@
-import { TechVisualIcon } from "@/components/icons/tech-visual-icon";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { TechBadge } from "@/components/icons/tech-badge";
 
 const CAPABILITY_AREAS = [
   {
     id: "01",
-    title: "Lead Generation & Sales Systems",
+    title: "CRM & Workflow Automation",
     description:
-      "Automate lead capture, qualification routing, and intelligent follow-ups to accelerate your sales cycle without sacrificing personalization.",
+      "Lead routing, booking workflows, onboarding automation, pipeline management, CRM synchronization, and operational handoffs.",
   },
   {
     id: "02",
-    title: "Client Onboarding & Service Operations",
+    title: "AI & Conversational Systems",
     description:
-      "Streamline contract management, client intake, and payment workflows, ensuring a seamless and professional onboarding experience.",
+      "AI-assisted customer journeys, conversational workflows, voice systems, qualification logic, and human escalation.",
   },
   {
     id: "03",
-    title: "Conversational AI & Voice Agents",
+    title: "APIs & Integrations",
     description:
-      "Deploy intelligent voice and chat agents that handle inquiries, collect context, branch logically, and escalate to human agents when required.",
+      "Webhook orchestration, REST APIs, data mapping, third-party integrations, validation, retries, and synchronization.",
   },
   {
     id: "04",
-    title: "API Integrations & Data Governance",
+    title: "Backend & Operational Systems",
     description:
-      "Connect disparate platforms with robust APIs, ensuring reliable data synchronization, automated error handling, and strict internal controls.",
+      "Python and FastAPI services, PostgreSQL data models, internal tools, authentication, and operational workflows.",
   },
 ] as const;
 
-const STACK_PILLS = [
-  "GoHighLevel",
-  "n8n",
-  "Make.com",
-  "Python",
-  "FastAPI",
-  "PostgreSQL",
-  "OpenAI",
-  "Stripe",
-  "Power Automate",
-  "Zoho CRM",
-  "Cal.com",
-  "REST APIs",
+const SKILL_CATEGORIES = [
+  {
+    category: "Automation & CRM",
+    skills: ["GoHighLevel", "n8n", "Make", "Zoho CRM"],
+  },
+  {
+    category: "AI Systems",
+    skills: ["LLM Workflows", "Conversational AI", "Voice AI", "Prompt / Agent Workflows"],
+  },
+  {
+    category: "Backend & APIs",
+    skills: ["Python", "FastAPI", "REST APIs", "Webhooks"],
+  },
+  {
+    category: "Frontend & Data",
+    skills: ["Next.js", "React", "TypeScript", "PostgreSQL"],
+  },
 ] as const;
-
-function StackChip({ name }: { name: string }): React.JSX.Element {
-  return (
-    <span className="inline-flex min-h-10 items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3.5 py-2 text-xs font-medium text-foreground/88">
-      <TechVisualIcon name={name} className="size-4" />
-      {name}
-    </span>
-  );
-}
 
 export function TechStackMarquee(): React.JSX.Element {
   return (
     <section
       aria-labelledby="stack-title"
-      className="border-b border-border/60 bg-panel py-24 sm:py-28"
+      className="border-b border-border/50 bg-panel py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-[1480px] px-5 sm:px-8 lg:px-10">
-        <div className="grid gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-18">
-          <ScrollReveal className="max-w-2xl">
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <ScrollReveal className="max-w-xl">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
               Core Capabilities / 01
             </p>
             <h2
               id="stack-title"
-              className="mt-4 max-w-2xl text-4xl font-semibold leading-[1.02] tracking-normal text-foreground sm:text-[3.6rem]"
+              className="mt-4 text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-[3.25rem]"
             >
-              Architecting automation that aligns with your operational goals.
+              Focused engineering across CRM, AI, and backend systems.
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-8 text-muted sm:text-[1.05rem]">
-              My goal isn't just to implement software—it's to simplify your revenue, service, and internal workflows. I build solutions that are intuitive to use, seamless to hand off, and designed to scale as your business grows.
+            <p className="mt-6 text-base leading-relaxed text-muted sm:text-[1.05rem]">
+              I build reliable workflows designed around real operational requirements—ensuring data flows accurately between platforms, edge cases are handled, and systems remain maintainable.
             </p>
           </ScrollReveal>
 
-          <div className="border-y border-border/70">
-            {CAPABILITY_AREAS.map((area, index) => (
+          <div className="divide-y divide-border/50 border-y border-border/50">
+            {CAPABILITY_AREAS.map((area) => (
               <ScrollReveal
                 key={area.id}
-                delay={index * 0.05}
-                className={`grid gap-3 py-6 sm:grid-cols-[3.75rem_minmax(0,1fr)] sm:gap-5 ${
-                  index < CAPABILITY_AREAS.length - 1 ? "border-b border-border/70" : ""
-                }`}
+                className="grid gap-2 py-5 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-4"
               >
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-subtle">
+                <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
                   {area.id}
                 </span>
                 <div>
-                  <h3 className="text-[1.55rem] font-semibold leading-tight tracking-normal text-foreground sm:text-[1.85rem]">
+                  <h3 className="text-xl font-semibold leading-snug tracking-[-0.015em] text-foreground sm:text-[1.35rem]">
                     {area.title}
                   </h3>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-[0.98rem]">
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
                     {area.description}
                   </p>
                 </div>
@@ -100,13 +92,26 @@ export function TechStackMarquee(): React.JSX.Element {
           </div>
         </div>
 
-        <ScrollReveal delay={0.08} className="mt-14 border-t border-border/70 pt-8">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
-            Platforms used across recent delivery
+        {/* 4 Categorized Technical Stacks */}
+        <ScrollReveal delay={0.08} className="mt-16 border-t border-border/50 pt-10">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-6">
+            Core Technology Stack
           </p>
-          <div className="mt-5 flex flex-wrap gap-2.5">
-            {STACK_PILLS.map((name) => (
-              <StackChip key={name} name={name} />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {SKILL_CATEGORIES.map((group) => (
+              <div
+                key={group.category}
+                className="rounded-2xl border border-border-strong/50 bg-surface/40 p-5"
+              >
+                <h4 className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-subtle mb-3">
+                  {group.category}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <TechBadge key={skill} name={skill} size="sm" />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </ScrollReveal>
