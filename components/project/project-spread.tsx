@@ -27,7 +27,7 @@ export function Spread({
         </p>
         <h2
           id={`${id}-title`}
-          className="mt-3 text-2xl font-semibold tracking-[-0.02em] text-foreground sm:text-3xl"
+          className="mt-3 text-2xl font-semibold tracking-normal text-foreground sm:text-3xl"
         >
           {title}
         </h2>

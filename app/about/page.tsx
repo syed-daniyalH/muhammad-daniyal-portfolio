@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { ProcessSection } from "@/components/home/process-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { CapabilitiesSection } from "@/components/sections/capabilities-section";
 import { ExperienceSection } from "@/components/sections/experience-section";
@@ -19,6 +20,7 @@ export default function AboutPage(): React.JSX.Element {
     <main id="main-content" className="min-h-screen bg-background pt-16 text-foreground">
       <AboutSection />
       <CapabilitiesSection />
+      <ProcessSection showFooterCta={false} />
       <ExperienceSection />
     </main>
   );

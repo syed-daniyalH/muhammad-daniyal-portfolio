@@ -54,7 +54,7 @@ export function MetricsBar(): React.JSX.Element {
                 index > 0 ? "sm:border-l sm:border-border/70" : ""
               }`}
             >
-              <strong className="block font-display text-4xl font-semibold tracking-tight text-foreground">
+              <strong className="block font-display text-4xl font-semibold tracking-normal text-foreground">
                 {metric.value}
               </strong>
               <p className="mt-3 text-sm font-medium text-accent">{metric.label}</p>

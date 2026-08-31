@@ -43,7 +43,7 @@ export function ProjectHero({
 
             <h1
               id="project-title"
-              className="mt-7 max-w-5xl text-4xl font-semibold leading-[1.04] tracking-[-0.045em] text-foreground sm:text-6xl"
+              className="mt-7 max-w-5xl text-4xl font-semibold leading-[1.04] tracking-normal text-foreground sm:text-6xl"
             >
               {project.title}
             </h1>

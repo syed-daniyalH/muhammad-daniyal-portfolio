@@ -29,13 +29,14 @@ function MonogramMark(): React.JSX.Element {
   return (
     <span
       aria-hidden="true"
-      className="relative flex h-11 w-12 shrink-0 items-center justify-center"
+      className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[1.2rem] border border-accent/20 bg-[linear-gradient(180deg,rgba(30,24,16,0.94),rgba(14,12,10,0.98))] shadow-[0_14px_32px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.08)]"
     >
-      <span className="absolute inset-x-1 bottom-1 h-5 rounded-full bg-accent/15 blur-lg" />
-      <span className="absolute left-0 top-0 font-display text-[2.15rem] leading-none tracking-[-0.09em] text-accent-soft">
+      <span className="absolute inset-[1px] rounded-[calc(1.2rem-1px)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0))]" />
+      <span className="absolute inset-x-2 bottom-1 h-6 rounded-full bg-accent/18 blur-lg" />
+      <span className="absolute left-[0.82rem] top-[0.45rem] font-display text-[2rem] leading-none tracking-normal text-accent-soft">
         M
       </span>
-      <span className="absolute bottom-0 right-0 font-display text-[1.85rem] leading-none tracking-[-0.08em] text-accent/85">
+      <span className="absolute bottom-[0.42rem] right-[0.72rem] font-display text-[1.6rem] leading-none tracking-normal text-accent/90">
         D
       </span>
     </span>
@@ -59,31 +60,36 @@ export function Navbar(): React.JSX.Element {
   }, [pathname]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4 lg:px-6">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4 lg:px-6 xl:px-7">
       <div
-        className={`mx-auto max-w-[1450px] overflow-hidden rounded-[2rem] border transition-[background-color,border-color,box-shadow,transform] duration-300 ${
+        className={`mx-auto max-w-[1560px] overflow-hidden rounded-[2.15rem] border transition-[background-color,border-color,box-shadow,transform] duration-300 ${
           scrolled || mobileMenuOpen
-            ? "border-border/90 bg-[linear-gradient(180deg,rgba(14,14,18,0.96),rgba(9,9,12,0.96))] shadow-[0_24px_70px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl"
-            : "border-border/70 bg-[linear-gradient(180deg,rgba(16,16,20,0.94),rgba(10,10,13,0.94))] shadow-[0_16px_42px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl"
+            ? "border-border/90 bg-[linear-gradient(180deg,rgba(13,13,17,0.97),rgba(8,8,11,0.98))] shadow-[0_24px_72px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl"
+            : "border-border/80 bg-[linear-gradient(180deg,rgba(16,16,20,0.95),rgba(10,10,13,0.95))] shadow-[0_18px_48px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-2xl"
         }`}
       >
         <nav
           aria-label="Primary site navigation"
-          className="grid min-h-[78px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:px-8"
+          className="grid min-h-[86px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:px-8 xl:px-10"
         >
           <Link
             href="/"
             aria-label={`${BRAND_NAME} home`}
-            className="group flex min-w-0 items-center gap-3 rounded-2xl py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+            className="group flex min-w-0 items-center gap-4 rounded-[1.4rem] py-3 pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
           >
             <MonogramMark />
-            <span className="truncate font-display text-[1.18rem] font-semibold tracking-[-0.04em] text-foreground transition-colors duration-300 group-hover:text-accent-soft sm:text-[1.32rem] lg:text-[1.5rem]">
-              {BRAND_NAME}
+            <span className="min-w-0">
+              <span className="block truncate font-display text-[1.18rem] font-semibold tracking-normal text-foreground transition-colors duration-300 group-hover:text-accent-soft sm:text-[1.34rem] lg:text-[1.55rem]">
+                {BRAND_NAME}
+              </span>
+              <span className="hidden truncate font-mono text-[0.63rem] uppercase tracking-[0.24em] text-foreground/42 lg:block">
+                AI Automation Engineer
+              </span>
             </span>
           </Link>
 
-          <div className="hidden lg:flex lg:justify-self-center">
-            <div className="flex items-center rounded-full border border-border/80 bg-[linear-gradient(180deg,rgba(24,24,29,0.92),rgba(13,13,17,0.92))] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.24)]">
+          <div className="hidden lg:flex lg:justify-self-center lg:px-6">
+            <div className="flex items-center rounded-full border border-border/80 bg-[linear-gradient(180deg,rgba(23,23,28,0.96),rgba(12,12,16,0.96))] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_14px_30px_rgba(0,0,0,0.24)]">
               {NAVIGATION_ITEMS.map((item, index) => {
                 const isActive = isRouteActive(pathname, item.href);
 
@@ -92,13 +98,13 @@ export function Navbar(): React.JSX.Element {
                     {index > 0 && (
                       <span
                         aria-hidden="true"
-                        className="mx-2 h-6 w-px rounded-full bg-border/70"
+                        className="mx-1.5 h-7 w-px rounded-full bg-border/65"
                       />
                     )}
                     <Link
                       href={item.href}
                       aria-current={isActive ? "page" : undefined}
-                      className={`relative min-w-[9.5rem] rounded-full px-6 py-3 text-center text-[0.95rem] font-medium tracking-[-0.01em] transition-[color,transform] duration-300 focus-visible:outline-none focus-visible:text-accent ${
+                      className={`relative min-w-[8.3rem] rounded-full px-5 py-3.5 text-center text-[0.95rem] font-medium tracking-normal transition-[color,transform] duration-300 focus-visible:outline-none focus-visible:text-accent xl:min-w-[8.8rem] xl:px-6 ${
                         isActive
                           ? "text-foreground"
                           : "text-foreground/72 hover:text-foreground"
@@ -107,7 +113,7 @@ export function Navbar(): React.JSX.Element {
                       {isActive && (
                         <motion.span
                           layoutId="navbar-active-pill"
-                          className="absolute inset-0 -z-10 rounded-full border border-white/5 bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+                          className="absolute inset-0 -z-10 rounded-full border border-white/6 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015))] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_10px_18px_rgba(0,0,0,0.18)]"
                           transition={{ type: "spring", stiffness: 420, damping: 34 }}
                         />
                       )}
@@ -119,8 +125,8 @@ export function Navbar(): React.JSX.Element {
             </div>
           </div>
 
-          <div className="hidden items-center justify-self-end gap-5 lg:flex">
-            <div className="flex items-center gap-3 text-[0.92rem] font-medium tracking-[-0.01em] text-foreground/72">
+          <div className="hidden items-center justify-self-end gap-3 xl:gap-4 lg:flex">
+            <div className="flex items-center gap-3 rounded-full border border-border/70 bg-white/[0.02] px-4 py-2.5 text-[0.92rem] font-medium tracking-normal text-foreground/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
               <span
                 aria-hidden="true"
                 className="size-2.5 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(52,211,153,0.08),0_0_18px_rgba(52,211,153,0.5)]"
@@ -130,7 +136,7 @@ export function Navbar(): React.JSX.Element {
 
             <a
               href="mailto:daniyalhaider784@gmail.com"
-              className="group relative inline-flex min-h-[3.4rem] items-center gap-2 overflow-hidden rounded-full border border-accent/55 bg-[linear-gradient(180deg,rgba(227,165,72,0.12),rgba(227,165,72,0.03))] px-6 py-3 text-sm font-semibold text-accent-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-soft/80 hover:text-foreground hover:shadow-[0_0_0_1px_rgba(227,165,72,0.12),0_18px_34px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              className="group relative inline-flex min-h-[3.5rem] items-center gap-2.5 overflow-hidden rounded-full border border-accent/50 bg-[linear-gradient(180deg,rgba(227,165,72,0.16),rgba(227,165,72,0.05))] px-6 py-3 text-[0.95rem] font-semibold text-accent-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-soft/80 hover:text-foreground hover:shadow-[0_0_0_1px_rgba(227,165,72,0.12),0_18px_34px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             >
               <span
                 aria-hidden="true"
@@ -150,7 +156,7 @@ export function Navbar(): React.JSX.Element {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMobileMenuOpen((current) => !current)}
-            className="flex size-11 items-center justify-center justify-self-end rounded-full border border-border/80 bg-surface/70 text-foreground shadow-[0_12px_25px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:border-accent/45 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
+            className="flex size-12 items-center justify-center justify-self-end rounded-full border border-border/80 bg-surface/80 text-foreground shadow-[0_12px_25px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:border-accent/45 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
           >
             {mobileMenuOpen ? (
               <X aria-hidden="true" className="size-4" />
@@ -171,7 +177,7 @@ export function Navbar(): React.JSX.Element {
               className="overflow-hidden border-t border-border/70 bg-[linear-gradient(180deg,rgba(16,16,20,0.98),rgba(9,9,12,0.98))] lg:hidden"
             >
               <div className="px-4 pb-4 pt-2 sm:px-6">
-                <div className="rounded-[1.6rem] border border-border/70 bg-surface/55 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                <div className="rounded-[1.75rem] border border-border/70 bg-surface/55 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
                   <div className="space-y-1">
                     {NAVIGATION_ITEMS.map((item, index) => {
                       const isActive = isRouteActive(pathname, item.href);
@@ -186,7 +192,7 @@ export function Navbar(): React.JSX.Element {
                           <Link
                             href={item.href}
                             aria-current={isActive ? "page" : undefined}
-                            className={`flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium tracking-[-0.01em] transition-all duration-300 ${
+                            className={`flex items-center justify-between rounded-[1.2rem] px-4 py-3 text-base font-medium tracking-normal transition-all duration-300 ${
                               isActive
                                 ? "border border-white/5 bg-white/[0.04] text-foreground"
                                 : "text-foreground/78 hover:bg-white/[0.03] hover:text-foreground"
@@ -203,7 +209,7 @@ export function Navbar(): React.JSX.Element {
                     })}
                   </div>
 
-                  <div className="mt-4 flex items-center gap-3 rounded-2xl border border-border/60 bg-background/55 px-4 py-3 text-sm font-medium text-foreground/72">
+                  <div className="mt-4 flex items-center gap-3 rounded-[1.2rem] border border-border/60 bg-background/55 px-4 py-3 text-sm font-medium text-foreground/72">
                     <span
                       aria-hidden="true"
                       className="size-2.5 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(52,211,153,0.08),0_0_16px_rgba(52,211,153,0.45)]"
@@ -213,7 +219,7 @@ export function Navbar(): React.JSX.Element {
 
                   <a
                     href="mailto:daniyalhaider784@gmail.com"
-                    className="group relative mt-4 inline-flex min-h-[3.2rem] w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-accent/55 bg-[linear-gradient(180deg,rgba(227,165,72,0.12),rgba(227,165,72,0.03))] px-5 py-3 text-sm font-semibold text-accent-soft transition-all duration-300 hover:border-accent-soft/80 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                    className="group relative mt-4 inline-flex min-h-[3.25rem] w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-accent/55 bg-[linear-gradient(180deg,rgba(227,165,72,0.16),rgba(227,165,72,0.05))] px-5 py-3 text-sm font-semibold text-accent-soft transition-all duration-300 hover:border-accent-soft/80 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
                   >
                     <span
                       aria-hidden="true"

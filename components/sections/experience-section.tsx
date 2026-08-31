@@ -67,7 +67,7 @@ export function ExperienceSection(): React.JSX.Element {
             </p>
             <h2
               id="experience-title"
-              className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl"
+              className="mt-4 text-3xl font-semibold tracking-normal text-foreground sm:text-5xl"
             >
               Experience behind the case studies.
             </h2>

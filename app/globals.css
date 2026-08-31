@@ -77,18 +77,16 @@
 
 html {
   background: var(--background);
-  scroll-padding-top: 124px;
+  scroll-padding-top: 136px;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
   background:
-    radial-gradient(
-      circle at 12% 8%,
-      rgba(227, 165, 72, 0.045),
-      transparent 34%
-    ),
+    radial-gradient(circle at 50% 0%, rgba(227, 165, 72, 0.055), transparent 34%),
+    radial-gradient(circle at 88% 88%, rgba(124, 147, 173, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(13, 13, 17, 0.98) 0%, rgba(10, 10, 12, 1) 42%, rgba(7, 7, 9, 1) 100%),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
@@ -105,6 +103,11 @@ h2,
 h3 {
   font-family: var(--font-display);
   font-feature-settings: "ss01" 1;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 button,

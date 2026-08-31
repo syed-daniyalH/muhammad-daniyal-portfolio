@@ -12,32 +12,31 @@ const FOOTER_LINKS = [
 export function Footer(): React.JSX.Element {
   return (
     <footer className="border-t border-border/60 bg-console">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr_0.7fr]">
-          <div>
-            <p className="font-display text-2xl font-semibold tracking-tight text-foreground">
+      <div className="mx-auto max-w-[1480px] px-5 py-18 sm:px-8 sm:py-20 lg:px-10">
+        <div className="grid gap-14 lg:grid-cols-[1.2fr_0.6fr_0.7fr] lg:gap-16">
+          <div className="max-w-xl">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
               {BRAND_NAME}
             </p>
-            <p className="mt-1 font-mono text-[9px] tracking-[0.16em] text-accent">
-              {PROFESSIONAL_TITLE}
-            </p>
-            <p className="mt-5 max-w-md text-sm leading-6 text-muted">
-              I build production automation systems across GoHighLevel, n8n,
-              Make.com, Python, and API integrations for businesses that need
-              dependable CRM, communication, and operational workflows.
+            <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-normal text-foreground sm:text-[3.3rem]">
+              Automation systems for clearer operations.
+            </h2>
+            <p className="mt-5 max-w-lg text-base leading-8 text-muted">
+              {PROFESSIONAL_TITLE}. Production delivery across GoHighLevel,
+              n8n, Make.com, Python, and API-connected business systems.
             </p>
           </div>
 
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-subtle">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
               Navigate
             </p>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-5 space-y-3.5">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-foreground/80 transition-colors hover:text-accent"
+                    className="text-[0.98rem] text-foreground/80 transition-colors hover:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -47,14 +46,14 @@ export function Footer(): React.JSX.Element {
           </div>
 
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-subtle">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-subtle">
               Connect
             </p>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-5 space-y-3.5">
               <li>
                 <a
                   href="mailto:daniyalhaider784@gmail.com"
-                  className="inline-flex items-center gap-2 text-sm text-foreground/80 transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-2 text-[0.98rem] text-foreground/80 transition-colors hover:text-accent"
                 >
                   <Mail aria-hidden="true" className="size-3.5" />
                   Email
@@ -65,7 +64,7 @@ export function Footer(): React.JSX.Element {
                   href="https://linkedin.com/in/syeddaniyalhaider3"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-foreground/80 transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-2 text-[0.98rem] text-foreground/80 transition-colors hover:text-accent"
                 >
                   <Linkedin aria-hidden="true" className="size-3.5" />
                   LinkedIn
@@ -77,7 +76,7 @@ export function Footer(): React.JSX.Element {
                   href="https://github.com/syed-daniyalH"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-foreground/80 transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-2 text-[0.98rem] text-foreground/80 transition-colors hover:text-accent"
                 >
                   <Github aria-hidden="true" className="size-3.5" />
                   GitHub
@@ -88,9 +87,9 @@ export function Footer(): React.JSX.Element {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col justify-between gap-3 border-t border-border/60 pt-6 font-mono text-[10px] text-muted-subtle sm:flex-row">
+        <div className="mt-16 flex flex-col justify-between gap-3 border-t border-border/60 pt-6 font-mono text-[10px] text-muted-subtle sm:flex-row">
           <p>Copyright {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.</p>
-          <p>Client data and credentials have been removed from all case studies.</p>
+          <p>Public case studies are sanitized for safe review.</p>
         </div>
       </div>
     </footer>

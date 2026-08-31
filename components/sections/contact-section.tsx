@@ -48,7 +48,7 @@ export function ContactSection(): React.JSX.Element {
           </p>
           <h2
             id="contact-title"
-            className="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-6xl"
+            className="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-normal text-foreground sm:text-6xl"
           >
             Have an automation problem? Let&apos;s talk.
           </h2>
