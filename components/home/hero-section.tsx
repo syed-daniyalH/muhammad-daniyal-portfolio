@@ -52,7 +52,7 @@ export function HeroSection(): React.JSX.Element {
 
             <h1
               id="hero-title"
-              className="mt-5 text-[2.35rem] font-semibold leading-[1.12] tracking-[-0.025em] text-foreground sm:text-[3.25rem] lg:text-[4rem]"
+              className="mt-5 text-[1.85rem] font-semibold leading-[1.18] tracking-[-0.02em] text-foreground sm:text-[2.5rem] lg:text-[3.15rem]"
             >
               Technology is useful only when it makes work clearer, more dependable, and easier for people to own.
             </h1>
